@@ -1,2 +1,2 @@
 # PARCO-Computing-2026-245252
-Fundamentals of Parallel Programming
+how to build/run
