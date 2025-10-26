@@ -1,18 +1,21 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include <iostream>
 #include <ctime>
-#include <time.h>
 #include <immintrin.h>
 #include <vector>
+#include <string>
+#include <fstream>
 
 using namespace std;
 
 const int ROW = 5;
 const int COL = 5;
 
-double toSeconds(const timespec& t) {
-	return (double) t.tv_sec + (double) t.tv_nsec / 1e9;
+int row;	// Number of rows
+int col;	// Number of columns
+int nnz;	// Number of non-zero elements
+
+double toMilliseconds(const timespec& t) {
+	return (double) t.tv_sec * 1000 + (double) t.tv_nsec / 1e6;
 }
 
 int randomNumber() {
@@ -32,7 +35,7 @@ void initM(float* mat) {
 }
 
 void initV(float* v) {
-	for(int i = 0; i < COL; i++) {
+	for(int i = 0; i < col; i++) {
 		v[i] = randomNumber();
 	}
 }
@@ -62,6 +65,12 @@ void CSR(const float* mat, vector<int>& aRow, vector<int>& aCol, vector<float>& 
 		}
 		aRow.push_back(count);
 	}
+}
+
+void SELL(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, int C) {		//Start from the output of the CSR format
+	//C is the slice height
+	int nnz = aVal.size();		// nnz = number of non zero elements in the matrix
+	
 }
 
 void MVmul(const float* mat, const float* v, float* out) {
@@ -96,6 +105,7 @@ void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 		for(; j < aRow[i+1]; j++) {
 			temp += aVal[j] * v[aCol[j]];
 		}
+		out[i] = temp;
 	};
 }
 
@@ -111,7 +121,7 @@ void printM(const float* mat) {
 }
 
 void printV(const float* v) {
-	for(int i = 0; i < COL; i++) {
+	for(int i = 0; i < col; i++) {
 		cout << "[" << v[i] << "] ";
 	}
 	cout << endl;
@@ -131,21 +141,78 @@ void printVector(const vector<int>& v) {
 	cout << endl;
 }
 
+void fetch_matrix(const string filename, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
+	fstream file(filename);
+	while(file.peek() == '%') {
+		file.ignore(2048, '\n');
+	}
+	file >> row >> col >> nnz;
+	aRow.reserve(nnz);
+	aCol.reserve(nnz);
+	aVal.reserve(nnz);
+	int r, c;
+	float v;
+	for(int i = 0; i < nnz; i++) {
+		file >> r >> c >> v;
+		aRow.push_back(r);
+		aCol.push_back(c);
+		aVal.push_back(v);
+	}
+}
+
+void COOtoCSR(vector<int>& aRow) {
+	vector<int> tmp;
+	int count = 0;
+	tmp.push_back(0);
+	for(int i = 0; i < row; i++) {
+		for(int j = count; j < nnz; j++) {
+			if(aRow[j] == i) {
+				count++;
+			}
+		}
+		tmp.push_back(count);
+	}
+	aRow = tmp;
+}
+
 int main(int argc, char** argv) {
 	srand(time(NULL));
+	// Get input from command line
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
+		exit(1);
+	}
+	string filename = argv[1];
+	
 	timespec t0, t1;
+	vector<int> aRow;
+	vector<int> aCol;
+	vector<float> aVal;
+	fetch_matrix(filename, aRow, aCol, aVal);		// Read .mtx file and get the COO format of the sparse matrix
+	COOtoCSR(aRow);
+	//cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
+	float* v = new float[col];
+	float* out = new float[col];
+	
+	clock_gettime(CLOCK_MONOTONIC, &t0);		// Get start time
+	CSRmul(aRow, aCol, aVal, v, out);
+	clock_gettime(CLOCK_MONOTONIC, &t1);		// Get end time
+	double start = toMilliseconds(t0);
+	double end = toMilliseconds(t1);
+	cout << "elapsed time: " << end - start << " ms" << endl;
+	
+	/*
+	for(int i = 0; i < nnz; i++) {
+		cout << "(" << aRow[i] << ", " << aCol[i] << ") = " << aVal[i] << endl;
+	}
+	*/
+	
+	
+	/*
 	float* mat = new float[ROW * COL];
 	float* v = new float[COL];
-	float* out = new float[COL];
 	initM(mat);
-	initV(v);
 	printM(mat);
-	printV(v);
-	clock_gettime(CLOCK_MONOTONIC, &t0);
-	clock_gettime(CLOCK_MONOTONIC, &t1);
-	double start = toSeconds(t0);
-	double end = toSeconds(t1);
-	cout << "elapsed time: " << end - start << " seconds" << endl;
 	
 	//	CHECK FOR COO
 	vector<int> aRow1;
@@ -167,19 +234,43 @@ int main(int argc, char** argv) {
 	printVector(aCol2);
 	printVector(aVal2);
 	
+	// CHECK FOR COO to CSR
+	nnz = aVal1.size();
+	row = ROW;
+	col = COL;
+	cout << "--- COO to CSR: ---" << endl;
+	vector<int> aRow3 = aRow1;
+	vector<int> aCol3 = aCol1;
+	vector<float> aVal3 = aVal1;
+	COOtoCSR(aRow3);
+	printVector(aRow3);
+	printVector(aCol3);
+	printVector(aVal3);
+	*/
 	/*
 	// CHECK FOR MV MUL
+	float* out = new float[COL];
+	initV(v);
+	cout << "v:" << endl;
+	printV(v);
 	cout << "--- MV: ---" << endl;
 	MVmul(mat, v, out);
 	printV(out);
 	
 	cout << "--- CSR MV: ---" << endl;
-	CSRmul(aRow2, aCol2, aVal2, v, out);
-	printV(out);
+	float* out2 = new float[COL];
+	CSRmul(aRow2, aCol2, aVal2, v, out2);
+	printV(out2);
 	
 	cout << "--- COO MV: ---" << endl;
-	COOmul(aRow1, aCol1, aVal1, v, out);
-	printV(out);
+	float* out1 = new float[COL];
+	COOmul(aRow1, aCol1, aVal1, v, out1);
+	printV(out1);
+	
+	cout << "--- post-COOtoCSR MV: ---" << endl;
+	float* out3 = new float[COL];
+	CSRmul(aRow3, aCol3, aVal3, v, out3);
+	printV(out3);
 	*/
 	
 	return 0;
