@@ -199,18 +199,6 @@ void COOtoCSRmap(const multimap<array<int, 2>, float>& COOmap, vector<int>& aRow
 		}
 		aRow.push_back(count);
 	}
-	/*
-	for(int i = 0; i < row; i++) {
-		for(int j = count; j < nnz; j++) {
-			
-			if(aRow[j] == i) {
-				count++;
-			}
-		}
-		tmp.push_back(count);
-	}
-	aRow = tmp;
-	*/
 }
 
 void COOtoCSR(vector<int>& aRow) {
@@ -227,17 +215,6 @@ void COOtoCSR(vector<int>& aRow) {
 	}
 	aRow = tmp;
 }
-
-/*
-void orderCOO_by_row(vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
-	int tmpRow;
-	int tmpCol;
-	float tmpVal;
-	for(int i = 0; i < row; i++) {
-		
-	}
-}
-*/
 
 int main(int argc, char** argv) {
 	srand(time(NULL));
@@ -267,7 +244,6 @@ int main(int argc, char** argv) {
 	vector<float> aVal;
 	COOtoCSRmap(COOmap, aRow, aCol, aVal);
 	clock_gettime(CLOCK_MONOTONIC, &t1);
-	// --------
 	
 	/*---
 	// Fetch Matrix using vectors
@@ -303,78 +279,6 @@ int main(int argc, char** argv) {
 	start = toMilliseconds(t0);
 	end = toMilliseconds(t1);
 	cout << "Mul elapsed time: " << end - start << " ms" << endl;
-	
-	/*
-	for(int i = 0; i < nnz; i++) {
-		cout << "(" << aRow[i] << ", " << aCol[i] << ") = " << aVal[i] << endl;
-	}
-	*/
-	
-	
-	/*
-	float* mat = new float[ROW * COL];
-	float* v = new float[COL];
-	initM(mat);
-	printM(mat);
-	
-	//	CHECK FOR COO
-	vector<int> aRow1;
-	vector<int> aCol1;
-	vector<float> aVal1;
-	cout << "--- COO: ---" << endl;
-	COO(mat, aRow1, aCol1, aVal1);
-	printVector(aRow1);
-	printVector(aCol1);
-	printVector(aVal1);
-	
-	// CHECK FOR CSR
-	vector<int> aRow2;
-	vector<int> aCol2;
-	vector<float> aVal2;
-	cout << "--- CSR: ---" << endl;
-	CSR(mat, aRow2, aCol2, aVal2);
-	printVector(aRow2);
-	printVector(aCol2);
-	printVector(aVal2);
-	
-	// CHECK FOR COO to CSR
-	nnz = aVal1.size();
-	row = ROW;
-	col = COL;
-	cout << "--- COO to CSR: ---" << endl;
-	vector<int> aRow3 = aRow1;
-	vector<int> aCol3 = aCol1;
-	vector<float> aVal3 = aVal1;
-	COOtoCSR(aRow3);
-	printVector(aRow3);
-	printVector(aCol3);
-	printVector(aVal3);
-	*/
-	/*
-	// CHECK FOR MV MUL
-	float* out = new float[COL];
-	initV(v);
-	cout << "v:" << endl;
-	printV(v);
-	cout << "--- MV: ---" << endl;
-	MVmul(mat, v, out);
-	printV(out);
-	
-	cout << "--- CSR MV: ---" << endl;
-	float* out2 = new float[COL];
-	CSRmul(aRow2, aCol2, aVal2, v, out2);
-	printV(out2);
-	
-	cout << "--- COO MV: ---" << endl;
-	float* out1 = new float[COL];
-	COOmul(aRow1, aCol1, aVal1, v, out1);
-	printV(out1);
-	
-	cout << "--- post-COOtoCSR MV: ---" << endl;
-	float* out3 = new float[COL];
-	CSRmul(aRow3, aCol3, aVal3, v, out3);
-	printV(out3);
-	*/
 	
 	return 0;
 }
