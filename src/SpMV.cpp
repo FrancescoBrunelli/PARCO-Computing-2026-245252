@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <map>
+#include <array>
 
 using namespace std;
 
@@ -154,10 +156,61 @@ void fetch_matrix(const string filename, vector<int>& aRow, vector<int>& aCol, v
 	float v;
 	for(int i = 0; i < nnz; i++) {
 		file >> r >> c >> v;
+		r--; c--;
 		aRow.push_back(r);
 		aCol.push_back(c);
 		aVal.push_back(v);
 	}
+}
+
+void fetch_matrix2(const string filename, multimap<array<int, 2>, float>& COOmap) {
+	fstream file(filename);
+	while(file.peek() == '%') {
+		file.ignore(2048, '\n');
+	}
+	file >> row >> col >> nnz;
+	int r, c;
+	float v;
+	for(int i = 0; i < nnz; i++) {
+		file >> r >> c >> v;
+		r--; c--;
+		COOmap.insert({{r, c}, v});
+	}
+}
+
+void COOtoCSRmap(const multimap<array<int, 2>, float>& COOmap, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
+	aRow.reserve(row);
+	aCol.reserve(nnz);
+	aVal.reserve(nnz);
+	vector<int> tmp;
+	int count = 0;
+	aRow.push_back(0);
+	
+	for(const auto& item: COOmap) {
+		aCol.push_back(item.first[1]);
+		aVal.push_back(item.second);
+	}
+	
+	for(int i = 0; i < row; i++) {
+		for(const auto& item: COOmap) {
+			if(item.first[0] == i) {
+				count++;
+			}
+		}
+		aRow.push_back(count);
+	}
+	/*
+	for(int i = 0; i < row; i++) {
+		for(int j = count; j < nnz; j++) {
+			
+			if(aRow[j] == i) {
+				count++;
+			}
+		}
+		tmp.push_back(count);
+	}
+	aRow = tmp;
+	*/
 }
 
 void COOtoCSR(vector<int>& aRow) {
@@ -175,6 +228,17 @@ void COOtoCSR(vector<int>& aRow) {
 	aRow = tmp;
 }
 
+/*
+void orderCOO_by_row(vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
+	int tmpRow;
+	int tmpCol;
+	float tmpVal;
+	for(int i = 0; i < row; i++) {
+		
+	}
+}
+*/
+
 int main(int argc, char** argv) {
 	srand(time(NULL));
 	// Get input from command line
@@ -185,21 +249,60 @@ int main(int argc, char** argv) {
 	string filename = argv[1];
 	
 	timespec t0, t1;
+	
+	// -------- Fetch Matrix using multimap
+	multimap<array<int, 2>, float> COOmap;
+	clock_gettime(CLOCK_MONOTONIC, &t0);
+	fetch_matrix2(filename, COOmap);
+	
+	/*
+	// PRINT CHECK
+	for(const auto& item: COOmap) {
+		cout << "(" << item.first[0] << ", " << item.first[1] << "): " << item.second << endl;
+	}
+	*/
+	
+	vector<int> aRow;
+	vector<int> aCol;
+	vector<float> aVal;
+	COOtoCSRmap(COOmap, aRow, aCol, aVal);
+	clock_gettime(CLOCK_MONOTONIC, &t1);
+	// --------
+	
+	/*---
+	// Fetch Matrix using vectors
 	vector<int> aRow;
 	vector<int> aCol;
 	vector<float> aVal;
 	fetch_matrix(filename, aRow, aCol, aVal);		// Read .mtx file and get the COO format of the sparse matrix
+	
 	COOtoCSR(aRow);
-	//cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
+	---*/
+	
+	cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
+	double start = toMilliseconds(t0);
+	double end = toMilliseconds(t1);
+	cout << "CSR elapsed time: " << end - start << " ms" << endl;
+	/*
+	// PRINT CHECK FOR CSR CORRECTNESS
+	cout << "aRow: ";
+	printVector(aRow);
+	cout << "\naCol: "; 
+	printVector(aCol);
+	cout << "\naVal: ";
+	printVector(aVal);
+	*/
+	
 	float* v = new float[col];
 	float* out = new float[col];
 	
 	clock_gettime(CLOCK_MONOTONIC, &t0);		// Get start time
 	CSRmul(aRow, aCol, aVal, v, out);
 	clock_gettime(CLOCK_MONOTONIC, &t1);		// Get end time
-	double start = toMilliseconds(t0);
-	double end = toMilliseconds(t1);
-	cout << "elapsed time: " << end - start << " ms" << endl;
+	
+	start = toMilliseconds(t0);
+	end = toMilliseconds(t1);
+	cout << "Mul elapsed time: " << end - start << " ms" << endl;
 	
 	/*
 	for(int i = 0; i < nnz; i++) {
