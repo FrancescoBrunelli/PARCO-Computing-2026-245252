@@ -31,10 +31,12 @@ int main(int argc, char** argv) {
 
 	//float* mat = printFullMatrix(COOmap);
 
+    /*
 	// PRINT CHECK
 	for(const auto& item: COOmap) {
 		cout << "(" << item.first[0] + 1 << ", " << item.first[1] + 1 << "): " << item.second << endl;
 	}
+	*/
 	
 	vector<int> aRow;
 	vector<int> aCol;
