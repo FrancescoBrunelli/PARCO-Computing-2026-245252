@@ -1,0 +1,22 @@
+#!/bin/bash
+# Job name:
+#PBS -N SpMV
+# Output files:
+#PBS -o ./SpMV.out
+# Error files:
+#PBS -e ./SpMV.err
+# Queue name
+#PBS -q short_cpuQ
+# Set the maximum wall time
+#PBS -l walltime=00:30:00
+# Set the memory, cpus and resources
+#PBS -l select=1:ncpus=64
+#PBS -l select=1:mem=64gb
+
+# Load modules
+module load gcc91
+# Select the working directory
+cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
+#gcc -std=c99 codename.c -o codename.out #C code
+g++ -std=c++17 main.cpp matrix.cpp  -o main.out # C++ code
+./main.out
