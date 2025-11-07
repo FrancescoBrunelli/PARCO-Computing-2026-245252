@@ -1,8 +1,5 @@
 #include "matrix.h"
 
-const int ROW = 5;
-const int COL = 5;
-
 int row;	// Number of rows
 int col;	// Number of columns
 int nnz;	// Number of non-zero elements
@@ -14,12 +11,12 @@ int randomNumber() {
 }
 
 void initM(float* mat) {
-	for(int i = 0; i < ROW; i++) {
-		for(int j = 0; j < COL; j++) {
+	for(int i = 0; i < row; i++) {
+		for(int j = 0; j < col; j++) {
 			if (randomNumber() % 2 == 0) {
-				mat[i * COL + j] = 0;
+				mat[i * col + j] = 0;
 			} else {
-				mat[i * COL + j] = randomNumber();
+				mat[i * col + j] = randomNumber();
 			}
 		}
 	}
@@ -32,12 +29,12 @@ void initV(float* v) {
 }
 
 void COO(const float* mat, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
-	for(int i = 0; i < ROW; i++) {
-		for(int j = 0; j < COL; j++) {
-			if(mat[i * COL + j] != 0) {
+	for(int i = 0; i < row; i++) {
+		for(int j = 0; j < col; j++) {
+			if(mat[i * col + j] != 0) {
 				aRow.push_back(i);
 				aCol.push_back(j);
-				aVal.push_back(mat[i * COL + j]);
+				aVal.push_back(mat[i * col + j]);
 			}
 		}
 	}
@@ -46,12 +43,12 @@ void COO(const float* mat, vector<int>& aRow, vector<int>& aCol, vector<float>& 
 void CSR(const float* mat, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
 	int count = 0;
 	aRow.push_back(0);
-	for(int i = 0; i < ROW; i ++) {
-		for(int j = 0; j < COL; j++) {
-			if(mat[i * COL + j] != 0) {
+	for(int i = 0; i < row; i ++) {
+		for(int j = 0; j < col; j++) {
+			if(mat[i * col + j] != 0) {
 				count++;
 				aCol.push_back(j);
-				aVal.push_back(mat[i * COL + j]);
+				aVal.push_back(mat[i * col + j]);
 			}
 		}
 		aRow.push_back(count);
@@ -66,10 +63,10 @@ void SELL(const vector<int>& aRow, const vector<int>& aCol, const vector<float>&
 
 void MVmul(const float* mat, const float* v, float* out) {
 	int temp;
-	for(int i = 0; i < ROW; i++) {
+	for(int i = 0; i < row; i++) {
 		temp = 0;
-		for(int j = 0; j < COL; j++) {
-			temp += mat[i * COL + j] * v[j];
+		for(int j = 0; j < col; j++) {
+			temp += mat[i * col + j] * v[j];
 		}
 		out[i] = temp;
 	}
@@ -100,18 +97,18 @@ void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 }
 
 void printM(const float* mat) {
-	for(int i = 0; i < ROW; i++) {
+	for(int i = 0; i < row; i++) {
 		cout << "[\t";
-		for(int j = 0; j < COL; j++) {
-			cout << mat[i * COL + j] << "\t";
+		for(int j = 0; j < col; j++) {
+			cout << mat[i * col + j] << "\t";
 		}
 		cout << "]\n";
 	}
 	cout << endl;
 }
 
-void printV(const float* v) {
-	for(int i = 0; i < col; i++) {
+void printV(const float* v, int dim) {
+	for(int i = 0; i < dim; i++) {
 		cout << "[" << v[i] << "] ";
 	}
 	cout << endl;

@@ -12,9 +12,6 @@
 
 using namespace std;
 
-extern const int ROW;
-extern const int COL;
-
 extern int row;	// Number of rows
 extern int col;	// Number of columns
 extern int nnz;	// Number of non-zero elements
@@ -40,7 +37,7 @@ void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 
 void printM(const float* mat);
 
-void printV(const float* v);
+void printV(const float* v, int dim);
 
 void printVector(const vector<float>& v);
 

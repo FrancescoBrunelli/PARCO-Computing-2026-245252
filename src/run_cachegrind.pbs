@@ -14,11 +14,17 @@
 #PBS -l select=1:mem=64gb
 
 # Load modules
-module load gcc91
+module load gcc91, perf
 # Select the working directory
 cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
-#gcc -std=c99 codename.c -o codename.out #C code
-g++ -std=c++17 main.cpp matrix.cpp  -o main.out # C++ code
-./main.out
+g++ -std=c++11 main.cpp matrix.cpp -o main.out
+BASE="${INPUT%.mtx}"
+# Commento iniziale per il file dei risultati
+echo "# Esecuzione con file in input: $INPUT" >> "{$BASE}.txt"
+for (( i = 0; i < 50; i++ )); do
+    echo "# Esecuzione numero: $i" >> "{$BASE}.txt"
+    ./main.out "$INPUT" >> "{$BASE}.txt"
+done
+
 perf stat -e cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,LLC-loads,LLC-load-misses ./main.out ../../Matrices/
 valgrind --tool=cachegrind ./main.out ../../Matrices/
