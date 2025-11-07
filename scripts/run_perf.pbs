@@ -10,8 +10,7 @@
 # Set the maximum wall time
 
 # Set the memory, cpus and resources
-#PBS -l select=1:ncpus=64
-#PBS -l select=1:mem=64gb
+#PBS -l select=1:ncpus=64:mem=64gb
 
 # Load modules
 module load gcc91 perf
