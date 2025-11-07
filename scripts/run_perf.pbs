@@ -1,0 +1,29 @@
+#!/bin/bash
+# Job name:
+#PBS -N SpMV
+# Output files:
+#PBS -o ./SpMV.out
+# Error files:
+#PBS -e ./SpMV.err
+# Queue name
+#PBS -q short_cpuQ
+# Set the maximum wall time
+
+# Set the memory, cpus and resources
+#PBS -l select=1:ncpus=64
+#PBS -l select=1:mem=64gb
+
+# Load modules
+module load gcc91 perf
+# Select the working directory
+cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
+g++ -std=c++11 src/main.cpp src/matrix.cpp -o main.out
+BASE="${INPUT%.mtx}_perf"
+# Commento iniziale per il file dei risultati
+echo "# Execution with input file: $INPUT" > "${BASE}.txt"
+for (( i = 0; i < 10; i++ )); do
+    echo "# Execution: $i" >> "${BASE}.txt"
+    perf stat -e cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,LLC-loads,LLC-load-misses ./main.out "$INPUT" 2>> "${BASE}.txt"
+    echo "" >> "${BASE}.txt"
+done
+echo "# END EXECUTION" >> "${BASE}.txt"
