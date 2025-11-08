@@ -24,49 +24,41 @@ int main(int argc, char** argv) {
 	}
 	string filename = argv[1];
 
-	// -------- Fetch Matrix using multimap
-	multimap<array<int, 2>, float> COOmap;
-	clock_gettime(CLOCK_MONOTONIC, &t0);
-	fetch_matrix(filename, COOmap);
-
-	//float* mat = printFullMatrix(COOmap);
-	
 	vector<int> aRow;
 	vector<int> aCol;
 	vector<float> aVal;
-	COOtoCSRmap(COOmap, aRow, aCol, aVal);
+
+	// -------- Fetch Matrix using vector
+	vector<tuple<int, int, float>> COOvect;
+	COOtoCSRvect(COOvect, filename, aRow, aCol, aVal);
+
+	// -------- Fetch Matrix using multimap
+	//multimap<array<int, 2>, float> COOmap;
+	//fetch_matrix(filename, COOmap);
+	//COOtoCSRmap(COOmap, aRow, aCol, aVal);
+
+	//float* mat = printFullMatrix(COOmap);
+
 	/*
-	clock_gettime(CLOCK_MONOTONIC, &t1);
-	
 	cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
 	double start = toMilliseconds(t0);
 	double end = toMilliseconds(t1);
 	cout << "CSR elapsed time: " << end - start << " ms" << endl;
 	*/
 
-	/*
-	// PRINT CHECK FOR CSR CORRECTNESS
-	cout << "--- CSR with multimap ---" << endl;
-	cout << "aRow: ";
-	printVector(aRow);
-	cout << "aCol: "; 
-	printVector(aCol);
-	cout << "aVal: ";
-	printVector(aVal);
-	*/
-
 	float* v = new float[col];
 	float* out = new float[row];
 	initV(v);
-	// cout << "--- V: ---" << endl;
-	// printV(v, col);
+	//cout << "--- V: ---" << endl;
+	//printV(v, col);
 
 	clock_gettime(CLOCK_MONOTONIC, &t0);		// Get start time
-	CSRmul(aRow, aCol, aVal, v, out);
+	//CSRmul(aRow, aCol, aVal, v, out);
+	P_CSRmul(aRow, aCol, aVal, v, out);
 	clock_gettime(CLOCK_MONOTONIC, &t1);		// Get end time
 
-	// cout << "--- OUT: ---" << endl;
-	// printV(out, row);
+	 //cout << "--- OUT: ---" << endl;
+	 //printV(out, row);
 
 	double start = toMilliseconds(t0);
 	double end = toMilliseconds(t1);

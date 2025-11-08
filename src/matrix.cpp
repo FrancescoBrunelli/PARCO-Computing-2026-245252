@@ -6,17 +6,17 @@ int nnz;	// Number of non-zero elements
 string object, format, datatype, storage;		// Banner elements in the matrix file
 
 
-int randomNumber() {
-	return rand() % 11;
+int randomNumber(const int& min, const int& max) {
+	return rand() % (max - min + 1) + min;
 }
 
 void initM(float* mat) {
 	for(int i = 0; i < row; i++) {
 		for(int j = 0; j < col; j++) {
-			if (randomNumber() % 2 == 0) {
+			if (randomNumber(1, 10) % 2 == 0) {
 				mat[i * col + j] = 0;
 			} else {
-				mat[i * col + j] = randomNumber();
+				mat[i * col + j] = randomNumber(1, 10);
 			}
 		}
 	}
@@ -24,7 +24,7 @@ void initM(float* mat) {
 
 void initV(float* v) {
 	for(int i = 0; i < col; i++) {
-		v[i] = randomNumber();
+		v[i] = randomNumber(2, 2);
 	}
 }
 
@@ -96,6 +96,17 @@ void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 	};
 }
 
+void P_CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out) {
+	#pragma omp parallel for schedule(guided)
+	for(int i = 0; i < aRow.size() - 1; i++) {
+		int temp = 0;
+		for(int j = aRow[i]; j < aRow[i+1]; j++) {
+			temp += aVal[j] * v[aCol[j]];
+		}
+		out[i] = temp;
+	};
+}
+
 void printM(const float* mat) {
 	for(int i = 0; i < row; i++) {
 		cout << "[\t";
@@ -151,6 +162,97 @@ void COOtoCSRmap(const multimap<array<int, 2>, float>& COOmap, vector<int>& aRow
 	}
 }
 
+void COOtoCSRvect(vector<tuple<int, int, float>>& COOvect, const string& filename, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
+	fstream file(filename);
+	read_banner(file);
+	if(storage == "general") {
+		fetch_general_matrix_vector(file, COOvect);
+	}
+	else {
+		fetch_symmetric_matrix_vector(file, COOvect);
+	}
+	sort(COOvect.begin(), COOvect.end(), [] (const tuple<int, int ,float>& a, const tuple<int, int ,float>& b) {
+		return (get<0>(a) < get<0>(b) || get<0>(a) == get<0>(b) && get<1>(a) < get<1>(b));
+	});
+	aRow.reserve(row + 1);
+	aCol.reserve(COOvect.size());
+	aVal.reserve(COOvect.size());
+	for (const auto& item: COOvect) {
+		aRow.push_back(get<0>(item));
+		aCol.push_back(get<1>(item));
+		aVal.push_back(get<2>(item));
+	}
+	nnz = aRow.size();
+	COOtoCSR(aRow);
+}
+
+void fetch_general_matrix_vector(fstream& file, vector<tuple<int, int, float>>& COOvect) {
+	while(file.peek() == '%') {
+		file.ignore(2048, '\n');
+	}
+	file >> row >> col >> nnz;
+	COOvect.reserve(nnz);
+	int r, c;
+	double real, imaginary;		// double in order to avoid some problems when reading very small numbers (<1e-45)
+	if(datatype == "real" || datatype == "integer") {
+		for(int i = 0; i < nnz; i++) {
+			file >> r >> c >> real;
+			r--; c--;
+			COOvect.push_back({ r, c, (float) real});
+		}
+	} else if(datatype == "pattern") {
+		for(int i = 0; i < nnz; i++) {
+			file >> r >> c;
+			r--; c--;
+			COOvect.push_back({ r, c, 1.0f});
+		}
+	} else {	// it's complex
+		for(int i = 0; i < nnz; i++) {
+			file >> r >> c >> real >> imaginary;
+			r--; c--;
+			COOvect.push_back({ r, c, (float) real});
+		}
+	}
+}
+
+void fetch_symmetric_matrix_vector(fstream& file, vector<tuple<int, int, float>>& COOvect) {
+	while(file.peek() == '%') {
+		file.ignore(2048, '\n');
+	}
+	file >> row >> col >> nnz;
+	COOvect.reserve(2 * nnz);
+	int r, c;
+	double real, imaginary;		// double in order to avoid some problems when reading very small numbers (<1e-45)
+	if(datatype == "real" || datatype == "integer") {
+		for(int i = 0; i < nnz; i++) {
+			file >> r >> c >> real;
+			r--; c--;
+			COOvect.push_back({ r, c, (float) real});
+			if(r != c) {
+				COOvect.push_back({ c, r, (float) real});		// insert symmetric element
+			}
+		}
+	} else if(datatype == "pattern") {
+		for(int i = 0; i < nnz; i++) {
+			file >> r >> c;
+			r--; c--;
+			COOvect.push_back({ r, c, 1.0f});
+			if(r != c) {
+				COOvect.push_back({ c, r, 1.0f});		// insert symmetric element
+			}
+		}
+	} else {	// it's complex
+		for(int i = 0; i < nnz; i++) {
+			file >> r >> c >> real >> imaginary;
+			r--; c--;
+			COOvect.push_back({ r, c, (float) real});
+			if(r != c) {
+				COOvect.push_back({ c, r, (float) real});		// insert symmetric element
+			}
+		}
+	}
+}
+
 // COO to CSR using vector
 void COOtoCSR(vector<int>& aRow) {
 	vector<int> tmp;
@@ -166,28 +268,6 @@ void COOtoCSR(vector<int>& aRow) {
 	}
 	aRow = tmp;
 }
-
-/*
-void fetch_matrix(const string& filename, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
-    fstream file(filename);
-    while(file.peek() == '%') {
-        file.ignore(2048, '\n');
-    }
-    file >> row >> col >> nnz;
-    aRow.reserve(nnz);
-    aCol.reserve(nnz);
-    aVal.reserve(nnz);
-    int r, c;
-    float v;
-    for(int i = 0; i < nnz; i++) {
-        file >> r >> c >> v;
-        r--; c--;
-        aRow.push_back(r);
-        aCol.push_back(c);
-        aVal.push_back(v);
-    }
-}
-*/
 
 void read_banner(fstream& file) {
 	string line;

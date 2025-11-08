@@ -17,7 +17,7 @@ extern int col;	// Number of columns
 extern int nnz;	// Number of non-zero elements
 extern string object, format, datatype, storage;		// Banner elements in the matrix file
 
-int randomNumber();
+int randomNumber(const int& min, const int& max);
 
 void initM(float* mat);
 
@@ -35,6 +35,8 @@ void COOmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 
 void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out);
 
+void P_CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out);
+
 void printM(const float* mat);
 
 void printV(const float* v, int dim);
@@ -45,14 +47,14 @@ void printVector(const vector<int>& v);
 
 void COOtoCSRmap(const multimap<array<int, 2>, float>& COOmap, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal);
 
+void COOtoCSRvect(vector<tuple<int, int, float>>& COOvect, const string& filename, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal);
+
 // COO to CSR using vector
 void COOtoCSR(vector<int>& aRow);
 
-//void fetch_matrix(const string& filename, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal);
+void fetch_general_matrix_vector(fstream& file, vector<tuple<int, int, float>>& COOvect);
 
-/*
-void fetch_matrix2(const string& filename, multimap<array<int, 2>, float>& COOmap);
-*/
+void fetch_symmetric_matrix_vector(fstream& file, vector<tuple<int, int, float>>& COOvect);
 
 void read_banner(fstream& file);
 

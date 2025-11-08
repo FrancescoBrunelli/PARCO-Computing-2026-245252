@@ -16,13 +16,21 @@
 module load gcc91
 # Select the working directory
 cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
-g++ -std=c++11 -O3 src/main.cpp src/matrix.cpp -o src/main.out
+g++ -std=c++11 -O3 -march=native -fopenmp-simd -ftree-vectorize src/main.cpp src/matrix.cpp -o src/main.out
+MAX_THREADS=$(wc -l < $PBS_NODEFILE)
+echo "#Max threads available: $MAX_THREADS"
 MATRIX_NAME="${INPUT%.mtx}"
 BASE="results/${MATRIX_NAME}"
 # Commento iniziale per il file dei risultati
-echo "# Execution with input file: $INPUT" > "${BASE}.txt"
-for (( i = 0; i < 50; i++ )); do
-    echo "# Execution: $i" >> "${BASE}.txt"
-    ./src/main.out "$INPUT" >> "${BASE}.txt" 2>&1
+NTHREADS=1
+for ((NTHREADS=1; NTHREADS<=MAX_THREADS; NTHREADS*=2)); do
+    export OMP_NUM_THREADS=$NTHREADS
+    FILENAME="${BASE}_NT${NTHREADS}.txt"
+    echo "# Execution with input file: $INPUT" > "${FILENAME}"
+    for (( i = 0; i < 100; i++ )); do
+        echo "# Execution: $i" >> "${FILENAME}"
+        ./src/main.out "$INPUT" >> "${FILENAME}" 2>&1
+        echo "# END EXECUTION" >> "${FILENAME}"
+    done
 done
-echo "# END EXECUTION" >> "${BASE}.txt"
+echo "# END OF ALL EXECUTIONS"
