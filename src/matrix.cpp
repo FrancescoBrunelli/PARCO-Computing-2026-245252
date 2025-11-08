@@ -198,19 +198,19 @@ void fetch_general_matrix_vector(fstream& file, vector<tuple<int, int, float>>& 
 		for(int i = 0; i < nnz; i++) {
 			file >> r >> c >> real;
 			r--; c--;
-			COOvect.push_back({ r, c, (float) real});
+			COOvect.push_back(make_tuple(r, c, (float) real));
 		}
 	} else if(datatype == "pattern") {
 		for(int i = 0; i < nnz; i++) {
 			file >> r >> c;
 			r--; c--;
-			COOvect.push_back({ r, c, 1.0f});
+			COOvect.push_back(make_tuple(r, c, 1.0f));
 		}
 	} else {	// it's complex
 		for(int i = 0; i < nnz; i++) {
 			file >> r >> c >> real >> imaginary;
 			r--; c--;
-			COOvect.push_back({ r, c, (float) real});
+			COOvect.push_back(make_tuple(r, c, (float) real));
 		}
 	}
 }
@@ -227,27 +227,27 @@ void fetch_symmetric_matrix_vector(fstream& file, vector<tuple<int, int, float>>
 		for(int i = 0; i < nnz; i++) {
 			file >> r >> c >> real;
 			r--; c--;
-			COOvect.push_back({ r, c, (float) real});
+			COOvect.push_back(make_tuple(r, c, (float) real));
 			if(r != c) {
-				COOvect.push_back({ c, r, (float) real});		// insert symmetric element
+				COOvect.push_back(make_tuple(c, r, (float) real));		// insert symmetric element
 			}
 		}
 	} else if(datatype == "pattern") {
 		for(int i = 0; i < nnz; i++) {
 			file >> r >> c;
 			r--; c--;
-			COOvect.push_back({ r, c, 1.0f});
+			COOvect.push_back(make_tuple(r, c, 1.0f));
 			if(r != c) {
-				COOvect.push_back({ c, r, 1.0f});		// insert symmetric element
+				COOvect.push_back(make_tuple(c, r, 1.0f));		// insert symmetric element
 			}
 		}
 	} else {	// it's complex
 		for(int i = 0; i < nnz; i++) {
 			file >> r >> c >> real >> imaginary;
 			r--; c--;
-			COOvect.push_back({ r, c, (float) real});
+			COOvect.push_back(make_tuple(r, c, (float) real));
 			if(r != c) {
-				COOvect.push_back({ c, r, (float) real});		// insert symmetric element
+				COOvect.push_back(make_tuple(c, r, (float) real));		// insert symmetric element
 			}
 		}
 	}
