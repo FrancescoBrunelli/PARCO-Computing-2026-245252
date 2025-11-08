@@ -1,0 +1,182 @@
+# Execution with input file: 1138_bus.mtx
+# Execution: 0
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,929      cache-references:u                                          
+                83      cache-misses:u            #    0.362 % of all cache refs    
+         5,274,391      L1-dcache-loads:u                                           
+            39,897      L1-dcache-load-misses:u   #    0.76% of all L1-dcache hits  
+             6,355      LLC-loads:u                                                 
+                19      LLC-load-misses:u         #    0.30% of all LL-cache hits   
+
+       0.006696680 seconds time elapsed
+
+       0.004243000 seconds user
+       0.001414000 seconds sys
+
+
+
+# Execution: 1
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,832      cache-references:u                                          
+                39      cache-misses:u            #    0.171 % of all cache refs    
+         5,274,392      L1-dcache-loads:u                                           
+            39,349      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,185      LLC-loads:u                                                 
+                17      LLC-load-misses:u         #    0.27% of all LL-cache hits   
+
+       0.006522450 seconds time elapsed
+
+       0.004520000 seconds user
+       0.001130000 seconds sys
+
+
+
+# Execution: 2
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,331      cache-references:u                                          
+               305      cache-misses:u            #    1.366 % of all cache refs    
+         5,274,393      L1-dcache-loads:u                                           
+            39,706      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,126      LLC-loads:u                                                 
+                89      LLC-load-misses:u         #    1.45% of all LL-cache hits   
+
+       0.007265950 seconds time elapsed
+
+       0.003544000 seconds user
+       0.002658000 seconds sys
+
+
+
+# Execution: 3
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,725      cache-references:u                                          
+                46      cache-misses:u            #    0.202 % of all cache refs    
+         5,274,400      L1-dcache-loads:u                                           
+            40,271      L1-dcache-load-misses:u   #    0.76% of all L1-dcache hits  
+             6,149      LLC-loads:u                                                 
+                14      LLC-load-misses:u         #    0.23% of all LL-cache hits   
+
+       0.006402023 seconds time elapsed
+
+       0.002180000 seconds user
+       0.003271000 seconds sys
+
+
+
+# Execution: 4
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            23,174      cache-references:u                                          
+                54      cache-misses:u            #    0.233 % of all cache refs    
+         5,274,406      L1-dcache-loads:u                                           
+            39,631      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,289      LLC-loads:u                                                 
+                 7      LLC-load-misses:u         #    0.11% of all LL-cache hits   
+
+       0.006991941 seconds time elapsed
+
+       0.005354000 seconds user
+       0.001070000 seconds sys
+
+
+
+# Execution: 5
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,469      cache-references:u                                          
+               219      cache-misses:u            #    0.975 % of all cache refs    
+         5,274,389      L1-dcache-loads:u                                           
+            39,645      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,245      LLC-loads:u                                                 
+                72      LLC-load-misses:u         #    1.15% of all LL-cache hits   
+
+       0.006938823 seconds time elapsed
+
+       0.004891000 seconds user
+       0.001222000 seconds sys
+
+
+
+# Execution: 6
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,929      cache-references:u                                          
+                68      cache-misses:u            #    0.297 % of all cache refs    
+         5,274,400      L1-dcache-loads:u                                           
+            39,704      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,256      LLC-loads:u                                                 
+                14      LLC-load-misses:u         #    0.22% of all LL-cache hits   
+
+       0.005982507 seconds time elapsed
+
+       0.004151000 seconds user
+       0.001037000 seconds sys
+
+
+
+# Execution: 7
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,562      cache-references:u                                          
+                64      cache-misses:u            #    0.284 % of all cache refs    
+         5,274,395      L1-dcache-loads:u                                           
+            39,357      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,208      LLC-loads:u                                                 
+                13      LLC-load-misses:u         #    0.21% of all LL-cache hits   
+
+       0.005960884 seconds time elapsed
+
+       0.003495000 seconds user
+       0.001747000 seconds sys
+
+
+
+# Execution: 8
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,614      cache-references:u                                          
+                85      cache-misses:u            #    0.376 % of all cache refs    
+         5,274,395      L1-dcache-loads:u                                           
+            39,428      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,262      LLC-loads:u                                                 
+                27      LLC-load-misses:u         #    0.43% of all LL-cache hits   
+
+       0.005957052 seconds time elapsed
+
+       0.003115000 seconds user
+       0.002077000 seconds sys
+
+
+
+# Execution: 9
+
+ Performance counter stats for './src/main.out 1138_bus.mtx':
+
+            22,804      cache-references:u                                          
+               395      cache-misses:u            #    1.732 % of all cache refs    
+         5,274,392      L1-dcache-loads:u                                           
+            39,459      L1-dcache-load-misses:u   #    0.75% of all L1-dcache hits  
+             6,305      LLC-loads:u                                                 
+               130      LLC-load-misses:u         #    2.06% of all LL-cache hits   
+
+       0.005457798 seconds time elapsed
+
+       0.003565000 seconds user
+       0.001188000 seconds sys
+
+
+
+# END EXECUTION
