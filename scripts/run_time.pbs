@@ -2,9 +2,9 @@
 # Job name:
 #PBS -N SpMV_runtime
 # Output files:
-#PBS -o ./results/SpMV_runtime.out
+#PBS -o ./SpMV_runtime.out
 # Error files:
-#PBS -e ./results/SpMV_runtime.err
+#PBS -e ./SpMV_runtime.err
 # Queue name
 #PBS -q short_cpuQ
 # Set the maximum wall time
