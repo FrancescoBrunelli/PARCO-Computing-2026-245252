@@ -16,20 +16,28 @@
 module load gcc91
 # Select the working directory
 cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
-g++ -std=c++11 -O3 src/main.cpp src/matrix.cpp -o src/main.out
+g++ -std=c++11 -O3 -march=native -fopenmp-simd -ftree-vectorize src/main.cpp src/matrix.cpp -o src/main.out
+MAX_THREADS=64
 MATRIX_NAME="${INPUT%.mtx}"
 BASE="results/${MATRIX_NAME}_cachegrind"
 CACHE_DIR="results/cachegrind_logs/${MATRIX_NAME}"
+NTHREADS=1
 # Commento iniziale per il file dei risultati
 echo "# Execution with input file: $INPUT" > "${BASE}.txt"
 rm -rf "${CACHE_DIR}"
 mkdir -p "${CACHE_DIR}"
-for (( i = 0; i < 10; i++ )); do
-    echo "# Execution: $i" >> "${BASE}.txt"
-    # Genera file binario .cg
-    valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" ./src/main.out "$INPUT" >> "${BASE}.txt"
-    # Converte file .cg (binario) in .txt
-    cg_annotate "${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" >> "${BASE}.txt"
-    echo "" >> "${BASE}.txt"
+for ((NTHREADS=1; NTHREADS<=MAX_THREADS; NTHREADS*=2)); do
+    export OMP_NUM_THREADS=$NTHREADS
+    FILENAME="${BASE}_NT${NTHREADS}.txt"
+    echo "# Execution with input file: $INPUT" > "${FILENAME}"
+    for (( i = 0; i < 10; i++ )); do
+        echo "# Execution: $i" >> "${FILENAME}"
+            # Genera file binario .cg
+            valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" ./src/main.out "$INPUT" >> "${FILENAME}"
+            # Converte file .cg (binario) in .txt
+            cg_annotate "${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" >> "${FILENAME}"
+            echo "" >> "${FILENAME}"
+    done
+    echo "# END EXECUTION" >> "${FILENAME}"
 done
-echo "# END EXECUTION" >> "${BASE}.txt"
+echo "# END OF ALL EXECUTIONS"
