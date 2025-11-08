@@ -16,8 +16,8 @@
 module load gcc91 perf
 # Select the working directory
 cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
-g++ -std=c++11 src/main.cpp src/matrix.cpp -o main.out
-BASE="${INPUT%.mtx}_perf"
+g++ -std=c++11 -O3 src/main.cpp src/matrix.cpp -o main.out
+BASE="results/${MATRIX_NAME}_perf"
 # Commento iniziale per il file dei risultati
 echo "# Execution with input file: $INPUT" > "${BASE}.txt"
 for (( i = 0; i < 10; i++ )); do
