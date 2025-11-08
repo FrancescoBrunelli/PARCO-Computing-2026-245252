@@ -21,10 +21,10 @@ MAX_THREADS=64
 MATRIX_NAME="${INPUT%.mtx}"
 BASE="results/${MATRIX_NAME}"
 NTHREADS=1
-# Commento iniziale per il file dei risultati
 for ((NTHREADS=1; NTHREADS<=MAX_THREADS; NTHREADS*=2)); do
     export OMP_NUM_THREADS=$NTHREADS
     FILENAME="${BASE}_NT${NTHREADS}.txt"
+    # Commento iniziale per il file dei risultati
     echo "# Execution with input file: $INPUT" > "${FILENAME}"
     for (( i = 0; i < 100; i++ )); do
         echo "# Execution: $i" >> "${FILENAME}"
