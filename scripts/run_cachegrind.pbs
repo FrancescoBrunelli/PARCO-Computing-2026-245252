@@ -2,9 +2,9 @@
 # Job name:
 #PBS -N SpMV_cachegrind
 # Output files:
-#PBS -o ./SpMV_cachegrind.out
+#PBS -o ./results/SpMV_cachegrind.out
 # Error files:
-#PBS -e ./SpMV_cachegrind.err
+#PBS -e ./results/SpMV_cachegrind.err
 # Queue name
 #PBS -q short_cpuQ
 # Set the maximum wall time
