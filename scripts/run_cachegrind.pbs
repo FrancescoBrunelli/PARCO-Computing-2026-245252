@@ -1,10 +1,10 @@
 #!/bin/bash
 # Job name:
-#PBS -N SpMV
+#PBS -N SpMV_cachegrind
 # Output files:
-#PBS -o ./SpMV.out
+#PBS -o ./SpMV_cachegrind.out
 # Error files:
-#PBS -e ./SpMV.err
+#PBS -e ./SpMV_cachegrind.err
 # Queue name
 #PBS -q short_cpuQ
 # Set the maximum wall time
@@ -27,7 +27,7 @@ mkdir -p "${CACHE_DIR}"
 for (( i = 0; i < 10; i++ )); do
     echo "# Execution: $i" >> "${BASE}.txt"
     # Genera file binario .cg
-    valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" ./main.out "$INPUT" >> "${BASE}.txt"
+    valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" ./main.out "$INPUT" >> "${BASE}.txt" 2>&1
     # Converte file .cg (binario) in .txt
     cg_annotate "${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" >> "${BASE}.txt"
     echo "" >> "${BASE}.txt"

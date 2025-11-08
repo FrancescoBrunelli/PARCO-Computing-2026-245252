@@ -1,10 +1,10 @@
 #!/bin/bash
 # Job name:
-#PBS -N SpMV
+#PBS -N SpMV_runtime
 # Output files:
-#PBS -o ./SpMV.out
+#PBS -o ./SpMV_runtime.out
 # Error files:
-#PBS -e ./SpMV.err
+#PBS -e ./SpMV_runtime.err
 # Queue name
 #PBS -q short_cpuQ
 # Set the maximum wall time
@@ -23,6 +23,6 @@ BASE="results/${MATRIX_NAME}"
 echo "# Execution with input file: $INPUT" > "${BASE}.txt"
 for (( i = 0; i < 50; i++ )); do
     echo "# Execution: $i" >> "${BASE}.txt"
-    ./main.out "$INPUT" >> "${BASE}.txt"
+    ./main.out "$INPUT" >> "${BASE}.txt" 2>&1
 done
 echo "# END EXECUTION" >> "${BASE}.txt"
