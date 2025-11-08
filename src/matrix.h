@@ -9,6 +9,7 @@
 #include <map>
 #include <array>
 #include <sstream>
+#include <algorithm>
 
 using namespace std;
 
