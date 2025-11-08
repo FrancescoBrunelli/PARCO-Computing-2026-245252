@@ -16,13 +16,13 @@
 module load gcc91
 # Select the working directory
 cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
-g++ -std=c++11 -O3 src/main.cpp src/matrix.cpp -o main.out
+g++ -std=c++11 -O3 src/main.cpp src/matrix.cpp -o src/main.out
 MATRIX_NAME="${INPUT%.mtx}"
 BASE="results/${MATRIX_NAME}"
 # Commento iniziale per il file dei risultati
 echo "# Execution with input file: $INPUT" > "${BASE}.txt"
 for (( i = 0; i < 50; i++ )); do
     echo "# Execution: $i" >> "${BASE}.txt"
-    ./main.out "$INPUT" >> "${BASE}.txt" 2>&1
+    ./src/main.out "$INPUT" >> "${BASE}.txt" 2>&1
 done
 echo "# END EXECUTION" >> "${BASE}.txt"
