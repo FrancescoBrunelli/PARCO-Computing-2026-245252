@@ -1,0 +1,182 @@
+# Execution with input file: c-46.mtx
+# Execution: 0
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           196,716      cache-references:u                                          
+             1,757      cache-misses:u            #    0.893 % of all cache refs    
+       908,724,628      L1-dcache-loads:u                                           
+        52,265,647      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,877      LLC-loads:u                                                 
+               137      LLC-load-misses:u         #    1.54% of all LL-cache hits   
+
+       0.275316198 seconds time elapsed
+
+       0.271195000 seconds user
+       0.002008000 seconds sys
+
+
+
+# Execution: 1
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           196,680      cache-references:u                                          
+             1,715      cache-misses:u            #    0.872 % of all cache refs    
+       908,724,627      L1-dcache-loads:u                                           
+        52,258,028      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,850      LLC-loads:u                                                 
+               152      LLC-load-misses:u         #    1.72% of all LL-cache hits   
+
+       0.273522576 seconds time elapsed
+
+       0.271225000 seconds user
+       0.001000000 seconds sys
+
+
+
+# Execution: 2
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           161,457      cache-references:u                                          
+             1,681      cache-misses:u            #    1.041 % of all cache refs    
+       908,724,622      L1-dcache-loads:u                                           
+        52,274,228      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,124      LLC-loads:u                                                 
+               123      LLC-load-misses:u         #    1.51% of all LL-cache hits   
+
+       0.274192895 seconds time elapsed
+
+       0.270453000 seconds user
+       0.001995000 seconds sys
+
+
+
+# Execution: 3
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           196,760      cache-references:u                                          
+             1,717      cache-misses:u            #    0.873 % of all cache refs    
+       908,724,623      L1-dcache-loads:u                                           
+        52,231,446      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,766      LLC-loads:u                                                 
+               107      LLC-load-misses:u         #    1.22% of all LL-cache hits   
+
+       0.274244792 seconds time elapsed
+
+       0.270394000 seconds user
+       0.002002000 seconds sys
+
+
+
+# Execution: 4
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           193,955      cache-references:u                                          
+             1,640      cache-misses:u            #    0.846 % of all cache refs    
+       908,724,618      L1-dcache-loads:u                                           
+        52,245,626      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             9,000      LLC-loads:u                                                 
+               114      LLC-load-misses:u         #    1.27% of all LL-cache hits   
+
+       0.274001027 seconds time elapsed
+
+       0.271751000 seconds user
+       0.000995000 seconds sys
+
+
+
+# Execution: 5
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           161,928      cache-references:u                                          
+             1,652      cache-misses:u            #    1.020 % of all cache refs    
+       908,724,617      L1-dcache-loads:u                                           
+        52,225,792      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,137      LLC-loads:u                                                 
+               102      LLC-load-misses:u         #    1.25% of all LL-cache hits   
+
+       0.273453896 seconds time elapsed
+
+       0.270109000 seconds user
+       0.001993000 seconds sys
+
+
+
+# Execution: 6
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           162,579      cache-references:u                                          
+             1,782      cache-misses:u            #    1.096 % of all cache refs    
+       908,724,619      L1-dcache-loads:u                                           
+        52,227,118      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,097      LLC-loads:u                                                 
+               114      LLC-load-misses:u         #    1.41% of all LL-cache hits   
+
+       0.274511615 seconds time elapsed
+
+       0.270617000 seconds user
+       0.001989000 seconds sys
+
+
+
+# Execution: 7
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           197,079      cache-references:u                                          
+             1,716      cache-misses:u            #    0.871 % of all cache refs    
+       908,724,628      L1-dcache-loads:u                                           
+        52,223,983      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,861      LLC-loads:u                                                 
+               120      LLC-load-misses:u         #    1.35% of all LL-cache hits   
+
+       0.273597628 seconds time elapsed
+
+       0.269066000 seconds user
+       0.002989000 seconds sys
+
+
+
+# Execution: 8
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           196,570      cache-references:u                                          
+             1,687      cache-misses:u            #    0.858 % of all cache refs    
+       908,724,628      L1-dcache-loads:u                                           
+        52,268,433      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,593      LLC-loads:u                                                 
+               111      LLC-load-misses:u         #    1.29% of all LL-cache hits   
+
+       0.274174982 seconds time elapsed
+
+       0.269616000 seconds user
+       0.002995000 seconds sys
+
+
+
+# Execution: 9
+
+ Performance counter stats for './src/main.out c-46.mtx':
+
+           200,533      cache-references:u                                          
+             1,716      cache-misses:u            #    0.856 % of all cache refs    
+       908,724,627      L1-dcache-loads:u                                           
+        52,253,255      L1-dcache-load-misses:u   #    5.75% of all L1-dcache hits  
+             8,730      LLC-loads:u                                                 
+               113      LLC-load-misses:u         #    1.29% of all LL-cache hits   
+
+       0.274089127 seconds time elapsed
+
+       0.270648000 seconds user
+       0.001990000 seconds sys
+
+
+
+# END EXECUTION

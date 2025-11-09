@@ -1,0 +1,203 @@
+16
+# Execution with input file: sinc12.mtx
+# Execution: 0
+1.32942
+# Execution: 1
+1.32959
+# Execution: 2
+1.33595
+# Execution: 3
+1.33036
+# Execution: 4
+1.33044
+# Execution: 5
+1.32972
+# Execution: 6
+1.33509
+# Execution: 7
+1.33714
+# Execution: 8
+1.33362
+# Execution: 9
+1.32971
+# Execution: 10
+1.32969
+# Execution: 11
+1.33017
+# Execution: 12
+1.33494
+# Execution: 13
+1.33048
+# Execution: 14
+1.32991
+# Execution: 15
+1.33117
+# Execution: 16
+1.33484
+# Execution: 17
+1.32704
+# Execution: 18
+1.3319
+# Execution: 19
+1.33002
+# Execution: 20
+1.33493
+# Execution: 21
+1.33254
+# Execution: 22
+1.33427
+# Execution: 23
+1.32811
+# Execution: 24
+1.3275
+# Execution: 25
+1.3307
+# Execution: 26
+1.33043
+# Execution: 27
+1.33008
+# Execution: 28
+1.32941
+# Execution: 29
+1.32658
+# Execution: 30
+1.3298
+# Execution: 31
+1.33594
+# Execution: 32
+1.33504
+# Execution: 33
+1.33576
+# Execution: 34
+1.33094
+# Execution: 35
+1.33432
+# Execution: 36
+1.33544
+# Execution: 37
+1.3359
+# Execution: 38
+1.33023
+# Execution: 39
+1.3293
+# Execution: 40
+1.32929
+# Execution: 41
+1.32932
+# Execution: 42
+1.33459
+# Execution: 43
+1.32995
+# Execution: 44
+1.32969
+# Execution: 45
+1.3305
+# Execution: 46
+1.32791
+# Execution: 47
+1.33045
+# Execution: 48
+1.33006
+# Execution: 49
+1.33003
+# Execution: 50
+1.33273
+# Execution: 51
+1.33405
+# Execution: 52
+1.33009
+# Execution: 53
+1.33382
+# Execution: 54
+1.33533
+# Execution: 55
+1.33388
+# Execution: 56
+1.32979
+# Execution: 57
+1.32918
+# Execution: 58
+1.33529
+# Execution: 59
+1.33125
+# Execution: 60
+1.32962
+# Execution: 61
+1.32713
+# Execution: 62
+1.3289
+# Execution: 63
+1.32965
+# Execution: 64
+1.3298
+# Execution: 65
+1.32653
+# Execution: 66
+1.32921
+# Execution: 67
+1.33365
+# Execution: 68
+1.33081
+# Execution: 69
+1.3326
+# Execution: 70
+1.32979
+# Execution: 71
+1.32964
+# Execution: 72
+1.32964
+# Execution: 73
+1.3299
+# Execution: 74
+1.32985
+# Execution: 75
+1.32966
+# Execution: 76
+1.33394
+# Execution: 77
+1.33001
+# Execution: 78
+1.32992
+# Execution: 79
+1.33342
+# Execution: 80
+1.33364
+# Execution: 81
+1.33531
+# Execution: 82
+1.3332
+# Execution: 83
+1.33011
+# Execution: 84
+1.32925
+# Execution: 85
+1.33055
+# Execution: 86
+1.32828
+# Execution: 87
+1.32928
+# Execution: 88
+1.33459
+# Execution: 89
+1.33026
+# Execution: 90
+1.33056
+# Execution: 91
+1.33031
+# Execution: 92
+1.33022
+# Execution: 93
+1.32958
+# Execution: 94
+1.33083
+# Execution: 95
+1.33037
+# Execution: 96
+1.33489
+# Execution: 97
+1.33029
+# Execution: 98
+1.33377
+# Execution: 99
+1.33518
+# END EXECUTION

@@ -1,0 +1,203 @@
+8
+# Execution with input file: epb1.mtx
+# Execution: 0
+0.428149
+# Execution: 1
+0.428185
+# Execution: 2
+0.428151
+# Execution: 3
+0.43466
+# Execution: 4
+0.433375
+# Execution: 5
+0.428123
+# Execution: 6
+0.428116
+# Execution: 7
+0.428117
+# Execution: 8
+0.428124
+# Execution: 9
+0.433394
+# Execution: 10
+0.428091
+# Execution: 11
+0.433574
+# Execution: 12
+0.433862
+# Execution: 13
+0.433916
+# Execution: 14
+0.428116
+# Execution: 15
+0.433809
+# Execution: 16
+0.433535
+# Execution: 17
+0.428068
+# Execution: 18
+0.433759
+# Execution: 19
+0.428135
+# Execution: 20
+0.428136
+# Execution: 21
+0.434449
+# Execution: 22
+0.428135
+# Execution: 23
+0.433559
+# Execution: 24
+0.428132
+# Execution: 25
+0.428146
+# Execution: 26
+0.428097
+# Execution: 27
+0.428093
+# Execution: 28
+0.433364
+# Execution: 29
+0.428106
+# Execution: 30
+0.428115
+# Execution: 31
+0.434646
+# Execution: 32
+0.428119
+# Execution: 33
+0.428122
+# Execution: 34
+0.428136
+# Execution: 35
+0.428141
+# Execution: 36
+0.433455
+# Execution: 37
+0.428118
+# Execution: 38
+0.428102
+# Execution: 39
+0.428142
+# Execution: 40
+0.428125
+# Execution: 41
+0.428142
+# Execution: 42
+0.428116
+# Execution: 43
+0.428085
+# Execution: 44
+0.433705
+# Execution: 45
+0.428103
+# Execution: 46
+0.433869
+# Execution: 47
+0.434664
+# Execution: 48
+0.428237
+# Execution: 49
+0.428111
+# Execution: 50
+0.428268
+# Execution: 51
+0.433427
+# Execution: 52
+0.428201
+# Execution: 53
+0.428129
+# Execution: 54
+0.433758
+# Execution: 55
+0.434154
+# Execution: 56
+0.433768
+# Execution: 57
+0.428102
+# Execution: 58
+0.428461
+# Execution: 59
+0.433535
+# Execution: 60
+0.428152
+# Execution: 61
+0.428137
+# Execution: 62
+0.433525
+# Execution: 63
+0.433208
+# Execution: 64
+0.428138
+# Execution: 65
+0.433705
+# Execution: 66
+0.428193
+# Execution: 67
+0.428121
+# Execution: 68
+0.428145
+# Execution: 69
+0.433388
+# Execution: 70
+0.428143
+# Execution: 71
+0.428119
+# Execution: 72
+0.433809
+# Execution: 73
+0.433285
+# Execution: 74
+0.433625
+# Execution: 75
+0.428148
+# Execution: 76
+0.428132
+# Execution: 77
+0.428117
+# Execution: 78
+0.428129
+# Execution: 79
+0.428144
+# Execution: 80
+0.428144
+# Execution: 81
+0.428071
+# Execution: 82
+0.433968
+# Execution: 83
+0.433675
+# Execution: 84
+0.428473
+# Execution: 85
+0.433543
+# Execution: 86
+0.428177
+# Execution: 87
+0.433269
+# Execution: 88
+0.428145
+# Execution: 89
+0.433881
+# Execution: 90
+0.428167
+# Execution: 91
+0.428171
+# Execution: 92
+0.433941
+# Execution: 93
+0.433343
+# Execution: 94
+0.433723
+# Execution: 95
+0.434049
+# Execution: 96
+0.428178
+# Execution: 97
+0.428145
+# Execution: 98
+0.428184
+# Execution: 99
+0.428118
+# END EXECUTION
