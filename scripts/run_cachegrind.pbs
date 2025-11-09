@@ -19,7 +19,7 @@ cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
 g++ -std=c++11 -O3 -march=native -ftree-vectorize src/main.cpp src/matrix.cpp -o src/main.out
 MAX_THREADS=64
 MATRIX_NAME="${INPUT%.mtx}"
-mkdir -p "${MATRIX_NAME}"
+mkdir -p "results/${MATRIX_NAME}"
 BASE="results/${MATRIX_NAME}/${MATRIX_NAME}_cachegrind"
 CACHE_DIR="results/cachegrind_logs/${MATRIX_NAME}"
 NTHREADS=1
