@@ -1,0 +1,203 @@
+1
+# Execution with input file: fd12.mtx
+# Execution: 0
+0.131569
+# Execution: 1
+0.13967
+# Execution: 2
+0.131576
+# Execution: 3
+0.160669
+# Execution: 4
+0.131756
+# Execution: 5
+0.139138
+# Execution: 6
+0.131583
+# Execution: 7
+0.139092
+# Execution: 8
+0.138436
+# Execution: 9
+0.139095
+# Execution: 10
+0.131563
+# Execution: 11
+0.13908
+# Execution: 12
+0.13156
+# Execution: 13
+0.151089
+# Execution: 14
+0.131569
+# Execution: 15
+0.139118
+# Execution: 16
+0.131568
+# Execution: 17
+0.13162
+# Execution: 18
+0.131576
+# Execution: 19
+0.139108
+# Execution: 20
+0.131563
+# Execution: 21
+0.131571
+# Execution: 22
+0.131586
+# Execution: 23
+0.131557
+# Execution: 24
+0.131556
+# Execution: 25
+0.139083
+# Execution: 26
+0.131566
+# Execution: 27
+0.166841
+# Execution: 28
+0.131581
+# Execution: 29
+0.144686
+# Execution: 30
+0.131582
+# Execution: 31
+0.139101
+# Execution: 32
+0.136947
+# Execution: 33
+0.139085
+# Execution: 34
+0.131578
+# Execution: 35
+0.131588
+# Execution: 36
+0.13157
+# Execution: 37
+0.131579
+# Execution: 38
+0.13157
+# Execution: 39
+0.144609
+# Execution: 40
+0.131639
+# Execution: 41
+0.150887
+# Execution: 42
+0.131567
+# Execution: 43
+0.131576
+# Execution: 44
+0.131587
+# Execution: 45
+0.139076
+# Execution: 46
+0.131576
+# Execution: 47
+0.154398
+# Execution: 48
+0.131589
+# Execution: 49
+0.166166
+# Execution: 50
+0.13157
+# Execution: 51
+0.136409
+# Execution: 52
+0.131584
+# Execution: 53
+0.131574
+# Execution: 54
+0.131553
+# Execution: 55
+0.131609
+# Execution: 56
+0.131557
+# Execution: 57
+0.13675
+# Execution: 58
+0.131567
+# Execution: 59
+0.131601
+# Execution: 60
+0.131579
+# Execution: 61
+0.139085
+# Execution: 62
+0.131556
+# Execution: 63
+0.166819
+# Execution: 64
+0.131579
+# Execution: 65
+0.166832
+# Execution: 66
+0.139191
+# Execution: 67
+0.139097
+# Execution: 68
+0.131577
+# Execution: 69
+0.131569
+# Execution: 70
+0.131584
+# Execution: 71
+0.131561
+# Execution: 72
+0.13157
+# Execution: 73
+0.139097
+# Execution: 74
+0.131582
+# Execution: 75
+0.131557
+# Execution: 76
+0.131568
+# Execution: 77
+0.131576
+# Execution: 78
+0.136605
+# Execution: 79
+0.166951
+# Execution: 80
+0.131587
+# Execution: 81
+0.131574
+# Execution: 82
+0.131565
+# Execution: 83
+0.15541
+# Execution: 84
+0.131573
+# Execution: 85
+0.131586
+# Execution: 86
+0.131585
+# Execution: 87
+0.131555
+# Execution: 88
+0.131567
+# Execution: 89
+0.131572
+# Execution: 90
+0.131586
+# Execution: 91
+0.139112
+# Execution: 92
+0.131588
+# Execution: 93
+0.154977
+# Execution: 94
+0.131559
+# Execution: 95
+0.166855
+# Execution: 96
+0.136595
+# Execution: 97
+0.139078
+# Execution: 98
+0.131575
+# Execution: 99
+0.131578
+# END EXECUTION
