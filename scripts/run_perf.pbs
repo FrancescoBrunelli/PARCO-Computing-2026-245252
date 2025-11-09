@@ -19,7 +19,8 @@ cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
 g++ -std=c++11 -O3 -march=native -ftree-vectorize src/main.cpp src/matrix.cpp -o src/main.out
 MAX_THREADS=64
 MATRIX_NAME="${INPUT%.mtx}"
-BASE="results/${MATRIX_NAME}_perf"
+mkdir -p "${MATRIX_NAME}"
+BASE="results/${MATRIX_NAME}/${MATRIX_NAME}_perf"
 NTHREADS=1
 for ((NTHREADS=1; NTHREADS<=MAX_THREADS; NTHREADS*=2)); do
     # Commento iniziale per il file dei risultati
