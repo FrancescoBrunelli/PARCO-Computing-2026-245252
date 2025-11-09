@@ -1,0 +1,862 @@
+# Execution with input file: 1138_bus.mtx
+# Execution: 0
+1.22775
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_0.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,378 2,372 2,181 5,310,185 25,894 10,124 1,342,165 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 1
+1.24722
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_1.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,365 2,371 2,180 5,310,181 25,894 10,124 1,342,165 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 2
+1.26024
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_2.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,368 2,371 2,180 5,310,182 25,894 10,124 1,342,165 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 3
+1.19156
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_3.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,365 2,371 2,180 5,310,181 25,894 10,124 1,342,165 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 4
+1.25101
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_4.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,402 2,373 2,182 5,310,192 25,894 10,124 1,342,166 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 5
+1.21519
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_5.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,396 2,373 2,182 5,310,190 25,894 10,124 1,342,166 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 6
+1.23615
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_6.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,396 2,373 2,182 5,310,190 25,894 10,124 1,342,166 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 7
+1.38866
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_7.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,365 2,371 2,180 5,310,181 25,894 10,124 1,342,165 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 8
+1.20014
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_8.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,402 2,373 2,182 5,310,192 25,894 10,124 1,342,166 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# Execution: 9
+1.18647
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         25165824 B, 64 B, 12-way associative
+Command:          ./src/main.out 1138_bus.mtx
+Data file:        results/cachegrind_logs/1138_bus/1138_bus_9.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir         I1mr  ILmr  Dr        D1mr   DLmr   Dw        D1mw  DLmw  
+--------------------------------------------------------------------------------
+22,998,396 2,373 2,182 5,310,190 25,894 10,124 1,342,166 4,693 3,361  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir         I1mr ILmr Dr        D1mr  DLmr  Dw      D1mw  DLmw  file:function
+--------------------------------------------------------------------------------
+11,216,949    5    5 2,248,902   217     0   2,276    66    7  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+ 1,275,155   36   34   259,262 4,816   772  90,794    38   11  ???:do_lookup_x
+ 1,135,224   49   47   174,350     8     5 106,164     0    0  ???:____strtod_l_internal
+   821,798   13   13   187,280     3     0 119,537     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   820,300   10   10   131,596 2,084 1,265  44,644    35    8  ???:_dl_lookup_symbol_x
+   453,368    4    4    75,791     1     1  45,585     0    0  ???:str_to_mpn.isra.0
+   394,548   13   13    85,328 1,105     0  39,811    12    0  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+   356,246    4    4   105,892     0     0  52,314     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   348,853    3    3   109,355     0     0  15,637     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   331,284    7    7    68,623     0     0  38,838     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   326,228   20   20    87,775 1,038     0  67,002   765  756  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+   307,184    4    4   105,492     0     0  61,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   304,716    4    4   117,146     3     2  46,932     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+   291,975   47   47    76,997 5,735 3,627  23,241 1,700  907  ???:_dl_relocate_object
+   286,651    5    4    86,698 3,244 1,697       0     0    0  ???:strcmp
+   268,280    5    4   143,450    49    41  21,535     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+   244,849    3    3   135,442    56    49  15,641     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   204,723    5    5    83,816 3,801 1,362  30,380    38   20  ???:check_match.9525
+   182,058   30   20    44,913    22     0  18,521     1    0  ???:_int_free
+   176,630    4    4    51,950     1     0  31,170     1    1  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::operator>>(int&)
+   173,318    9    9    23,364     0     0  22,066     0    0  ???:round_and_return
+   163,611    2    2    70,119     2     0  38,955     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::__use_cache<std::__numpunct_cache<char> >::operator()(std::locale const&) const
+   158,916   55   42    37,129    54     1  16,524    38   15  ???:_int_malloc
+   155,760    4    4    33,748     1     0  46,728     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+   151,019    1    1    41,664     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+   122,256    2    2    13,584     1     1   6,792     0    0  ???:__GI_memcpy
+   117,566    3    3    32,432     0     0  12,162     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::equal(std::istreambuf_iterator<char, std::char_traits<char> > const&) const
+   116,932    8    8    26,609     1     0  41,395   761  760  ???:fetch_symmetric_matrix_vector(std::basic_fstream<char, std::char_traits<char> >&, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&)
+   113,400    4    3    15,120     0     0   7,560     0    0  ???:__mpn_lshift
+   110,656    4    3    47,424     0     0  23,712     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::string::push_back(char)
+   105,210    8    5    31,530    26     0   7,883     1    0  ???:malloc
+    97,374    0    0    36,622     0     0  35,164     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    85,740    0    0    31,180     0     0   7,794     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istream::sentry::sentry(std::istream&, bool)
+    85,598    0    0         0     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+    71,098    4    4    18,710     0     0  18,710     0    0  ???:__mpn_mul
+    70,092    3    3    23,364     1     1  12,980     1    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/c++locale.cc:void std::__convert_to_v<double>(char const*, double&, std::_Ios_Iostate&, __locale_struct* const&)
+    70,092    1    1    23,364     1     0  12,980     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream& std::istream::_M_extract<double>(double&)
+    67,154  201  153    66,659   226     0     347     1    1  ???:???
+    62,340    1    1    20,780     0     0  15,585     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream::operator>>(int&)
+    58,625    4    4    15,585   593     0   1,143    68    3  ???:P_CSRmul(std::vector<int, std::allocator<int> > const&, std::vector<int, std::allocator<int> > const&, std::vector<float, std::allocator<float> > const&, float const*, float*)
+    56,549   11   11    13,797 1,048   851      16     3    0  ???:_dl_addr
+    49,438    2    2    15,612     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_M_clone(std::allocator<char> const&, unsigned long)
+    44,234    1    1    10,408     0     0   7,806     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::reserve(unsigned long)
+    42,078    5    4     7,908    11     0       8     0    0  ???:free
+    41,664    1    1     5,208     0     0   5,208     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.tcc:std::string::_Rep::_S_create(unsigned long, unsigned long, std::allocator<char> const&)
+    40,540    2    2    12,162     0     0   4,054     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [clone .isra.0]
+    39,796    2    1    15,880    17     4      48     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::id::_M_id() const
+    37,602    4    2    11,584     4     0   5,792     0    0  ???:random_r
+    37,560    4    2     5,634     1     1   3,756     0    0  ???:__mpn_mul_1
+    37,465    8    3     5,335     7     6       0     0    0  ???:__GI_strlen
+    36,365    2    2    15,585     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    36,344    2    2     7,788     0     0   2,596     0    0  ???:__mpn_construct_double
+    31,222    1    1         0     0     0   5,195     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/char_traits.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+    31,210    1    1    15,618     1     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_ios.h:std::istream::sentry::sentry(std::istream&, bool)
+    31,180    0    0    15,590     0     0       0     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/x86_64-pc-linux-gnu/bits/ctype_inline.h:std::istream::sentry::sentry(std::istream&, bool)
+    28,556    1    1    10,384     0     0   5,192     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    28,556    0    0    12,980     1     0   7,788     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.h:std::istream& std::istream::_M_extract<double>(double&)
+    28,556    0    0     2,596     0     0   2,596     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::do_get(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, double&) const
+    26,250    1    1     5,250     0     0   5,250     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/libsupc++/../../../../gcc-9.1.0/libstdc++-v3/libsupc++/new_op.cc:operator new(unsigned long)
+    23,501    2    1    10,445     2     0   2,612     0    0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/src/c++98/../../../../../gcc-9.1.0/libstdc++-v3/src/c++98/locale.cc:std::locale::facet::_S_get_c_locale()
+
+
+# END EXECUTION
