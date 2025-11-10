@@ -7,7 +7,7 @@ data = {}
 
 for ram in ram_sizes:
     x_list, y_list = [], []
-    directory = f"../results/1138_bus_results/{ram}/runtime/"
+    directory = f"../results/epb1/{ram}/runtime/"
     for file in os.scandir(directory):
         with open(os.path.join(directory, file.name)) as f:
             threads = int(f.readline().strip())
@@ -24,14 +24,15 @@ for ram in ram_sizes:
 threads_ticks = data["32GB"][0]  # x-values for 32GB, same for all
 plt.xscale("log")
 plt.xticks(threads_ticks, threads_ticks)
+#plt.ylim(0.42, 0.48)
 
 plt.grid(True, which="both", axis='y', ls='--')
 
 colors = {"32GB":"blue", "64GB":"green", "128GB":"red"}
 for ram in ram_sizes:
-    plt.plot(*data[ram], marker='o', color=colors[ram], label=ram)
+    plt.plot(*data[ram], color=colors[ram], label=ram)
 
-plt.title("Execution Time vs Thread Count for different RAM Sizes")
+plt.title("epb1")
 plt.xlabel("No. of Threads")
 plt.ylabel("Execution Time")
 plt.legend(title = "Memory")
