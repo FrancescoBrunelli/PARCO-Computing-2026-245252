@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -N debug_node_info
+#PBS -q short_cpuQ
+#PBS -l select=1:ncpus=64:mem=32gb
+cd "$PBS_O_WORKDIR"
+
+echo "==== Hostname ===="
+echo $HOSTNAME
+
+echo "==== CPU Info ===="
+lscpu
+
+echo "==== NUMA Layout ===="
+numactl --hardware
+
+echo "==== Memory Info ===="
+cat /proc/meminfo | head
+
