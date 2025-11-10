@@ -21,9 +21,11 @@ MATRIX_NAME="${INPUT%.mtx}"
 mkdir -p "results/${MATRIX_NAME}"
 BASE="results/${MATRIX_NAME}/${MATRIX_NAME}_perf"
 # Commento iniziale per il file dei risultati
+echo "# Execution with input file: $INPUT" > "${FILENAME}"
 export OMP_NUM_THREADS=$NTHREADS
 FILENAME="${BASE}_NT${NTHREADS}.txt"
-echo "# Execution with input file: $INPUT" > "${FILENAME}"
+# Numero di thread usati
+echo "$NTHREADS" > "${FILENAME}"
 for (( i = 0; i < 10; i++ )); do
   echo "# Execution: $i" >> "${FILENAME}"
   perf stat -e cache-references,cache-misses,L1-dcache-loads,L1-dcache-load-misses,LLC-loads,LLC-load-misses ./src/main.out "$INPUT" 2>> "${FILENAME}"
