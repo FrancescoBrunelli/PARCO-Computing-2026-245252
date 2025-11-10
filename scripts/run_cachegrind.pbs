@@ -23,7 +23,6 @@ mkdir -p "results/${MATRIX_NAME}"
 BASE="results/${MATRIX_NAME}/${MATRIX_NAME}_cachegrind"
 CACHE_DIR="results/cachegrind_logs/${MATRIX_NAME}"
 NTHREADS=1
-rm -rf "${CACHE_DIR}"
 mkdir -p "${CACHE_DIR}"
 
 export OMP_NUM_THREADS=$NTHREADS
@@ -31,8 +30,8 @@ FILENAME="${BASE}_NT${NTHREADS}.txt"
 # Commento iniziale per il file dei risultati
 echo "# Execution with input file: $INPUT" > "${FILENAME}"
 # Genera file binario .cg
-valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" ./src/main.out "$INPUT" >> "${FILENAME}"
+valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}.cg" ./src/main.out "$INPUT" >> "${FILENAME}"
 # Converte file .cg (binario) in .txt
-cg_annotate "${CACHE_DIR}/${MATRIX_NAME}_${i}.cg" >> "${FILENAME}"
+cg_annotate "${CACHE_DIR}/${MATRIX_NAME}.cg" >> "${FILENAME}"
 echo "" >> "${FILENAME}"
 echo "# END EXECUTION" >> "${FILENAME}"
