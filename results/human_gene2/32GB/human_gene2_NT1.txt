@@ -1,0 +1,202 @@
+1
+# Execution: 0
+79.6062
+# Execution: 1
+79.5999
+# Execution: 2
+79.3222
+# Execution: 3
+79.773
+# Execution: 4
+79.3238
+# Execution: 5
+79.3709
+# Execution: 6
+79.3059
+# Execution: 7
+79.3554
+# Execution: 8
+79.5885
+# Execution: 9
+79.3105
+# Execution: 10
+79.5736
+# Execution: 11
+79.3316
+# Execution: 12
+79.833
+# Execution: 13
+79.3213
+# Execution: 14
+79.5523
+# Execution: 15
+79.3046
+# Execution: 16
+79.5376
+# Execution: 17
+79.2986
+# Execution: 18
+79.3183
+# Execution: 19
+79.7516
+# Execution: 20
+79.5188
+# Execution: 21
+79.7082
+# Execution: 22
+79.3927
+# Execution: 23
+79.7437
+# Execution: 24
+79.3101
+# Execution: 25
+79.3089
+# Execution: 26
+79.6531
+# Execution: 27
+79.2845
+# Execution: 28
+79.3254
+# Execution: 29
+79.2956
+# Execution: 30
+79.385
+# Execution: 31
+79.3973
+# Execution: 32
+79.708
+# Execution: 33
+79.3171
+# Execution: 34
+79.3734
+# Execution: 35
+79.4256
+# Execution: 36
+79.2772
+# Execution: 37
+79.4848
+# Execution: 38
+79.5788
+# Execution: 39
+79.3711
+# Execution: 40
+79.2874
+# Execution: 41
+79.3038
+# Execution: 42
+79.4376
+# Execution: 43
+79.7756
+# Execution: 44
+79.3174
+# Execution: 45
+79.3054
+# Execution: 46
+79.8155
+# Execution: 47
+79.4053
+# Execution: 48
+79.2999
+# Execution: 49
+79.288
+# Execution: 50
+79.2877
+# Execution: 51
+79.7205
+# Execution: 52
+79.7494
+# Execution: 53
+79.349
+# Execution: 54
+79.5129
+# Execution: 55
+79.3111
+# Execution: 56
+79.7532
+# Execution: 57
+79.531
+# Execution: 58
+79.2967
+# Execution: 59
+79.3083
+# Execution: 60
+79.3094
+# Execution: 61
+79.3169
+# Execution: 62
+79.3351
+# Execution: 63
+79.3223
+# Execution: 64
+79.3429
+# Execution: 65
+79.3081
+# Execution: 66
+79.3126
+# Execution: 67
+79.3261
+# Execution: 68
+79.4798
+# Execution: 69
+79.2957
+# Execution: 70
+79.3039
+# Execution: 71
+79.3469
+# Execution: 72
+79.3
+# Execution: 73
+79.3169
+# Execution: 74
+79.3332
+# Execution: 75
+79.7715
+# Execution: 76
+79.3198
+# Execution: 77
+79.2824
+# Execution: 78
+79.5969
+# Execution: 79
+79.2963
+# Execution: 80
+79.359
+# Execution: 81
+79.293
+# Execution: 82
+79.4399
+# Execution: 83
+79.3872
+# Execution: 84
+79.379
+# Execution: 85
+79.2994
+# Execution: 86
+79.6551
+# Execution: 87
+79.4055
+# Execution: 88
+79.3381
+# Execution: 89
+79.3146
+# Execution: 90
+79.3139
+# Execution: 91
+79.642
+# Execution: 92
+79.3047
+# Execution: 93
+79.4321
+# Execution: 94
+79.3188
+# Execution: 95
+79.2986
+# Execution: 96
+79.4444
+# Execution: 97
+79.3009
+# Execution: 98
+79.3091
+# Execution: 99
+79.3302
+# END EXECUTION

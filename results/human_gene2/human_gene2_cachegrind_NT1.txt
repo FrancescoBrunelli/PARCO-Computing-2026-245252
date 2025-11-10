@@ -1,0 +1,40 @@
+# Execution with input file: human_gene2.mtx
+999.246
+--------------------------------------------------------------------------------
+I1 cache:         32768 B, 64 B, 8-way associative
+D1 cache:         32768 B, 64 B, 8-way associative
+LL cache:         23068672 B, 64 B, 11-way associative
+Command:          ./src/main.out human_gene2.mtx
+Data file:        results/cachegrind_logs/human_gene2/human_gene2.cg
+Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw
+Thresholds:       0.1 100 100 100 100 100 100 100 100
+Include dirs:     
+User annotated:   
+Auto-annotation:  off
+
+--------------------------------------------------------------------------------
+Ir              I1mr  ILmr  Dr              D1mr          DLmr          Dw            D1mw      DLmw      
+--------------------------------------------------------------------------------
+690,627,746,168 2,430 2,345 140,696,458,025 8,271,697,890 7,329,312,414 4,223,984,434 8,769,536 8,626,510  PROGRAM TOTALS
+
+--------------------------------------------------------------------------------
+Ir              I1mr ILmr Dr              D1mr          DLmr          Dw          D1mw      DLmw       file:function
+--------------------------------------------------------------------------------
+655,943,711,992    4    4 131,203,225,780 8,199,149,993 7,303,463,503      28,677    14,338    10,142  ???:COOtoCSR(std::vector<int, std::allocator<int> >&)
+  4,861,591,564   16   16   1,282,996,436    56,287,231    15,646,388 524,815,306   125,741       458  ???:void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::tuple<int, int, float>*, std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > > >, long, COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)::{lambda(std::tuple<int, int, float> const&, std::tuple<int, int, float> const&)
+  4,313,444,986   50   46     582,450,630             7             4 354,269,123         0         0  ???:____strtod_l_internal
+  3,274,686,539   13   13     760,877,011             3             0 437,882,552         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+  1,584,996,837   20   20     434,671,052     6,775,205     6,415,289 299,052,105 3,387,862 3,387,835  ???:COOtoCSRvect(std::vector<std::tuple<int, int, float>, std::allocator<std::tuple<int, int, float> > >&, std::string const&, std::vector<int, std::allocator<int> >&, std::vector<int, std::allocator<int> >&, std::vector<float, std::allocator<float> >&)
+  1,541,258,046    3    3     489,636,046             0             0  76,227,932         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+  1,364,966,610    3    3     410,158,584             0             0 187,570,980         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/streambuf_iterator.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+  1,284,663,364    4    4     161,687,338             1             1  81,372,276         0         0  ???:str_to_mpn.isra.0
+  1,220,457,636    4    4     427,178,520             0             0 240,684,672         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/basic_string.h:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+  1,158,279,792    6    6     226,005,420             0             0 135,606,120         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/locale_facets.tcc:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+  1,135,643,948    3    3     624,028,163        31,900            44  76,237,424         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::istreambuf_iterator<char, std::char_traits<char> > std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_int<long>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, long&) const
+  1,057,847,388    5    5     406,861,770             3             2 162,744,804         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/bits/istream.tcc:std::istream::sentry::sentry(std::istream&, bool)
+  1,042,924,002    5    3     561,583,338        33,688            53  80,233,059         0         0  /apps/devel/gcc-9.1.0-build/x86_64-pc-linux-gnu/libstdc++-v3/include/streambuf:std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char> > >::_M_extract_float(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ios_base&, std::_Ios_Iostate&, std::string&) const
+
+
+# END EXECUTION

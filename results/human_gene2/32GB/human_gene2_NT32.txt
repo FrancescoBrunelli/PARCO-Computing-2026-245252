@@ -1,0 +1,202 @@
+32
+# Execution: 0
+84.2671
+# Execution: 1
+84.2412
+# Execution: 2
+84.2734
+# Execution: 3
+84.2988
+# Execution: 4
+84.6555
+# Execution: 5
+84.2702
+# Execution: 6
+84.2662
+# Execution: 7
+84.2547
+# Execution: 8
+84.2412
+# Execution: 9
+84.239
+# Execution: 10
+84.2496
+# Execution: 11
+84.3946
+# Execution: 12
+84.2477
+# Execution: 13
+84.3425
+# Execution: 14
+84.2418
+# Execution: 15
+84.2662
+# Execution: 16
+84.2549
+# Execution: 17
+84.2804
+# Execution: 18
+84.2306
+# Execution: 19
+84.2639
+# Execution: 20
+84.2092
+# Execution: 21
+84.2503
+# Execution: 22
+84.2296
+# Execution: 23
+84.2318
+# Execution: 24
+84.2452
+# Execution: 25
+84.2129
+# Execution: 26
+84.3099
+# Execution: 27
+86.6042
+# Execution: 28
+84.445
+# Execution: 29
+84.4635
+# Execution: 30
+85.2918
+# Execution: 31
+84.4916
+# Execution: 32
+84.4537
+# Execution: 33
+86.1317
+# Execution: 34
+84.5003
+# Execution: 35
+84.2979
+# Execution: 36
+84.2345
+# Execution: 37
+84.2713
+# Execution: 38
+84.4231
+# Execution: 39
+84.2388
+# Execution: 40
+84.3157
+# Execution: 41
+84.2958
+# Execution: 42
+84.2304
+# Execution: 43
+84.29
+# Execution: 44
+84.2396
+# Execution: 45
+84.2838
+# Execution: 46
+84.2482
+# Execution: 47
+84.2539
+# Execution: 48
+84.2338
+# Execution: 49
+84.2438
+# Execution: 50
+84.2248
+# Execution: 51
+84.2714
+# Execution: 52
+84.2374
+# Execution: 53
+84.2497
+# Execution: 54
+84.2213
+# Execution: 55
+84.2803
+# Execution: 56
+84.1869
+# Execution: 57
+84.2348
+# Execution: 58
+84.2267
+# Execution: 59
+84.2571
+# Execution: 60
+84.3156
+# Execution: 61
+84.2596
+# Execution: 62
+84.2403
+# Execution: 63
+84.2142
+# Execution: 64
+84.209
+# Execution: 65
+84.238
+# Execution: 66
+84.3232
+# Execution: 67
+84.2359
+# Execution: 68
+84.3022
+# Execution: 69
+84.211
+# Execution: 70
+84.2249
+# Execution: 71
+84.2702
+# Execution: 72
+84.2238
+# Execution: 73
+84.2764
+# Execution: 74
+84.2108
+# Execution: 75
+84.2449
+# Execution: 76
+84.213
+# Execution: 77
+84.2616
+# Execution: 78
+84.1916
+# Execution: 79
+84.2225
+# Execution: 80
+84.2204
+# Execution: 81
+84.3009
+# Execution: 82
+84.1979
+# Execution: 83
+84.2478
+# Execution: 84
+84.2083
+# Execution: 85
+84.2447
+# Execution: 86
+84.2252
+# Execution: 87
+84.2741
+# Execution: 88
+84.2119
+# Execution: 89
+84.2426
+# Execution: 90
+84.2061
+# Execution: 91
+84.2733
+# Execution: 92
+84.2026
+# Execution: 93
+84.3013
+# Execution: 94
+84.235
+# Execution: 95
+84.2897
+# Execution: 96
+84.3492
+# Execution: 97
+84.2415
+# Execution: 98
+84.2157
+# Execution: 99
+84.2906
+# END EXECUTION

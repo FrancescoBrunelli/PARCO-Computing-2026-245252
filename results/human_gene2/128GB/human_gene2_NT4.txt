@@ -1,0 +1,202 @@
+4
+# Execution: 0
+81.5961
+# Execution: 1
+81.65
+# Execution: 2
+81.6624
+# Execution: 3
+81.6569
+# Execution: 4
+81.2317
+# Execution: 5
+81.5397
+# Execution: 6
+81.5388
+# Execution: 7
+81.5438
+# Execution: 8
+81.5592
+# Execution: 9
+81.585
+# Execution: 10
+81.5809
+# Execution: 11
+81.5753
+# Execution: 12
+81.6952
+# Execution: 13
+81.5452
+# Execution: 14
+81.5676
+# Execution: 15
+81.5723
+# Execution: 16
+81.5437
+# Execution: 17
+81.531
+# Execution: 18
+81.5993
+# Execution: 19
+81.5396
+# Execution: 20
+81.548
+# Execution: 21
+81.5562
+# Execution: 22
+81.5824
+# Execution: 23
+81.6919
+# Execution: 24
+81.5297
+# Execution: 25
+81.5401
+# Execution: 26
+81.5462
+# Execution: 27
+81.5551
+# Execution: 28
+81.53
+# Execution: 29
+81.5447
+# Execution: 30
+81.5472
+# Execution: 31
+81.5509
+# Execution: 32
+81.5435
+# Execution: 33
+81.5631
+# Execution: 34
+81.5519
+# Execution: 35
+81.5729
+# Execution: 36
+81.1551
+# Execution: 37
+81.5636
+# Execution: 38
+81.5604
+# Execution: 39
+81.5851
+# Execution: 40
+81.4267
+# Execution: 41
+81.4273
+# Execution: 42
+81.4294
+# Execution: 43
+81.3968
+# Execution: 44
+81.4748
+# Execution: 45
+81.4545
+# Execution: 46
+81.4466
+# Execution: 47
+81.4362
+# Execution: 48
+81.4319
+# Execution: 49
+81.4551
+# Execution: 50
+81.4344
+# Execution: 51
+81.461
+# Execution: 52
+81.4607
+# Execution: 53
+81.4313
+# Execution: 54
+81.4414
+# Execution: 55
+81.4319
+# Execution: 56
+81.4367
+# Execution: 57
+81.4159
+# Execution: 58
+81.4185
+# Execution: 59
+81.4466
+# Execution: 60
+81.4531
+# Execution: 61
+81.4171
+# Execution: 62
+81.4704
+# Execution: 63
+81.4343
+# Execution: 64
+81.4427
+# Execution: 65
+81.4638
+# Execution: 66
+81.4117
+# Execution: 67
+81.412
+# Execution: 68
+81.4418
+# Execution: 69
+81.4757
+# Execution: 70
+81.4387
+# Execution: 71
+81.4227
+# Execution: 72
+81.4283
+# Execution: 73
+81.396
+# Execution: 74
+81.4317
+# Execution: 75
+81.4161
+# Execution: 76
+81.4656
+# Execution: 77
+81.3958
+# Execution: 78
+81.4182
+# Execution: 79
+81.4537
+# Execution: 80
+81.4132
+# Execution: 81
+81.4364
+# Execution: 82
+81.4279
+# Execution: 83
+81.4177
+# Execution: 84
+81.4439
+# Execution: 85
+81.4288
+# Execution: 86
+81.4481
+# Execution: 87
+81.4268
+# Execution: 88
+81.441
+# Execution: 89
+81.3949
+# Execution: 90
+81.4067
+# Execution: 91
+81.4221
+# Execution: 92
+81.4175
+# Execution: 93
+81.4428
+# Execution: 94
+81.416
+# Execution: 95
+81.3969
+# Execution: 96
+81.4089
+# Execution: 97
+81.416
+# Execution: 98
+81.0311
+# Execution: 99
+81.3911
+# END EXECUTION
