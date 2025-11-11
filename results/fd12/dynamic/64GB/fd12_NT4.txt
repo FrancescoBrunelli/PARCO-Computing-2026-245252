@@ -1,0 +1,202 @@
+4
+# Execution: 0
+0.124807
+# Execution: 1
+0.124936
+# Execution: 2
+0.124837
+# Execution: 3
+0.124838
+# Execution: 4
+0.124866
+# Execution: 5
+0.124827
+# Execution: 6
+0.129143
+# Execution: 7
+0.124858
+# Execution: 8
+0.124834
+# Execution: 9
+0.124825
+# Execution: 10
+0.12488
+# Execution: 11
+0.124802
+# Execution: 12
+0.12481
+# Execution: 13
+0.129684
+# Execution: 14
+0.124816
+# Execution: 15
+0.124836
+# Execution: 16
+0.124836
+# Execution: 17
+0.124831
+# Execution: 18
+0.124796
+# Execution: 19
+0.124856
+# Execution: 20
+0.124824
+# Execution: 21
+0.124818
+# Execution: 22
+0.124873
+# Execution: 23
+0.124819
+# Execution: 24
+0.129717
+# Execution: 25
+0.124811
+# Execution: 26
+0.12484
+# Execution: 27
+0.124821
+# Execution: 28
+0.124813
+# Execution: 29
+0.12484
+# Execution: 30
+0.124823
+# Execution: 31
+0.124846
+# Execution: 32
+0.124812
+# Execution: 33
+/var/spool/pbs/mom_priv/jobs/4600591.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 34
+/var/spool/pbs/mom_priv/jobs/4600591.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 35
+/var/spool/pbs/mom_priv/jobs/4600591.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 36
+/var/spool/pbs/mom_priv/jobs/4600591.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 37
+/var/spool/pbs/mom_priv/jobs/4600591.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 38
+0.131614
+# Execution: 39
+0.12483
+# Execution: 40
+0.124814
+# Execution: 41
+0.12488
+# Execution: 42
+0.12484
+# Execution: 43
+0.124805
+# Execution: 44
+0.124841
+# Execution: 45
+0.12482
+# Execution: 46
+0.124841
+# Execution: 47
+0.129806
+# Execution: 48
+0.124826
+# Execution: 49
+0.124826
+# Execution: 50
+0.129907
+# Execution: 51
+0.124825
+# Execution: 52
+0.124819
+# Execution: 53
+0.124831
+# Execution: 54
+0.12482
+# Execution: 55
+0.124838
+# Execution: 56
+0.124807
+# Execution: 57
+0.124837
+# Execution: 58
+0.124851
+# Execution: 59
+0.124835
+# Execution: 60
+0.124826
+# Execution: 61
+0.124813
+# Execution: 62
+0.124824
+# Execution: 63
+0.124859
+# Execution: 64
+0.12482
+# Execution: 65
+0.12484
+# Execution: 66
+0.124842
+# Execution: 67
+0.125033
+# Execution: 68
+0.128737
+# Execution: 69
+0.124828
+# Execution: 70
+0.129666
+# Execution: 71
+0.124809
+# Execution: 72
+0.124841
+# Execution: 73
+0.124827
+# Execution: 74
+0.124807
+# Execution: 75
+0.124813
+# Execution: 76
+0.124806
+# Execution: 77
+0.124821
+# Execution: 78
+0.124829
+# Execution: 79
+0.125049
+# Execution: 80
+0.124824
+# Execution: 81
+0.124844
+# Execution: 82
+0.124826
+# Execution: 83
+0.124873
+# Execution: 84
+0.124821
+# Execution: 85
+0.124828
+# Execution: 86
+0.124852
+# Execution: 87
+0.125047
+# Execution: 88
+0.124833
+# Execution: 89
+0.124827
+# Execution: 90
+0.124864
+# Execution: 91
+0.124807
+# Execution: 92
+0.124813
+# Execution: 93
+0.130085
+# Execution: 94
+0.124813
+# Execution: 95
+0.124816
+# Execution: 96
+0.131553
+# Execution: 97
+0.124842
+# Execution: 98
+0.129821
+# Execution: 99
+0.124831
+# END EXECUTION

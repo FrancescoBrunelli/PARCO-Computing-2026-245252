@@ -1,0 +1,202 @@
+1
+# Execution: 0
+0.143414
+# Execution: 1
+0.135345
+# Execution: 2
+0.135246
+# Execution: 3
+0.135299
+# Execution: 4
+0.139864
+# Execution: 5
+0.135276
+# Execution: 6
+0.135222
+# Execution: 7
+0.135273
+# Execution: 8
+0.135373
+# Execution: 9
+0.135224
+# Execution: 10
+0.135248
+# Execution: 11
+0.135233
+# Execution: 12
+0.135246
+# Execution: 13
+0.135229
+# Execution: 14
+0.135229
+# Execution: 15
+0.135247
+# Execution: 16
+0.135245
+# Execution: 17
+0.135223
+# Execution: 18
+0.135231
+# Execution: 19
+0.13523
+# Execution: 20
+0.135237
+# Execution: 21
+0.140335
+# Execution: 22
+/var/spool/pbs/mom_priv/jobs/4600589.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 23
+/var/spool/pbs/mom_priv/jobs/4600589.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 24
+/var/spool/pbs/mom_priv/jobs/4600589.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 25
+/var/spool/pbs/mom_priv/jobs/4600589.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 26
+0.135271
+# Execution: 27
+0.135547
+# Execution: 28
+0.135222
+# Execution: 29
+0.135246
+# Execution: 30
+0.135234
+# Execution: 31
+0.135283
+# Execution: 32
+0.13522
+# Execution: 33
+0.135223
+# Execution: 34
+0.135375
+# Execution: 35
+0.135251
+# Execution: 36
+0.140318
+# Execution: 37
+0.135223
+# Execution: 38
+0.135243
+# Execution: 39
+0.135454
+# Execution: 40
+0.140008
+# Execution: 41
+0.140237
+# Execution: 42
+0.149154
+# Execution: 43
+0.13522
+# Execution: 44
+0.135247
+# Execution: 45
+0.135247
+# Execution: 46
+0.135236
+# Execution: 47
+0.135212
+# Execution: 48
+0.135253
+# Execution: 49
+0.135436
+# Execution: 50
+0.141891
+# Execution: 51
+0.135245
+# Execution: 52
+0.135197
+# Execution: 53
+0.135233
+# Execution: 54
+0.135243
+# Execution: 55
+0.135219
+# Execution: 56
+0.135223
+# Execution: 57
+0.135223
+# Execution: 58
+0.135377
+# Execution: 59
+0.135214
+# Execution: 60
+0.135223
+# Execution: 61
+0.135249
+# Execution: 62
+0.135259
+# Execution: 63
+0.13524
+# Execution: 64
+0.135226
+# Execution: 65
+0.135244
+# Execution: 66
+0.135245
+# Execution: 67
+0.135228
+# Execution: 68
+0.159092
+# Execution: 69
+0.13526
+# Execution: 70
+0.135242
+# Execution: 71
+0.1403
+# Execution: 72
+0.135252
+# Execution: 73
+0.135241
+# Execution: 74
+0.13524
+# Execution: 75
+0.140289
+# Execution: 76
+0.140029
+# Execution: 77
+0.135242
+# Execution: 78
+0.13526
+# Execution: 79
+0.135262
+# Execution: 80
+0.13522
+# Execution: 81
+0.135223
+# Execution: 82
+0.135247
+# Execution: 83
+0.13527
+# Execution: 84
+0.140842
+# Execution: 85
+0.135236
+# Execution: 86
+0.135221
+# Execution: 87
+0.135228
+# Execution: 88
+0.135242
+# Execution: 89
+0.135244
+# Execution: 90
+0.135245
+# Execution: 91
+0.135254
+# Execution: 92
+0.135222
+# Execution: 93
+0.135225
+# Execution: 94
+0.135228
+# Execution: 95
+0.135222
+# Execution: 96
+0.135218
+# Execution: 97
+0.140326
+# Execution: 98
+0.13525
+# Execution: 99
+0.135226
+# END EXECUTION
