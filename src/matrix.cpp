@@ -97,7 +97,7 @@ void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 }
 
 void P_CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out) {
-	#pragma omp parallel for schedule(static, 100)
+	#pragma omp parallel for schedule(dynamic)
 	for(int i = 0; i < aRow.size() - 1; i++) {
 		int temp = 0;
 		for(int j = aRow[i]; j < aRow[i+1]; j++) {
