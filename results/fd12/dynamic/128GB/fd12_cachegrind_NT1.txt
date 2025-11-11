@@ -1,4 +1,0 @@
-# Execution with input file: fd12.mtx
-2.92855
-
-# END EXECUTION
