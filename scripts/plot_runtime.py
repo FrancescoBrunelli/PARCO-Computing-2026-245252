@@ -7,7 +7,7 @@ data = {}
 
 for ram in ram_sizes:
     x_list, y_list = [], []
-    directory = f"../results/epb1/{ram}/runtime/"
+    directory = f"../results/c-46/{ram}/runtime/"
     for file in os.scandir(directory):
         with open(os.path.join(directory, file.name)) as f:
             threads = int(f.readline().strip())
@@ -30,10 +30,11 @@ plt.grid(True, which="both", axis='y', ls='--')
 
 colors = {"32GB":"blue", "64GB":"green", "128GB":"red"}
 for ram in ram_sizes:
+    #plt.plot(*data[ram], color=colors[ram], marker='o', label=ram)
     plt.plot(*data[ram], color=colors[ram], label=ram)
 
-plt.title("epb1")
+plt.title("c-46")
 plt.xlabel("No. of Threads")
-plt.ylabel("Execution Time")
+plt.ylabel("Execution Time [ms]")
 plt.legend(title = "Memory")
 plt.show()

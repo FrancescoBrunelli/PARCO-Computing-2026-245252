@@ -16,7 +16,7 @@
 module load gcc91
 # Select the working directory
 cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
-g++ -std=c++11 -O3 -march=native -ftree-vectorize src/main.cpp src/matrix.cpp -o src/main.out
+g++ -std=c++11 -O3 -march=native -ftree-vectorize -g src/main.cpp src/matrix.cpp -o src/main.out
 MAX_THREADS=64
 MATRIX_NAME="${INPUT%.mtx}"
 mkdir -p "results/${MATRIX_NAME}"
@@ -32,6 +32,6 @@ echo "# Execution with input file: $INPUT" > "${FILENAME}"
 # Genera file binario .cg
 valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}.cg" ./src/main.out "$INPUT" >> "${FILENAME}"
 # Converte file .cg (binario) in .txt
-cg_annotate "${CACHE_DIR}/${MATRIX_NAME}.cg" >> "${FILENAME}"
+cg_annotate --show-percs=yes "${CACHE_DIR}/${MATRIX_NAME}.cg" >> "${FILENAME}"
 echo "" >> "${FILENAME}"
 echo "# END EXECUTION" >> "${FILENAME}"
