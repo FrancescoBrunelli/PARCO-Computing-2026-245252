@@ -30,7 +30,7 @@ FILENAME="${BASE}_NT${NTHREADS}.txt"
 # Commento iniziale per il file dei risultati
 echo "# Execution with input file: $INPUT" > "${FILENAME}"
 # Genera file binario .cg
-valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}.cg" ./src/main.out "$INPUT" >> "${FILENAME}"
+valgrind --tool=cachegrind --cachegrind-out-file="${CACHE_DIR}/${MATRIX_NAME}.cg" ./src/main.out "$INPUT" >> "${FILENAME}" 2> "${CACHE_DIR}/${MATRIX_NAME}.err"
 # Converte file .cg (binario) in .txt
 cg_annotate --show-percs=yes "${CACHE_DIR}/${MATRIX_NAME}.cg" >> "${FILENAME}"
 echo "" >> "${FILENAME}"
