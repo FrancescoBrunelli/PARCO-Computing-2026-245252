@@ -1,0 +1,4 @@
+# Execution with input file: sinc12.mtx
+23.4299
+
+# END EXECUTION

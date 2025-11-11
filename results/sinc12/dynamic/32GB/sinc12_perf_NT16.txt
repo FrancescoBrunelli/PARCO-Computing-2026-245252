@@ -1,0 +1,182 @@
+16
+# Execution: 0
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+         9,459,128      cache-references:u                                          
+           159,491      cache-misses:u            #    1.686 % of all cache refs    
+     1,284,220,246      L1-dcache-loads:u                                           
+        60,480,217      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           132,830      LLC-loads:u                                                 
+            22,807      LLC-load-misses:u         #   17.17% of all LL-cache hits   
+
+       0.401462641 seconds time elapsed
+
+       0.412201000 seconds user
+       0.009932000 seconds sys
+
+
+
+# Execution: 1
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+        12,257,359      cache-references:u                                          
+           164,066      cache-misses:u            #    1.339 % of all cache refs    
+     1,284,415,178      L1-dcache-loads:u                                           
+        60,478,269      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           143,122      LLC-loads:u                                                 
+            20,891      LLC-load-misses:u         #   14.60% of all LL-cache hits   
+
+       0.402189948 seconds time elapsed
+
+       0.416563000 seconds user
+       0.005950000 seconds sys
+
+
+
+# Execution: 2
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+         8,886,234      cache-references:u                                          
+           165,812      cache-misses:u            #    1.866 % of all cache refs    
+     1,284,246,154      L1-dcache-loads:u                                           
+        60,480,268      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           133,239      LLC-loads:u                                                 
+            25,150      LLC-load-misses:u         #   18.88% of all LL-cache hits   
+
+       0.397229775 seconds time elapsed
+
+       0.410680000 seconds user
+       0.011961000 seconds sys
+
+
+
+# Execution: 3
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+         7,823,199      cache-references:u                                          
+           156,284      cache-misses:u            #    1.998 % of all cache refs    
+     1,284,079,515      L1-dcache-loads:u                                           
+        60,481,540      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           126,594      LLC-loads:u                                                 
+            23,461      LLC-load-misses:u         #   18.53% of all LL-cache hits   
+
+       0.396960477 seconds time elapsed
+
+       0.412717000 seconds user
+       0.007917000 seconds sys
+
+
+
+# Execution: 4
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+        13,930,545      cache-references:u                                          
+           155,838      cache-misses:u            #    1.119 % of all cache refs    
+     1,284,309,973      L1-dcache-loads:u                                           
+        60,481,162      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           150,487      LLC-loads:u                                                 
+            23,508      LLC-load-misses:u         #   15.62% of all LL-cache hits   
+
+       0.399283187 seconds time elapsed
+
+       0.417856000 seconds user
+       0.005969000 seconds sys
+
+
+
+# Execution: 5
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+         8,428,955      cache-references:u                                          
+           143,900      cache-misses:u            #    1.707 % of all cache refs    
+     1,284,220,080      L1-dcache-loads:u                                           
+        60,473,829      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           123,416      LLC-loads:u                                                 
+            21,891      LLC-load-misses:u         #   17.74% of all LL-cache hits   
+
+       0.399992876 seconds time elapsed
+
+       0.408107000 seconds user
+       0.011029000 seconds sys
+
+
+
+# Execution: 6
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+        14,692,766      cache-references:u                                          
+           149,295      cache-misses:u            #    1.016 % of all cache refs    
+     1,284,247,232      L1-dcache-loads:u                                           
+        60,468,360      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           173,864      LLC-loads:u                                                 
+            22,034      LLC-load-misses:u         #   12.67% of all LL-cache hits   
+
+       0.404515187 seconds time elapsed
+
+       0.413536000 seconds user
+       0.008882000 seconds sys
+
+
+
+# Execution: 7
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+        11,104,865      cache-references:u                                          
+           151,361      cache-misses:u            #    1.363 % of all cache refs    
+     1,284,180,194      L1-dcache-loads:u                                           
+        60,477,861      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           134,207      LLC-loads:u                                                 
+            23,716      LLC-load-misses:u         #   17.67% of all LL-cache hits   
+
+       0.395821299 seconds time elapsed
+
+       0.409683000 seconds user
+       0.009895000 seconds sys
+
+
+
+# Execution: 8
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+         7,237,340      cache-references:u                                          
+           145,753      cache-misses:u            #    2.014 % of all cache refs    
+     1,284,173,991      L1-dcache-loads:u                                           
+        60,483,808      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           121,175      LLC-loads:u                                                 
+            22,135      LLC-load-misses:u         #   18.27% of all LL-cache hits   
+
+       0.428236294 seconds time elapsed
+
+       0.443360000 seconds user
+       0.008946000 seconds sys
+
+
+
+# Execution: 9
+
+ Performance counter stats for './src/main.out sinc12.mtx':
+
+         8,928,253      cache-references:u                                          
+           154,558      cache-misses:u            #    1.731 % of all cache refs    
+     1,284,100,574      L1-dcache-loads:u                                           
+        60,473,590      L1-dcache-load-misses:u   #    4.71% of all L1-dcache hits  
+           128,838      LLC-loads:u                                                 
+            23,720      LLC-load-misses:u         #   18.41% of all LL-cache hits   
+
+       0.437367419 seconds time elapsed
+
+       0.441443000 seconds user
+       0.004993000 seconds sys
+
+
+
+# END EXECUTION

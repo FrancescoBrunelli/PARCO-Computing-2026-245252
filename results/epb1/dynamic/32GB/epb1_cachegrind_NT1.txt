@@ -1,0 +1,4 @@
+# Execution with input file: epb1.mtx
+14.1551
+
+# END EXECUTION

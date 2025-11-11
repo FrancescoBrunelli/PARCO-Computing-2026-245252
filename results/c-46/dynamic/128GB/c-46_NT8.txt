@@ -1,0 +1,202 @@
+8
+# Execution: 0
+2.09898
+# Execution: 1
+2.02023
+# Execution: 2
+1.99137
+# Execution: 3
+1.96583
+# Execution: 4
+2.11551
+# Execution: 5
+2.12342
+# Execution: 6
+1.99298
+# Execution: 7
+1.99138
+# Execution: 8
+2.04649
+# Execution: 9
+1.98241
+# Execution: 10
+2.05856
+# Execution: 11
+2.07493
+# Execution: 12
+2.07214
+# Execution: 13
+2.17483
+# Execution: 14
+2.21838
+# Execution: 15
+1.99671
+# Execution: 16
+2.0426
+# Execution: 17
+2.01678
+# Execution: 18
+2.13666
+# Execution: 19
+2.0788
+# Execution: 20
+2.0375
+# Execution: 21
+2.04895
+# Execution: 22
+2.00586
+# Execution: 23
+2.0745
+# Execution: 24
+2.1
+# Execution: 25
+2.01132
+# Execution: 26
+/var/spool/pbs/mom_priv/jobs/4601920.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 27
+2.08359
+# Execution: 28
+2.16252
+# Execution: 29
+1.97772
+# Execution: 30
+2.06243
+# Execution: 31
+2.09299
+# Execution: 32
+2.12386
+# Execution: 33
+2.03014
+# Execution: 34
+2.15939
+# Execution: 35
+1.95578
+# Execution: 36
+2.08548
+# Execution: 37
+1.99401
+# Execution: 38
+1.9474
+# Execution: 39
+1.97148
+# Execution: 40
+2.01431
+# Execution: 41
+1.93281
+# Execution: 42
+1.94352
+# Execution: 43
+2.18705
+# Execution: 44
+1.92801
+# Execution: 45
+2.114
+# Execution: 46
+2.10989
+# Execution: 47
+1.99707
+# Execution: 48
+2.03971
+# Execution: 49
+2.16477
+# Execution: 50
+2.14672
+# Execution: 51
+2.01974
+# Execution: 52
+2.08422
+# Execution: 53
+1.92735
+# Execution: 54
+2.1872
+# Execution: 55
+1.98412
+# Execution: 56
+2.09959
+# Execution: 57
+2.08825
+# Execution: 58
+2.64707
+# Execution: 59
+2.17248
+# Execution: 60
+1.9543
+# Execution: 61
+2.16564
+# Execution: 62
+2.12904
+# Execution: 63
+1.86454
+# Execution: 64
+2.09968
+# Execution: 65
+2.04482
+# Execution: 66
+2.21083
+# Execution: 67
+1.87859
+# Execution: 68
+2.12712
+# Execution: 69
+2.11295
+# Execution: 70
+2.52003
+# Execution: 71
+1.86512
+# Execution: 72
+2.01304
+# Execution: 73
+2.00708
+# Execution: 74
+2.1453
+# Execution: 75
+2.02431
+# Execution: 76
+2.14061
+# Execution: 77
+2.15549
+# Execution: 78
+2.05363
+# Execution: 79
+1.9262
+# Execution: 80
+2.03718
+# Execution: 81
+1.93634
+# Execution: 82
+2.00263
+# Execution: 83
+2.11043
+# Execution: 84
+2.19254
+# Execution: 85
+2.14099
+# Execution: 86
+2.06248
+# Execution: 87
+2.11977
+# Execution: 88
+2.0311
+# Execution: 89
+2.0563
+# Execution: 90
+2.04093
+# Execution: 91
+2.09545
+# Execution: 92
+1.99366
+# Execution: 93
+2.05232
+# Execution: 94
+2.15446
+# Execution: 95
+2.07804
+# Execution: 96
+2.02221
+# Execution: 97
+2.02957
+# Execution: 98
+2.05314
+# Execution: 99
+2.15346
+# END EXECUTION
