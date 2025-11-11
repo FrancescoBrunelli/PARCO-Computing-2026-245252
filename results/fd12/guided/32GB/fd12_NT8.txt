@@ -1,0 +1,202 @@
+8
+# Execution: 0
+0.256539
+# Execution: 1
+0.284802
+# Execution: 2
+0.284071
+# Execution: 3
+0.271073
+# Execution: 4
+0.277301
+# Execution: 5
+0.286524
+# Execution: 6
+0.277235
+# Execution: 7
+0.27387
+# Execution: 8
+0.312331
+# Execution: 9
+0.282886
+# Execution: 10
+0.294447
+# Execution: 11
+0.290481
+# Execution: 12
+0.269489
+# Execution: 13
+0.279041
+# Execution: 14
+0.292938
+# Execution: 15
+0.299438
+# Execution: 16
+0.263659
+# Execution: 17
+0.299076
+# Execution: 18
+0.279469
+# Execution: 19
+0.300507
+# Execution: 20
+0.286158
+# Execution: 21
+0.265076
+# Execution: 22
+0.27605
+# Execution: 23
+0.275896
+# Execution: 24
+0.286543
+# Execution: 25
+0.277719
+# Execution: 26
+0.299306
+# Execution: 27
+0.277366
+# Execution: 28
+0.279265
+# Execution: 29
+0.302376
+# Execution: 30
+0.27421
+# Execution: 31
+0.282159
+# Execution: 32
+0.264428
+# Execution: 33
+0.268123
+# Execution: 34
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 35
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 36
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 37
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 38
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 39
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 40
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 41
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 42
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 43
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 44
+/var/spool/pbs/mom_priv/jobs/4602095.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 45
+0.260242
+# Execution: 46
+0.260491
+# Execution: 47
+0.286324
+# Execution: 48
+0.271836
+# Execution: 49
+0.258516
+# Execution: 50
+0.265489
+# Execution: 51
+0.263489
+# Execution: 52
+0.276208
+# Execution: 53
+0.271791
+# Execution: 54
+0.262012
+# Execution: 55
+0.271424
+# Execution: 56
+0.31541
+# Execution: 57
+0.277587
+# Execution: 58
+0.27953
+# Execution: 59
+0.277078
+# Execution: 60
+0.245225
+# Execution: 61
+0.291333
+# Execution: 62
+0.29878
+# Execution: 63
+0.298963
+# Execution: 64
+0.264562
+# Execution: 65
+0.260353
+# Execution: 66
+0.277471
+# Execution: 67
+0.302937
+# Execution: 68
+0.26896
+# Execution: 69
+0.290674
+# Execution: 70
+0.28406
+# Execution: 71
+0.279342
+# Execution: 72
+0.276385
+# Execution: 73
+0.269193
+# Execution: 74
+0.27494
+# Execution: 75
+0.269301
+# Execution: 76
+0.269881
+# Execution: 77
+0.280333
+# Execution: 78
+0.268236
+# Execution: 79
+0.242919
+# Execution: 80
+0.282852
+# Execution: 81
+0.255747
+# Execution: 82
+0.267622
+# Execution: 83
+0.25295
+# Execution: 84
+0.286891
+# Execution: 85
+0.279145
+# Execution: 86
+0.28125
+# Execution: 87
+0.254949
+# Execution: 88
+0.26982
+# Execution: 89
+0.261035
+# Execution: 90
+0.280613
+# Execution: 91
+0.283424
+# Execution: 92
+0.256183
+# Execution: 93
+0.270933
+# Execution: 94
+0.274279
+# Execution: 95
+0.256733
+# Execution: 96
+0.292521
+# Execution: 97
+0.294891
+# Execution: 98
+0.273227
+# Execution: 99
+0.283903
+# END EXECUTION

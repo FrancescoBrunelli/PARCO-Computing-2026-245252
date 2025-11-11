@@ -1,0 +1,202 @@
+4
+# Execution: 0
+0.301026
+# Execution: 1
+0.261969
+# Execution: 2
+0.260413
+# Execution: 3
+0.256843
+# Execution: 4
+0.254918
+# Execution: 5
+0.248823
+# Execution: 6
+0.247441
+# Execution: 7
+0.249934
+# Execution: 8
+0.24302
+# Execution: 9
+0.250211
+# Execution: 10
+0.304455
+# Execution: 11
+0.309464
+# Execution: 12
+0.256489
+# Execution: 13
+0.252047
+# Execution: 14
+0.303495
+# Execution: 15
+0.255298
+# Execution: 16
+0.241668
+# Execution: 17
+0.262595
+# Execution: 18
+0.248749
+# Execution: 19
+0.309114
+# Execution: 20
+0.269373
+# Execution: 21
+0.279167
+# Execution: 22
+0.262712
+# Execution: 23
+0.281858
+# Execution: 24
+0.253118
+# Execution: 25
+0.319235
+# Execution: 26
+0.246283
+# Execution: 27
+0.278676
+# Execution: 28
+0.257814
+# Execution: 29
+0.263274
+# Execution: 30
+0.251393
+# Execution: 31
+0.263299
+# Execution: 32
+0.30095
+# Execution: 33
+0.273547
+# Execution: 34
+0.246359
+# Execution: 35
+0.259503
+# Execution: 36
+0.252168
+# Execution: 37
+0.309031
+# Execution: 38
+0.241506
+# Execution: 39
+0.252971
+# Execution: 40
+0.266201
+# Execution: 41
+0.262359
+# Execution: 42
+0.246877
+# Execution: 43
+0.311262
+# Execution: 44
+0.252453
+# Execution: 45
+0.248388
+# Execution: 46
+0.265114
+# Execution: 47
+0.259422
+# Execution: 48
+0.258411
+# Execution: 49
+0.262959
+# Execution: 50
+0.287837
+# Execution: 51
+0.256304
+# Execution: 52
+0.309947
+# Execution: 53
+0.300371
+# Execution: 54
+0.264286
+# Execution: 55
+0.274818
+# Execution: 56
+0.262579
+# Execution: 57
+0.250343
+# Execution: 58
+0.244539
+# Execution: 59
+0.232797
+# Execution: 60
+0.24886
+# Execution: 61
+0.257529
+# Execution: 62
+0.270778
+# Execution: 63
+0.303358
+# Execution: 64
+0.248673
+# Execution: 65
+0.269901
+# Execution: 66
+0.304351
+# Execution: 67
+0.281585
+# Execution: 68
+0.330341
+# Execution: 69
+0.249171
+# Execution: 70
+0.24639
+# Execution: 71
+0.24851
+# Execution: 72
+0.277101
+# Execution: 73
+0.257333
+# Execution: 74
+0.238653
+# Execution: 75
+0.253169
+# Execution: 76
+0.253675
+# Execution: 77
+0.266644
+# Execution: 78
+0.261651
+# Execution: 79
+0.249581
+# Execution: 80
+0.245352
+# Execution: 81
+0.249696
+# Execution: 82
+0.253449
+# Execution: 83
+0.257822
+# Execution: 84
+0.276031
+# Execution: 85
+0.257379
+# Execution: 86
+0.306234
+# Execution: 87
+0.248178
+# Execution: 88
+0.249935
+# Execution: 89
+0.246131
+# Execution: 90
+0.269547
+# Execution: 91
+0.25724
+# Execution: 92
+0.24816
+# Execution: 93
+0.245768
+# Execution: 94
+0.317432
+# Execution: 95
+0.24939
+# Execution: 96
+0.253519
+# Execution: 97
+0.25829
+# Execution: 98
+0.246986
+# Execution: 99
+0.24513
+# END EXECUTION

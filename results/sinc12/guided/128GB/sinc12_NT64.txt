@@ -1,0 +1,202 @@
+64
+# Execution: 0
+5.44746
+# Execution: 1
+4.30072
+# Execution: 2
+4.6436
+# Execution: 3
+5.33331
+# Execution: 4
+10.6149
+# Execution: 5
+5.5376
+# Execution: 6
+1.74745
+# Execution: 7
+10.4407
+# Execution: 8
+10.287
+# Execution: 9
+10.7458
+# Execution: 10
+10.5227
+# Execution: 11
+3.95687
+# Execution: 12
+3.26529
+# Execution: 13
+10.4285
+# Execution: 14
+10.8383
+# Execution: 15
+3.56558
+# Execution: 16
+10.559
+# Execution: 17
+10.5787
+# Execution: 18
+10.4655
+# Execution: 19
+3.55883
+# Execution: 20
+10.4024
+# Execution: 21
+10.2017
+# Execution: 22
+10.6621
+# Execution: 23
+3.96412
+# Execution: 24
+10.3955
+# Execution: 25
+10.4737
+# Execution: 26
+10.588
+# Execution: 27
+10.6966
+# Execution: 28
+10.5999
+# Execution: 29
+10.374
+# Execution: 30
+10.465
+# Execution: 31
+10.5517
+# Execution: 32
+3.31939
+# Execution: 33
+10.5042
+# Execution: 34
+10.3636
+# Execution: 35
+10.4329
+# Execution: 36
+9.6824
+# Execution: 37
+8.3148
+# Execution: 38
+5.35767
+# Execution: 39
+10.5179
+# Execution: 40
+10.4273
+# Execution: 41
+10.4099
+# Execution: 42
+10.4409
+# Execution: 43
+10.8759
+# Execution: 44
+10.5599
+# Execution: 45
+10.4803
+# Execution: 46
+10.4006
+# Execution: 47
+10.5656
+# Execution: 48
+5.26798
+# Execution: 49
+10.5729
+# Execution: 50
+10.4926
+# Execution: 51
+5.281
+# Execution: 52
+10.5527
+# Execution: 53
+10.9435
+# Execution: 54
+10.5826
+# Execution: 55
+10.4209
+# Execution: 56
+10.4538
+# Execution: 57
+10.2698
+# Execution: 58
+10.421
+# Execution: 59
+3.53897
+# Execution: 60
+3.48127
+# Execution: 61
+10.9779
+# Execution: 62
+10.6076
+# Execution: 63
+10.6968
+# Execution: 64
+15.5247
+# Execution: 65
+10.8208
+# Execution: 66
+5.48646
+# Execution: 67
+10.4128
+# Execution: 68
+10.6861
+# Execution: 69
+10.4296
+# Execution: 70
+10.3616
+# Execution: 71
+10.4218
+# Execution: 72
+6.41227
+# Execution: 73
+10.7088
+# Execution: 74
+10.9653
+# Execution: 75
+10.8591
+# Execution: 76
+10.7024
+# Execution: 77
+10.5107
+# Execution: 78
+10.4158
+# Execution: 79
+15.6568
+# Execution: 80
+10.5006
+# Execution: 81
+10.5509
+# Execution: 82
+4.23138
+# Execution: 83
+10.5033
+# Execution: 84
+3.83053
+# Execution: 85
+10.4956
+# Execution: 86
+3.46578
+# Execution: 87
+5.33097
+# Execution: 88
+10.4904
+# Execution: 89
+1.7124
+# Execution: 90
+3.35412
+# Execution: 91
+10.5121
+# Execution: 92
+10.7088
+# Execution: 93
+10.5489
+# Execution: 94
+10.5084
+# Execution: 95
+4.21325
+# Execution: 96
+10.5966
+# Execution: 97
+10.4717
+# Execution: 98
+10.4491
+# Execution: 99
+10.4298
+# END EXECUTION
