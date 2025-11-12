@@ -1,0 +1,182 @@
+2
+# Execution: 0
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            45,138      cache-references:u                                          
+             5,236      cache-misses:u            #   11.600 % of all cache refs    
+       128,177,703      L1-dcache-loads:u                                           
+         5,525,845      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,283      LLC-loads:u                                                 
+               607      LLC-load-misses:u         #    6.54% of all LL-cache hits   
+
+       0.042606783 seconds time elapsed
+
+       0.038823000 seconds user
+       0.001941000 seconds sys
+
+
+
+# Execution: 1
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            46,732      cache-references:u                                          
+            11,427      cache-misses:u            #   24.452 % of all cache refs    
+       128,169,139      L1-dcache-loads:u                                           
+         5,528,358      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,201      LLC-loads:u                                                 
+             2,579      LLC-load-misses:u         #   28.03% of all LL-cache hits   
+
+       0.042610461 seconds time elapsed
+
+       0.038981000 seconds user
+       0.001999000 seconds sys
+
+
+
+# Execution: 2
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            45,434      cache-references:u                                          
+             5,317      cache-misses:u            #   11.703 % of all cache refs    
+       128,167,318      L1-dcache-loads:u                                           
+         5,527,793      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,287      LLC-loads:u                                                 
+               480      LLC-load-misses:u         #    5.17% of all LL-cache hits   
+
+       0.067094040 seconds time elapsed
+
+       0.054280000 seconds user
+       0.002010000 seconds sys
+
+
+
+# Execution: 3
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            44,623      cache-references:u                                          
+             7,929      cache-misses:u            #   17.769 % of all cache refs    
+       128,171,371      L1-dcache-loads:u                                           
+         5,522,883      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,152      LLC-loads:u                                                 
+             1,518      LLC-load-misses:u         #   16.59% of all LL-cache hits   
+
+       0.052095893 seconds time elapsed
+
+       0.048319000 seconds user
+       0.002899000 seconds sys
+
+
+
+# Execution: 4
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            45,935      cache-references:u                                          
+             5,574      cache-misses:u            #   12.135 % of all cache refs    
+       128,165,987      L1-dcache-loads:u                                           
+         5,526,399      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,178      LLC-loads:u                                                 
+               624      LLC-load-misses:u         #    6.80% of all LL-cache hits   
+
+       0.057813515 seconds time elapsed
+
+       0.054464000 seconds user
+       0.001980000 seconds sys
+
+
+
+# Execution: 5
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            44,468      cache-references:u                                          
+            12,652      cache-misses:u            #   28.452 % of all cache refs    
+       128,169,199      L1-dcache-loads:u                                           
+         5,528,760      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,111      LLC-loads:u                                                 
+             3,130      LLC-load-misses:u         #   34.35% of all LL-cache hits   
+
+       0.056797474 seconds time elapsed
+
+       0.053949000 seconds user
+       0.001961000 seconds sys
+
+
+
+# Execution: 6
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            47,110      cache-references:u                                          
+             6,750      cache-misses:u            #   14.328 % of all cache refs    
+       128,160,990      L1-dcache-loads:u                                           
+         5,525,080      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,418      LLC-loads:u                                                 
+               953      LLC-load-misses:u         #   10.12% of all LL-cache hits   
+
+       0.056586787 seconds time elapsed
+
+       0.052535000 seconds user
+       0.002973000 seconds sys
+
+
+
+# Execution: 7
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            44,687      cache-references:u                                          
+            12,046      cache-misses:u            #   26.956 % of all cache refs    
+       128,165,443      L1-dcache-loads:u                                           
+         5,524,059      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,108      LLC-loads:u                                                 
+             2,848      LLC-load-misses:u         #   31.27% of all LL-cache hits   
+
+       0.051495166 seconds time elapsed
+
+       0.047546000 seconds user
+       0.002971000 seconds sys
+
+
+
+# Execution: 8
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            45,192      cache-references:u                                          
+            11,488      cache-misses:u            #   25.420 % of all cache refs    
+       128,170,990      L1-dcache-loads:u                                           
+         5,527,234      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,369      LLC-loads:u                                                 
+             2,843      LLC-load-misses:u         #   30.34% of all LL-cache hits   
+
+       0.059941757 seconds time elapsed
+
+       0.055135000 seconds user
+       0.000984000 seconds sys
+
+
+
+# Execution: 9
+
+ Performance counter stats for './src/main.out fd12.mtx':
+
+            47,156      cache-references:u                                          
+            10,613      cache-misses:u            #   22.506 % of all cache refs    
+       128,169,626      L1-dcache-loads:u                                           
+         5,524,515      L1-dcache-load-misses:u   #    4.31% of all L1-dcache hits  
+             9,305      LLC-loads:u                                                 
+             2,215      LLC-load-misses:u         #   23.80% of all LL-cache hits   
+
+       0.052585517 seconds time elapsed
+
+       0.048002000 seconds user
+       0.003063000 seconds sys
+
+
+
+# END EXECUTION

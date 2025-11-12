@@ -1,0 +1,202 @@
+16
+# Execution: 0
+0.406219
+# Execution: 1
+0.420755
+# Execution: 2
+0.383328
+# Execution: 3
+0.38899
+# Execution: 4
+0.400575
+# Execution: 5
+0.428927
+# Execution: 6
+0.39819
+# Execution: 7
+0.526404
+# Execution: 8
+0.383423
+# Execution: 9
+0.39709
+# Execution: 10
+0.359297
+# Execution: 11
+0.41666
+# Execution: 12
+0.392234
+# Execution: 13
+0.483371
+# Execution: 14
+0.418557
+# Execution: 15
+0.371873
+# Execution: 16
+0.375645
+# Execution: 17
+/var/spool/pbs/mom_priv/jobs/4603023.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 18
+/var/spool/pbs/mom_priv/jobs/4603023.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 19
+/var/spool/pbs/mom_priv/jobs/4603023.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 20
+/var/spool/pbs/mom_priv/jobs/4603023.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 21
+/var/spool/pbs/mom_priv/jobs/4603023.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 22
+/var/spool/pbs/mom_priv/jobs/4603023.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
+# Execution: 23
+0.397279
+# Execution: 24
+0.382579
+# Execution: 25
+0.414622
+# Execution: 26
+0.400607
+# Execution: 27
+0.363892
+# Execution: 28
+0.395632
+# Execution: 29
+0.366558
+# Execution: 30
+0.353989
+# Execution: 31
+0.390917
+# Execution: 32
+0.391042
+# Execution: 33
+0.406679
+# Execution: 34
+0.406319
+# Execution: 35
+0.384127
+# Execution: 36
+0.382428
+# Execution: 37
+0.381467
+# Execution: 38
+0.426897
+# Execution: 39
+0.363544
+# Execution: 40
+0.431798
+# Execution: 41
+0.412658
+# Execution: 42
+0.384754
+# Execution: 43
+0.370272
+# Execution: 44
+0.373406
+# Execution: 45
+0.370994
+# Execution: 46
+0.377128
+# Execution: 47
+0.414372
+# Execution: 48
+0.404902
+# Execution: 49
+0.372675
+# Execution: 50
+0.378932
+# Execution: 51
+0.419424
+# Execution: 52
+0.382532
+# Execution: 53
+0.419711
+# Execution: 54
+0.423685
+# Execution: 55
+0.38384
+# Execution: 56
+0.378922
+# Execution: 57
+0.38672
+# Execution: 58
+0.371507
+# Execution: 59
+0.373587
+# Execution: 60
+0.380013
+# Execution: 61
+0.449781
+# Execution: 62
+0.92803
+# Execution: 63
+0.441228
+# Execution: 64
+0.367712
+# Execution: 65
+0.362086
+# Execution: 66
+0.38586
+# Execution: 67
+0.368355
+# Execution: 68
+0.375805
+# Execution: 69
+0.390708
+# Execution: 70
+0.391422
+# Execution: 71
+0.403022
+# Execution: 72
+0.356472
+# Execution: 73
+0.421639
+# Execution: 74
+0.378749
+# Execution: 75
+0.368879
+# Execution: 76
+0.38998
+# Execution: 77
+0.377382
+# Execution: 78
+0.350892
+# Execution: 79
+0.410343
+# Execution: 80
+0.382242
+# Execution: 81
+0.400749
+# Execution: 82
+0.38032
+# Execution: 83
+0.392471
+# Execution: 84
+0.39528
+# Execution: 85
+0.388672
+# Execution: 86
+0.382449
+# Execution: 87
+0.35263
+# Execution: 88
+0.400484
+# Execution: 89
+0.364128
+# Execution: 90
+0.363704
+# Execution: 91
+0.365192
+# Execution: 92
+0.380749
+# Execution: 93
+0.386507
+# Execution: 94
+0.419167
+# Execution: 95
+0.372787
+# Execution: 96
+0.388669
+# Execution: 97
+0.391892
+# Execution: 98
+0.400179
+# Execution: 99
+0.379908
+# END EXECUTION
