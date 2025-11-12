@@ -1,0 +1,182 @@
+64
+# Execution: 0
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,537,956,841      cache-references:u                                          
+     3,287,718,308      cache-misses:u            #   28.495 % of all cache refs    
+   140,777,182,618      L1-dcache-loads:u                                           
+     8,280,977,661      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        37,804,996      LLC-loads:u                                                 
+        15,997,519      LLC-load-misses:u         #   42.32% of all LL-cache hits   
+
+      58.726184627 seconds time elapsed
+
+      58.834428000 seconds user
+       0.657440000 seconds sys
+
+
+
+# Execution: 1
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,726,247,518      cache-references:u                                          
+     3,530,704,158      cache-misses:u            #   30.109 % of all cache refs    
+   140,777,592,749      L1-dcache-loads:u                                           
+     8,281,279,158      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        36,895,518      LLC-loads:u                                                 
+        14,352,957      LLC-load-misses:u         #   38.90% of all LL-cache hits   
+
+      59.750883452 seconds time elapsed
+
+      59.830574000 seconds user
+       0.675876000 seconds sys
+
+
+
+# Execution: 2
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,712,341,052      cache-references:u                                          
+     3,260,929,079      cache-misses:u            #   27.842 % of all cache refs    
+   140,775,790,444      L1-dcache-loads:u                                           
+     8,280,934,675      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        37,346,348      LLC-loads:u                                                 
+        14,627,185      LLC-load-misses:u         #   39.17% of all LL-cache hits   
+
+      58.673697482 seconds time elapsed
+
+      58.789098000 seconds user
+       0.630274000 seconds sys
+
+
+
+# Execution: 3
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,673,173,124      cache-references:u                                          
+     3,254,635,754      cache-misses:u            #   27.881 % of all cache refs    
+   140,777,259,085      L1-dcache-loads:u                                           
+     8,280,880,512      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        36,245,738      LLC-loads:u                                                 
+        13,699,021      LLC-load-misses:u         #   37.79% of all LL-cache hits   
+
+      58.570992423 seconds time elapsed
+
+      58.716958000 seconds user
+       0.620446000 seconds sys
+
+
+
+# Execution: 4
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,703,772,508      cache-references:u                                          
+     3,362,530,221      cache-misses:u            #   28.730 % of all cache refs    
+   140,777,656,836      L1-dcache-loads:u                                           
+     8,280,839,578      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        35,171,773      LLC-loads:u                                                 
+        12,939,559      LLC-load-misses:u         #   36.79% of all LL-cache hits   
+
+      59.203723490 seconds time elapsed
+
+      59.191130000 seconds user
+       0.777189000 seconds sys
+
+
+
+# Execution: 5
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,669,834,797      cache-references:u                                          
+     3,279,815,056      cache-misses:u            #   28.105 % of all cache refs    
+   140,776,188,920      L1-dcache-loads:u                                           
+     8,281,070,676      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        35,854,350      LLC-loads:u                                                 
+        13,428,517      LLC-load-misses:u         #   37.45% of all LL-cache hits   
+
+      59.012686833 seconds time elapsed
+
+      58.992838000 seconds user
+       0.829900000 seconds sys
+
+
+
+# Execution: 6
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,720,773,273      cache-references:u                                          
+     3,373,503,160      cache-misses:u            #   28.782 % of all cache refs    
+   140,778,577,686      L1-dcache-loads:u                                           
+     8,280,909,047      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        34,915,206      LLC-loads:u                                                 
+        12,309,016      LLC-load-misses:u         #   35.25% of all LL-cache hits   
+
+      59.017289619 seconds time elapsed
+
+      59.121943000 seconds user
+       0.396195000 seconds sys
+
+
+
+# Execution: 7
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,549,079,596      cache-references:u                                          
+     3,264,954,325      cache-misses:u            #   28.270 % of all cache refs    
+   140,787,856,562      L1-dcache-loads:u                                           
+     8,280,789,334      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        36,396,089      LLC-loads:u                                                 
+        14,774,527      LLC-load-misses:u         #   40.59% of all LL-cache hits   
+
+      58.117793614 seconds time elapsed
+
+      58.298744000 seconds user
+       0.631980000 seconds sys
+
+
+
+# Execution: 8
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,709,474,768      cache-references:u                                          
+     3,401,677,127      cache-misses:u            #   29.051 % of all cache refs    
+   140,786,078,807      L1-dcache-loads:u                                           
+     8,280,741,975      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        38,210,654      LLC-loads:u                                                 
+        15,391,199      LLC-load-misses:u         #   40.28% of all LL-cache hits   
+
+      59.278859976 seconds time elapsed
+
+      59.502187000 seconds user
+       0.530655000 seconds sys
+
+
+
+# Execution: 9
+
+ Performance counter stats for './src/main.out human_gene2.mtx':
+
+    11,692,115,409      cache-references:u                                          
+     3,333,946,702      cache-misses:u            #   28.514 % of all cache refs    
+   140,773,607,900      L1-dcache-loads:u                                           
+     8,280,551,109      L1-dcache-load-misses:u   #    5.88% of all L1-dcache hits  
+        37,489,178      LLC-loads:u                                                 
+        14,646,419      LLC-load-misses:u         #   39.07% of all LL-cache hits   
+
+      59.254025857 seconds time elapsed
+
+      59.234253000 seconds user
+       0.231403000 seconds sys
+
+
+
+# END EXECUTION
