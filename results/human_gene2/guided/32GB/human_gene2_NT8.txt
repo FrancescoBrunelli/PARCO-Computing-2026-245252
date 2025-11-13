@@ -1,0 +1,202 @@
+8
+# Execution: 0
+35.7259
+# Execution: 1
+37.6665
+# Execution: 2
+41.4126
+# Execution: 3
+24.9816
+# Execution: 4
+67.1583
+# Execution: 5
+65.7482
+# Execution: 6
+39.4275
+# Execution: 7
+55.2415
+# Execution: 8
+42.9432
+# Execution: 9
+41.7143
+# Execution: 10
+63.193
+# Execution: 11
+41.3197
+# Execution: 12
+55.5712
+# Execution: 13
+51.0282
+# Execution: 14
+41.2144
+# Execution: 15
+65.7208
+# Execution: 16
+71.7423
+# Execution: 17
+67.5231
+# Execution: 18
+53.5718
+# Execution: 19
+43.4492
+# Execution: 20
+43.6196
+# Execution: 21
+73.0882
+# Execution: 22
+79.2876
+# Execution: 23
+89.4366
+# Execution: 24
+82.6784
+# Execution: 25
+73.0324
+# Execution: 26
+76.349
+# Execution: 27
+80.6021
+# Execution: 28
+79.6744
+# Execution: 29
+75.391
+# Execution: 30
+72.3858
+# Execution: 31
+80.4651
+# Execution: 32
+51.6194
+# Execution: 33
+39.6827
+# Execution: 34
+51.9953
+# Execution: 35
+37.7186
+# Execution: 36
+40.5755
+# Execution: 37
+38.8794
+# Execution: 38
+37.8198
+# Execution: 39
+50.6636
+# Execution: 40
+59.5532
+# Execution: 41
+52.4691
+# Execution: 42
+39.7687
+# Execution: 43
+62.0374
+# Execution: 44
+37.7845
+# Execution: 45
+50.7404
+# Execution: 46
+40.5607
+# Execution: 47
+40.6103
+# Execution: 48
+52.06
+# Execution: 49
+41.0337
+# Execution: 50
+52.7938
+# Execution: 51
+38.255
+# Execution: 52
+52.0257
+# Execution: 53
+53.5747
+# Execution: 54
+55.4562
+# Execution: 55
+58.2001
+# Execution: 56
+68.7681
+# Execution: 57
+37.2864
+# Execution: 58
+38.4606
+# Execution: 59
+56.4384
+# Execution: 60
+35.0189
+# Execution: 61
+53.73
+# Execution: 62
+43.1267
+# Execution: 63
+27.5993
+# Execution: 64
+29.3588
+# Execution: 65
+28.1016
+# Execution: 66
+26.0122
+# Execution: 67
+26.6736
+# Execution: 68
+28.6664
+# Execution: 69
+27.7545
+# Execution: 70
+38.6943
+# Execution: 71
+61.4783
+# Execution: 72
+60.1142
+# Execution: 73
+62.202
+# Execution: 74
+40.7915
+# Execution: 75
+54.8147
+# Execution: 76
+65.5286
+# Execution: 77
+37.8893
+# Execution: 78
+28.2907
+# Execution: 79
+27.9303
+# Execution: 80
+28.347
+# Execution: 81
+52.3709
+# Execution: 82
+28.4512
+# Execution: 83
+29.8492
+# Execution: 84
+27.5466
+# Execution: 85
+62.3168
+# Execution: 86
+71.9427
+# Execution: 87
+28.3512
+# Execution: 88
+39.0786
+# Execution: 89
+38.9055
+# Execution: 90
+77.9745
+# Execution: 91
+41.1459
+# Execution: 92
+27.7049
+# Execution: 93
+27.6003
+# Execution: 94
+68.1263
+# Execution: 95
+33.3609
+# Execution: 96
+27.3033
+# Execution: 97
+41.2045
+# Execution: 98
+49.6652
+# Execution: 99
+38.184
+# END EXECUTION
