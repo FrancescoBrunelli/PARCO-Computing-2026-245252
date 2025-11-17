@@ -1,0 +1,22 @@
+1
+# Execution: 0
+79.3052
+# Execution: 1
+79.8218
+# Execution: 2
+79.351
+# Execution: 3
+79.3064
+# Execution: 4
+79.312
+# Execution: 5
+79.318
+# Execution: 6
+79.4979
+# Execution: 7
+79.7066
+# Execution: 8
+79.3518
+# Execution: 9
+79.3269
+# END EXECUTION

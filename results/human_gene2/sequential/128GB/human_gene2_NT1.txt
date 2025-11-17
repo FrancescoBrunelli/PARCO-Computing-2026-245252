@@ -1,0 +1,22 @@
+1
+# Execution: 0
+83.9146
+# Execution: 1
+84.2469
+# Execution: 2
+84.2425
+# Execution: 3
+84.2442
+# Execution: 4
+83.7826
+# Execution: 5
+84.2285
+# Execution: 6
+84.1952
+# Execution: 7
+84.2087
+# Execution: 8
+84.2078
+# Execution: 9
+84.2583
+# END EXECUTION
