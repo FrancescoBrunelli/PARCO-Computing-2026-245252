@@ -1,202 +1,22 @@
 1
 # Execution: 0
-206.265
+79.3112
 # Execution: 1
-100.286
+79.3111
 # Execution: 2
-102.499
+79.3161
 # Execution: 3
-105.93
+79.3001
 # Execution: 4
-116.017
+79.679
 # Execution: 5
-104.571
+79.319
 # Execution: 6
-124.446
+79.2941
 # Execution: 7
-106.59
+79.3436
 # Execution: 8
-104.534
+79.4777
 # Execution: 9
-102.17
-# Execution: 10
-104.725
-# Execution: 11
-103.263
-# Execution: 12
-213.205
-# Execution: 13
-171.652
-# Execution: 14
-122.554
-# Execution: 15
-205.021
-# Execution: 16
-212.485
-# Execution: 17
-135.001
-# Execution: 18
-215.166
-# Execution: 19
-102.994
-# Execution: 20
-208.859
-# Execution: 21
-108.486
-# Execution: 22
-102.7
-# Execution: 23
-208.004
-# Execution: 24
-217.717
-# Execution: 25
-127.724
-# Execution: 26
-108.497
-# Execution: 27
-103.788
-# Execution: 28
-102.655
-# Execution: 29
-102.313
-# Execution: 30
-189.301
-# Execution: 31
-106.932
-# Execution: 32
-101.403
-# Execution: 33
-108.917
-# Execution: 34
-208.233
-# Execution: 35
-102.553
-# Execution: 36
-213.8
-# Execution: 37
-172.327
-# Execution: 38
-102.853
-# Execution: 39
-190.486
-# Execution: 40
-138.198
-# Execution: 41
-145.969
-# Execution: 42
-194.215
-# Execution: 43
-106.693
-# Execution: 44
-190.461
-# Execution: 45
-122.515
-# Execution: 46
-105.263
-# Execution: 47
-128.803
-# Execution: 48
-103.749
-# Execution: 49
-106.93
-# Execution: 50
-210.193
-# Execution: 51
-102.938
-# Execution: 52
-102.66
-# Execution: 53
-151.283
-# Execution: 54
-100.653
-# Execution: 55
-212.793
-# Execution: 56
-207.061
-# Execution: 57
-215.689
-# Execution: 58
-105.623
-# Execution: 59
-171.208
-# Execution: 60
-174.8
-# Execution: 61
-213.86
-# Execution: 62
-210.288
-# Execution: 63
-211.994
-# Execution: 64
-216.189
-# Execution: 65
-214.081
-# Execution: 66
-219.505
-# Execution: 67
-187.212
-# Execution: 68
-199.54
-# Execution: 69
-102.461
-# Execution: 70
-102.777
-# Execution: 71
-207.561
-# Execution: 72
-196.091
-# Execution: 73
-216.525
-# Execution: 74
-111.113
-# Execution: 75
-101.369
-# Execution: 76
-216.411
-# Execution: 77
-104.096
-# Execution: 78
-103.336
-# Execution: 79
-193.343
-# Execution: 80
-102.002
-# Execution: 81
-201.003
-# Execution: 82
-207.65
-# Execution: 83
-205.577
-# Execution: 84
-103.073
-# Execution: 85
-188.753
-# Execution: 86
-192.955
-# Execution: 87
-103.886
-# Execution: 88
-106.698
-# Execution: 89
-140.855
-# Execution: 90
-220.616
-# Execution: 91
-103.254
-# Execution: 92
-102.193
-# Execution: 93
-172.014
-# Execution: 94
-103.716
-# Execution: 95
-134.05
-# Execution: 96
-142.13
-# Execution: 97
-207.563
-# Execution: 98
-103.395
-# Execution: 99
-175.228
+79.3017
 # END EXECUTION

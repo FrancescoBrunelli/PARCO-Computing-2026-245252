@@ -1,202 +1,22 @@
 1
 # Execution: 0
-117.729
+79.3052
 # Execution: 1
-79.65
+79.8218
 # Execution: 2
-117.591
+79.351
 # Execution: 3
-79.9822
+79.3064
 # Execution: 4
-117.323
+79.312
 # Execution: 5
-79.6311
+79.318
 # Execution: 6
-117.265
+79.4979
 # Execution: 7
-79.9724
+79.7066
 # Execution: 8
-117.505
+79.3518
 # Execution: 9
-79.6045
-# Execution: 10
-117.261
-# Execution: 11
-79.6425
-# Execution: 12
-117.455
-# Execution: 13
-79.6618
-# Execution: 14
-117.677
-# Execution: 15
-79.1536
-# Execution: 16
-117.194
-# Execution: 17
-79.6538
-# Execution: 18
-117.325
-# Execution: 19
-79.6425
-# Execution: 20
-117.206
-# Execution: 21
-79.6163
-# Execution: 22
-117.257
-# Execution: 23
-79.7011
-# Execution: 24
-117.313
-# Execution: 25
-79.6132
-# Execution: 26
-117.316
-# Execution: 27
-79.6375
-# Execution: 28
-117.361
-# Execution: 29
-79.6536
-# Execution: 30
-117.257
-# Execution: 31
-79.6694
-# Execution: 32
-117.214
-# Execution: 33
-79.6408
-# Execution: 34
-117.228
-# Execution: 35
-79.6601
-# Execution: 36
-117.245
-# Execution: 37
-79.6385
-# Execution: 38
-117.612
-# Execution: 39
-79.6318
-# Execution: 40
-117.291
-# Execution: 41
-80.0346
-# Execution: 42
-117.276
-# Execution: 43
-79.6545
-# Execution: 44
-117.521
-# Execution: 45
-79.7483
-# Execution: 46
-117.409
-# Execution: 47
-79.6658
-# Execution: 48
-117.163
-# Execution: 49
-79.6268
-# Execution: 50
-117.234
-# Execution: 51
-79.6169
-# Execution: 52
-117.329
-# Execution: 53
-79.5845
-# Execution: 54
-117.287
-# Execution: 55
-79.6397
-# Execution: 56
-117.281
-# Execution: 57
-79.6175
-# Execution: 58
-117.288
-# Execution: 59
-79.6319
-# Execution: 60
-117.285
-# Execution: 61
-79.6111
-# Execution: 62
-117.382
-# Execution: 63
-79.6926
-# Execution: 64
-117.255
-# Execution: 65
-79.1595
-# Execution: 66
-117.288
-# Execution: 67
-79.6591
-# Execution: 68
-117.563
-# Execution: 69
-79.6405
-# Execution: 70
-117.224
-# Execution: 71
-79.6479
-# Execution: 72
-117.296
-# Execution: 73
-79.672
-# Execution: 74
-117.711
-# Execution: 75
-80.027
-# Execution: 76
-117.569
-# Execution: 77
-79.6048
-# Execution: 78
-117.711
-# Execution: 79
-79.632
-# Execution: 80
-117.262
-# Execution: 81
-79.6369
-# Execution: 82
-117.26
-# Execution: 83
-79.6123
-# Execution: 84
-117.312
-# Execution: 85
-79.6305
-# Execution: 86
-117.496
-# Execution: 87
-79.6173
-# Execution: 88
-117.308
-# Execution: 89
-79.6769
-# Execution: 90
-117.342
-# Execution: 91
-79.6448
-# Execution: 92
-117.145
-# Execution: 93
-79.6325
-# Execution: 94
-117.226
-# Execution: 95
-79.631
-# Execution: 96
-117.262
-# Execution: 97
-79.609
-# Execution: 98
-117.505
-# Execution: 99
-116.807
+79.3269
 # END EXECUTION

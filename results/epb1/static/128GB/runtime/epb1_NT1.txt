@@ -1,202 +1,202 @@
 1
 # Execution: 0
-0.504133
+0.447075
 # Execution: 1
-0.502799
+0.447325
 # Execution: 2
-0.499212
+0.440042
 # Execution: 3
-0.454422
+0.447319
 # Execution: 4
-0.459301
+0.439975
 # Execution: 5
-0.518395
+0.440043
 # Execution: 6
-0.49333
+0.44003
 # Execution: 7
-0.466774
+0.446246
 # Execution: 8
-0.500656
+0.445833
 # Execution: 9
-0.484714
+0.445975
 # Execution: 10
-0.475205
+0.440013
 # Execution: 11
-0.472645
+0.445314
 # Execution: 12
-0.496168
+0.445915
 # Execution: 13
-0.466197
+0.440014
 # Execution: 14
-0.456196
+0.440035
 # Execution: 15
-0.510348
+/var/spool/pbs/mom_priv/jobs/4679923.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
 # Execution: 16
-0.469904
+/var/spool/pbs/mom_priv/jobs/4679923.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
 # Execution: 17
-0.501333
+/var/spool/pbs/mom_priv/jobs/4679923.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
 # Execution: 18
-0.503482
+/var/spool/pbs/mom_priv/jobs/4679923.hpc-head-n1.unitn.it.SC: line 31: ./src/main.out: Permission denied
 # Execution: 19
-0.507591
+0.440004
 # Execution: 20
-0.528725
+0.445666
 # Execution: 21
-0.506
+0.439992
 # Execution: 22
-0.466558
+0.440004
 # Execution: 23
-0.499516
+0.445356
 # Execution: 24
-0.48407
+0.44635
 # Execution: 25
-0.468545
+0.439985
 # Execution: 26
-0.479739
+0.440005
 # Execution: 27
-0.459686
+0.445297
 # Execution: 28
-0.456402
+0.440037
 # Execution: 29
-0.502167
+0.440007
 # Execution: 30
-0.470193
+0.440067
 # Execution: 31
-0.510257
+0.439997
 # Execution: 32
-0.506935
+0.440006
 # Execution: 33
-0.505031
+0.446937
 # Execution: 34
-0.499496
+0.446151
 # Execution: 35
-0.47467
+0.445305
 # Execution: 36
-0.463177
+0.445595
 # Execution: 37
-0.465335
+0.447556
 # Execution: 38
-0.478849
+0.440013
 # Execution: 39
-0.495554
+0.44001
 # Execution: 40
-0.508471
+0.44019
 # Execution: 41
-0.505246
+0.440039
 # Execution: 42
-0.493775
+0.44567
 # Execution: 43
-0.464537
+0.445775
 # Execution: 44
-0.503964
+0.44001
 # Execution: 45
-0.497652
+0.445747
 # Execution: 46
-0.498251
+0.44523
 # Execution: 47
-0.484353
+0.44003
 # Execution: 48
-0.467212
+0.445511
 # Execution: 49
-0.481514
+0.446245
 # Execution: 50
-0.459774
+0.440053
 # Execution: 51
-0.464582
+0.440062
 # Execution: 52
-0.486204
+0.445619
 # Execution: 53
-0.473916
+0.440047
 # Execution: 54
-0.459147
+0.445735
 # Execution: 55
-0.480925
+0.440021
 # Execution: 56
-0.473635
+0.440049
 # Execution: 57
-0.470664
+0.440154
 # Execution: 58
-0.481394
+0.440016
 # Execution: 59
-0.470325
+0.439993
 # Execution: 60
-0.461435
+0.440054
 # Execution: 61
-0.47011
+0.446033
 # Execution: 62
-0.468988
+0.445689
 # Execution: 63
-0.461967
+0.443862
 # Execution: 64
-0.469726
+0.44313
 # Execution: 65
-0.485467
+0.440004
 # Execution: 66
-0.471208
+0.444901
 # Execution: 67
-0.462354
+0.440023
 # Execution: 68
-0.459153
+0.445839
 # Execution: 69
-0.481793
+0.445573
 # Execution: 70
-0.506002
+0.445864
 # Execution: 71
-0.507934
+0.440057
 # Execution: 72
-0.464402
+0.440019
 # Execution: 73
-0.506261
+0.44008
 # Execution: 74
-0.507573
+0.440039
 # Execution: 75
-0.492349
+0.440056
 # Execution: 76
-0.469731
+0.440001
 # Execution: 77
-0.500798
+0.44002
 # Execution: 78
-0.476876
+0.440115
 # Execution: 79
-0.470909
+0.440029
 # Execution: 80
-0.514891
+0.445764
 # Execution: 81
-0.497898
+0.446127
 # Execution: 82
-0.502293
+0.444949
 # Execution: 83
-0.491106
+0.440037
 # Execution: 84
-0.507993
+0.439999
 # Execution: 85
-0.463413
+0.440062
 # Execution: 86
-0.498398
+0.445246
 # Execution: 87
-0.491423
+0.445937
 # Execution: 88
-0.492387
+0.445828
 # Execution: 89
-0.494654
+0.440048
 # Execution: 90
-0.466573
+0.439998
 # Execution: 91
-0.498078
+0.440022
 # Execution: 92
-0.502903
+0.445532
 # Execution: 93
-0.496476
+0.4458
 # Execution: 94
-0.501942
+0.445715
 # Execution: 95
-0.494402
+0.446589
 # Execution: 96
-0.525471
+0.445421
 # Execution: 97
-0.501732
+0.440063
 # Execution: 98
-0.490998
+0.440019
 # Execution: 99
-0.501544
+0.440002
 # END EXECUTION
