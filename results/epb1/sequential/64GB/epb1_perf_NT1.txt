@@ -1,0 +1,182 @@
+1
+# Execution: 0
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           140,785      cache-references:u                                          
+            59,305      cache-misses:u            #   42.125 % of all cache refs    
+       811,365,657      L1-dcache-loads:u                                           
+        43,795,922      L1-dcache-load-misses:u   #    5.40% of all L1-dcache hits  
+             9,891      LLC-loads:u                                                 
+             7,734      LLC-load-misses:u         #   78.19% of all LL-cache hits   
+
+       0.288936313 seconds time elapsed
+
+       0.264333000 seconds user
+       0.004987000 seconds sys
+
+
+
+# Execution: 1
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           132,762      cache-references:u                                          
+            49,497      cache-misses:u            #   37.283 % of all cache refs    
+       811,365,660      L1-dcache-loads:u                                           
+        43,766,566      L1-dcache-load-misses:u   #    5.39% of all L1-dcache hits  
+             9,855      LLC-loads:u                                                 
+             7,383      LLC-load-misses:u         #   74.92% of all LL-cache hits   
+
+       0.291383539 seconds time elapsed
+
+       0.261448000 seconds user
+       0.005964000 seconds sys
+
+
+
+# Execution: 2
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           150,585      cache-references:u                                          
+            56,204      cache-misses:u            #   37.324 % of all cache refs    
+       811,365,657      L1-dcache-loads:u                                           
+        43,760,547      L1-dcache-load-misses:u   #    5.39% of all L1-dcache hits  
+            10,351      LLC-loads:u                                                 
+             7,330      LLC-load-misses:u         #   70.81% of all LL-cache hits   
+
+       0.271054445 seconds time elapsed
+
+       0.262484000 seconds user
+       0.004990000 seconds sys
+
+
+
+# Execution: 3
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           121,417      cache-references:u                                          
+            34,862      cache-misses:u            #   28.713 % of all cache refs    
+       811,365,657      L1-dcache-loads:u                                           
+        43,793,918      L1-dcache-load-misses:u   #    5.40% of all L1-dcache hits  
+            10,009      LLC-loads:u                                                 
+             6,604      LLC-load-misses:u         #   65.98% of all LL-cache hits   
+
+       0.296883301 seconds time elapsed
+
+       0.265259000 seconds user
+       0.001994000 seconds sys
+
+
+
+# Execution: 4
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           145,643      cache-references:u                                          
+            51,006      cache-misses:u            #   35.021 % of all cache refs    
+       811,365,648      L1-dcache-loads:u                                           
+        43,816,287      L1-dcache-load-misses:u   #    5.40% of all L1-dcache hits  
+            10,474      LLC-loads:u                                                 
+             7,351      LLC-load-misses:u         #   70.18% of all LL-cache hits   
+
+       0.269912704 seconds time elapsed
+
+       0.263953000 seconds user
+       0.003984000 seconds sys
+
+
+
+# Execution: 5
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           137,262      cache-references:u                                          
+            50,860      cache-misses:u            #   37.053 % of all cache refs    
+       811,365,647      L1-dcache-loads:u                                           
+        43,758,306      L1-dcache-load-misses:u   #    5.39% of all L1-dcache hits  
+             9,859      LLC-loads:u                                                 
+             7,199      LLC-load-misses:u         #   73.02% of all LL-cache hits   
+
+       0.275675032 seconds time elapsed
+
+       0.263381000 seconds user
+       0.004988000 seconds sys
+
+
+
+# Execution: 6
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           143,251      cache-references:u                                          
+            57,837      cache-misses:u            #   40.375 % of all cache refs    
+       811,365,649      L1-dcache-loads:u                                           
+        43,807,039      L1-dcache-load-misses:u   #    5.40% of all L1-dcache hits  
+            10,656      LLC-loads:u                                                 
+             7,730      LLC-load-misses:u         #   72.54% of all LL-cache hits   
+
+       0.274482774 seconds time elapsed
+
+       0.263920000 seconds user
+       0.004979000 seconds sys
+
+
+
+# Execution: 7
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           117,083      cache-references:u                                          
+            42,591      cache-misses:u            #   36.377 % of all cache refs    
+       811,365,664      L1-dcache-loads:u                                           
+        43,814,788      L1-dcache-load-misses:u   #    5.40% of all L1-dcache hits  
+             9,188      LLC-loads:u                                                 
+             6,992      LLC-load-misses:u         #   76.10% of all LL-cache hits   
+
+       0.278768861 seconds time elapsed
+
+       0.262394000 seconds user
+       0.004988000 seconds sys
+
+
+
+# Execution: 8
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           140,309      cache-references:u                                          
+            48,438      cache-misses:u            #   34.522 % of all cache refs    
+       811,365,649      L1-dcache-loads:u                                           
+        43,793,638      L1-dcache-load-misses:u   #    5.40% of all L1-dcache hits  
+             9,912      LLC-loads:u                                                 
+             7,309      LLC-load-misses:u         #   73.74% of all LL-cache hits   
+
+       0.273023922 seconds time elapsed
+
+       0.266427000 seconds user
+       0.002003000 seconds sys
+
+
+
+# Execution: 9
+
+ Performance counter stats for './src/main.out epb1.mtx':
+
+           120,407      cache-references:u                                          
+            50,068      cache-misses:u            #   41.582 % of all cache refs    
+       811,365,661      L1-dcache-loads:u                                           
+        43,800,574      L1-dcache-load-misses:u   #    5.40% of all L1-dcache hits  
+             9,579      LLC-loads:u                                                 
+             7,528      LLC-load-misses:u         #   78.59% of all LL-cache hits   
+
+       0.280816855 seconds time elapsed
+
+       0.264464000 seconds user
+       0.002982000 seconds sys
+
+
+
+# END EXECUTION
