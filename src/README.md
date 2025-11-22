@@ -35,7 +35,7 @@ src
 - Measures and prints the elapsed time of the multiplication in milliseconds
 
 ### `matrix.h` / `matrix.cpp`
-Implements functions responsible for:
+Implement functions responsible for:
 - matrix reading and loading
 - COO sorting
 - COO -> CSR conversion
@@ -62,9 +62,9 @@ To change the OMP scheduling policy, edit the following line inside `P_CSRmul()`
 ```
 
 **Available options:**
-- `static, chunk_size`
-- `guided, chuck_size (optional)`
-- `dynamic, chunk_size (optional)`
+- `static, <chunk_size>`
+- `guided, <chuck_size> (optional)`
+- `dynamic, <chunk_size> (optional)`
 - `runtime`
 
 ## Compatibility
