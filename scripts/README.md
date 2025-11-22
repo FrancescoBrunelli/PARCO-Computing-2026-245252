@@ -19,6 +19,7 @@ This folder contains all the scripts needed to set up the environment, run diffe
 Scripts in this section are responsible for setting up the environment and downloading required data
 
 - `download_matrices.sh` - Downloads and extracts five sparse matrices
+  
   Alternatively you can download the matrices you prefer from [here](https://sparse.tamu.edu), make sure they are written in any of the different formats compatible with the program [check compatible formats](../src/README.md#compatibility).
 
 ## Run Scripts
