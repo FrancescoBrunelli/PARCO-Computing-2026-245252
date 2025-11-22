@@ -25,6 +25,7 @@ Scripts in this section are responsible for setting up the environment and downl
 ## Run Scripts
 
 Scripts used to run multiple tests on the compute nodes automatically
+
 It is important to run them from the main folder of the repository
 
 ### `run_time.pbs`
@@ -80,21 +81,27 @@ chmod +x ./scripts/run_perf_parallel_jobs.sh
 
 Organized as follows:
 ### CVS Scripts
-Starting from a folder organization like the one of [results](../results/README.md), these scripts are responsible for the creation of the .cvs file that will be used for plotting
+Starting from a folder organization like the one of [results](../results/README.md), these scripts are responsible for the creation of the .cvs files that will be used for plotting
 
 - `fetch_runtime_results.py`
+  
   Usage: `python3 scripts/fetch_runtime_results.py`
 - `fetch_perf_results.py`
+  
   Usage: `python3 scripts/fetch_perf_results.py`
 - `fetch_cachegrind_results.py`
+  
   Usage: `python3 scripts/fetch_cachegrind_results.py`
 
 ### Plot Scripts
 - `plot_runtime.py`: Fetches all runtime results for a given input matrix name, calculates the 90th percentile and creates a linear plot
+  
   Usage: `python3 scripts/plot_runtime.py <matrix_name>`
 - `plot_perf.py`: creates an histogram showing the percentages of different types of cache-miss for each scheduling policy given the amount of threads and memory (hardcoded)
-  Usage: ``
+  
+  Usage: `python3 scripts/plot_perf.py`
 - `plot_scaling.py`: creates an histogram showing the (strong) scaling for each scheduling type of a given input matrix name, comparing parallel executions to the sequential one
+  
   Usage: `python3 scripts/plot_scaling.py <matrix_name>`
 
 ## Matrices used
