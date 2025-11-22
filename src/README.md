@@ -69,6 +69,7 @@ To change the OMP scheduling policy, edit the following line inside `P_CSRmul()`
 
 ## Compatibility
 The program needs a .mtx matrix as an input.
+
 **NOTE:** Not all matrix formats are compatible.
 
 **Supported storage formats:**
