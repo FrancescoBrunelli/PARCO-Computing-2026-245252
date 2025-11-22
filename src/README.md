@@ -6,6 +6,7 @@
 - [Main Components](#main-components)
 - [Compilation](#compilation)
 - [Change Parameters](#change-parameters)
+- [Compatibility](#compatibility)
 - [Notes](#notes)
 - [Example Usage](#example-usage)
 
@@ -27,7 +28,7 @@ src
 
 ## Main Components
 ### `main.cpp`
-- Catches input matrix via command line
+- Parses input matrix via command line
 - Stores the COO format and sorts it in row-major order
 - Converts it into CSR
 - Computes the product between CSR and a randomly generated vector
@@ -37,7 +38,7 @@ src
 Implements functions responsible for:
 - matrix reading and loading
 - COO sorting
-- COO to CSR conversion
+- COO -> CSR conversion
 - Provides both sequential (`CSRmul`) and parallel `P_CSRmul` SpMV routines
 
 ## Compilation
@@ -61,10 +62,24 @@ To change the OMP scheduling policy, edit the following line inside `P_CSRmul()`
 ```
 
 **Available options:**
-- `static, chunksize`
-- `guided, chucksize (optional)`
-- `dynamic, chunksize (optional)`
+- `static, chunk_size`
+- `guided, chuck_size (optional)`
+- `dynamic, chunk_size (optional)`
 - `runtime`
+
+## Compatibility
+The program needs a .mtx matrix as an input.
+**NOTE:** Not all matrix formats are compatible.
+
+**Supported storage formats:**
+- general
+- symmetric
+
+**Supported datatypes:**
+- integer
+- real
+- complex
+- pattern
 
 ## Notes
 - The input matrix must be in the **Matrix Market (.mtx)** format

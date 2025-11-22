@@ -5,10 +5,11 @@
 - [Introduction](#introduction)
 - [Setup Scripts](#setup-scripts)
 - [Run Scripts](#run-scripts)
-- [Plot Scripts](#plot-scripts)
+- [Python Scripts](#python-scripts)
 - [Matrices used](#matrices-used)
 
 ---
+
 ## Introduction
 
 This folder contains all the scripts needed to set up the environment, run different types of tests, process the data and generate plots based on different performance metrics
@@ -18,7 +19,7 @@ This folder contains all the scripts needed to set up the environment, run diffe
 Scripts in this section are responsible for setting up the environment and downloading required data
 
 - `download_matrices.sh` - Downloads and extracts five sparse matrices
-  Alternatively you can download the matrices you prefer from [here](https://sparse.tamu.edu), make sure they are written in any of the different formats compatible with the program [check compatible formats](../README.md).
+  Alternatively you can download the matrices you prefer from [here](https://sparse.tamu.edu), make sure they are written in any of the different formats compatible with the program [check compatible formats](../src/README.md#compatibility).
 
 ## Run Scripts
 
@@ -74,10 +75,26 @@ chmod +x ./scripts/run_perf_parallel_jobs.sh
 # Example usage of run_perf_parallel_jobs.sh
 ./scripts/run_perf_parallel_jobs.sh matrix.mtx
 ```
-## Plot Scripts
+## Python Scripts
 
-Scripts used to process the output data and generate performance plots.
+Organized as follows:
+### CVS Scripts
+Starting from a folder organization like the one of [results](../results/README.md), these scripts are responsible for the creation of the .cvs file that will be used for plotting
 
+- `fetch_runtime_results.py`
+  Usage: `python3 scripts/fetch_runtime_results.py`
+- `fetch_perf_results.py`
+  Usage: `python3 scripts/fetch_perf_results.py`
+- `fetch_cachegrind_results.py`
+  Usage: `python3 scripts/fetch_cachegrind_results.py`
+
+### Plot Scripts
+- `plot_runtime.py`: Fetches all runtime results for a given input matrix name, calculates the 90th percentile and creates a linear plot
+  Usage: `python3 scripts/plot_runtime.py <matrix_name>`
+- `plot_perf.py`: creates an histogram showing the percentages of different types of cache-miss for each scheduling policy given the amount of threads and memory (hardcoded)
+  Usage: ``
+- `plot_scaling.py`: creates an histogram showing the (strong) scaling for each scheduling type of a given input matrix name, comparing parallel executions to the sequential one
+  Usage: `python3 scripts/plot_scaling.py <matrix_name>`
 
 ## Matrices used
 - **fd12:** 7.500x7.500 28.462nnz (129KB)
