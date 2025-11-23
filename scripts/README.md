@@ -20,6 +20,15 @@ Scripts in this section are responsible for setting up the environment and downl
 
 - `download_matrices.sh` - Downloads and extracts five sparse matrices
   
+  Usage:
+``` sh
+# Make sure to make it executable first:
+chmod +x ./scripts/download_matrices.sh
+
+# Example usage of run_time_parallel_jobs.sh
+./scripts/download_matrices.sh
+```
+  
   Alternatively you can download the matrices you prefer from [here](https://sparse.tamu.edu), make sure they are written in any of the different formats compatible with the program [check compatible formats](../src/README.md#compatibility).
 
 ## Run Scripts

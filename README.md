@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+- [Get Started](#get-started)
 - [Compiler version and flags](#compiler-version-and-flags)
 - [How to Compile](#how-to-compile)
 - [How to Run](#how-to-run)
@@ -10,6 +11,14 @@
 - [Cluster-specific notes](#cluster-specific-notes)
 
 ---
+
+## Get Started
+First, clone this repository to your local machine:
+``` sh
+git clone https://github.com/FrancescoBrunelli/PARCO-Computing-2026-245252.git
+```
+
+After cloning, visit the [set up scripts](scripts/README.md#setup-scripts) section.
 
 ## Compiler version and flags
 - Compiler: g++ 9.1.0 (GCC)
