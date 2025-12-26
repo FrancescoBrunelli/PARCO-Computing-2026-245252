@@ -1,0 +1,228 @@
+{
+  "main": {
+    "id": "20ccf5345af2aa1e",
+    "type": "split",
+    "children": [
+      {
+        "id": "b4d2af5352c56f08",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "238a57ce199e26f2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "cab8931be251253a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "scripts/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          },
+          {
+            "id": "231b541050aed327",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "src/README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0f945d2d2ec3b308",
+    "type": "split",
+    "children": [
+      {
+        "id": "1a7d7e4d5bee7e23",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9dc36f693faacd36",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "151e848a58884e0d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4cf621d92e407281",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6a8c6d17a9bd47e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "ea9351fdbd0b0076",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "79ed2f24a98e1c4b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for README"
+            }
+          },
+          {
+            "id": "2feefddca6d91e09",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from README"
+            }
+          },
+          {
+            "id": "54f85c8eef3b32ac",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "319e7b0a718f8743",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "238a57ce199e26f2",
+  "lastOpenFiles": [
+    "README.md",
+    "Untitled.base",
+    "scripts/README.md",
+    "src/README.md",
+    "results/README.md",
+    "plots/README.md",
+    "scripts/plot_scaling.py",
+    "Brunelli_245252_D1.pdf",
+    "scripts/plot_csv.py",
+    "plots/human_gene2_static.png",
+    "results/human_gene2/static/64GB/human_gene2_cachegrind_NT1.txt",
+    "results/human_gene2/static/128GB/perf/human_gene2_perf_NT64.txt",
+    "results/human_gene2/static/128GB/perf/human_gene2_perf_NT8.txt",
+    "results/human_gene2/static/128GB/perf/human_gene2_perf_NT4.txt",
+    "results/human_gene2/static/128GB/perf/human_gene2_perf_NT32.txt",
+    "results/human_gene2/static/128GB/perf/human_gene2_perf_NT2.txt",
+    "plots/sinc12_static.png",
+    "plots/sinc12_guided.png",
+    "plots/sinc12_dynamic.png",
+    "plots/human_gene2_dynamic.png",
+    "plots/fd12_static.png",
+    "plots/fd12_guided.png",
+    "plots/fd12_dynamic.png",
+    "plots/epb1_static.png",
+    "plots/epb1_guided.png"
+  ]
+}
