@@ -20,5 +20,5 @@ cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
 #gcc -std=c99 codename.c -o codename.out # C code
 #mpicc -std=c99 main.c -o main.out
 mpicxx -std=c++11 main.cpp mpiExcercises.cpp -o main.out # C++ code
-mpirun -np 33 hostname
+mpirun -np 4 hostname
 mpirun ./main.out
