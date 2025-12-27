@@ -1,0 +1,24 @@
+#!/bin/bash
+# Job name:
+#PBS -N MPI
+# Output files:
+#PBS -o mpi.out
+# Error files
+#PBS -e mpi.err
+# Queue name
+#PBS -q short_cpuQ
+# Set the maximum wall time
+#PBS -l walltime=0:30:00
+# Set the memory cpus and resources
+#PBS -l select=1:ncpus=4:mpiprocs=4:mem=64gb
+
+# Load modules
+module load gcc91
+module load mpich-3.2.1--gcc-9.1.0
+# Select the working directory
+cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
+#gcc -std=c99 codename.c -o codename.out # C code
+#mpicc -std=c99 main.c -o main.out
+mpicxx -std=c++11 main.cpp mpiExcercises.cpp -o main.out # C++ code
+mpirun -np 33 hostname
+mpirun ./main.out
