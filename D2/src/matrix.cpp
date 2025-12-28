@@ -55,12 +55,6 @@ void CSR(const float* mat, vector<int>& aRow, vector<int>& aCol, vector<float>& 
 	}
 }
 
-void SELL(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, int C) {		//Start from the output of the CSR format
-	//C is the slice height
-	int nnz = aVal.size();		// nnz = number of non zero elements in the matrix
-
-}
-
 void MVmul(const float* mat, const float* v, float* out) {
 	int temp;
 	for(int i = 0; i < row; i++) {
@@ -141,30 +135,7 @@ void printVector(const vector<int>& v) {
 	cout << endl;
 }
 
-void COOtoCSRmap(const multimap<array<int, 2>, float>& COOmap, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
-	aRow.reserve(row + 1);
-	aCol.reserve(nnz);
-	aVal.reserve(nnz);
-	vector<int> tmp;
-	int count = 0;
-	aRow.push_back(0);
-
-	for(const auto& item: COOmap) {
-		aCol.push_back(item.first[1]);
-		aVal.push_back(item.second);
-	}
-
-	for(int i = 0; i < row; i++) {
-		for(const auto& item: COOmap) {
-			if(item.first[0] == i) {
-				count++;
-			}
-		}
-		aRow.push_back(count);
-	}
-}
-
-void COOtoCSRvect(vector<tuple<int, int, float>>& COOvect, const string& filename, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
+void fetch_COO(vector<tuple<int, int, float>>& COOvect, const string& filename, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {
 	fstream file(filename);
 	read_banner(file);
 	if(storage == "general") {
@@ -185,7 +156,6 @@ void COOtoCSRvect(vector<tuple<int, int, float>>& COOvect, const string& filenam
 		aVal.push_back(get<2>(item));
 	}
 	nnz = aRow.size();
-	COOtoCSR(aRow);
 }
 
 void fetch_general_matrix_vector(fstream& file, vector<tuple<int, int, float>>& COOvect) {
@@ -290,101 +260,7 @@ void read_banner(fstream& file) {
     }
 }
 
-void fetch_matrix(const string& filename, multimap<array<int, 2>, float>& COOmap) {
-	fstream file(filename);
-	read_banner(file);
-	if(storage == "general") {
-		fetch_general_matrix(file, COOmap);
-	}
-	else {
-		fetch_symmetric_matrix(file, COOmap);
-	}
-}
-
-void fetch_general_matrix(fstream& file, multimap<array<int, 2>, float>& COOmap) {
-	while(file.peek() == '%') {
-		file.ignore(2048, '\n');
-	}
-	file >> row >> col >> nnz;
-	int r, c;
-	double real, imaginary;		// double in order to avoid some problems when reading very small numbers (<1e-45)
-	if(datatype == "real" || datatype == "integer") {
-		for(int i = 0; i < nnz; i++) {
-			file >> r >> c >> real;
-			r--; c--;
-			COOmap.insert({{r, c}, (float) real});
-		}
-	} else if(datatype == "pattern") {
-		for(int i = 0; i < nnz; i++) {
-			file >> r >> c;
-			r--; c--;
-			COOmap.insert({{r, c}, 1.0f});
-		}
-	} else {	// it's complex
-		for(int i = 0; i < nnz; i++) {
-			file >> r >> c >> real >> imaginary;
-			r--; c--;
-			COOmap.insert({{r, c}, (float) real});
-		}
-	}
-}
-
-void fetch_symmetric_matrix(fstream& file, multimap<array<int, 2>, float>& COOmap) {
-	while(file.peek() == '%') {
-		file.ignore(2048, '\n');
-	}
-	file >> row >> col >> nnz;
-	int r, c;
-	double real, imaginary;		// double in order to avoid some problems when reading very small numbers (<1e-45)
-	if(datatype == "real" || datatype == "integer") {
-		for(int i = 0; i < nnz; i++) {
-			file >> r >> c >> real;
-			r--; c--;
-			COOmap.insert({{r, c}, (float) real});
-			if(r != c) {
-				COOmap.insert({{c, r}, (float) real});		// insert symmetric element
-			}
-		}
-	} else if(datatype == "pattern") {
-		for(int i = 0; i < nnz; i++) {
-			file >> r >> c;
-			r--; c--;
-			COOmap.insert({{r, c}, 1.0f});
-			if(r != c) {
-				COOmap.insert({{c, r}, 1.0f});		// insert symmetric element
-			}
-		}
-	} else {	// it's complex
-		for(int i = 0; i < nnz; i++) {
-			file >> r >> c >> real >> imaginary;
-			r--; c--;
-			COOmap.insert({{r, c}, (float) real});
-			if(r != c) {
-				COOmap.insert({{c, r}, (float) real});		// insert symmetric element
-			}
-		}
-	}
-}
-
-float* printFullMatrix(const multimap<array<int, 2>, float>& COOmap) {
-	float* mat = new float[row * col]();
-
-	for(const auto& item: COOmap) {
-		mat[item.first[0] * col + item.first[1]] = item.second;
-	}
-
-	for(int i = 0; i < row; i++) {
-		cout << "[";
-		for(int j = 0; j < col; j++) {
-			cout << "\t" << mat[i * col + j];
-		}
-		cout << "\t]\n";
-	}
-	//delete[] mat;
-	return mat;
-}
-
-float* printFullMatrix(const vector<tuple<int, int, float>> COOvect) {
+float* printFullMatrix(const vector<tuple<int, int, float>>& COOvect) {
 	float* mat = new float[row * col]();
 
 	for(const auto& item: COOvect) {
