@@ -6,6 +6,7 @@
 #include <fstream>
 #include <map>
 #include <array>
+#include <float.h>
 #include <mpi.h>
 #include "matrix.h"
 
@@ -16,6 +17,7 @@ double toMilliseconds(const timespec& t) {
 }
 
 void sequential_execution(int argc, char** argv) {
+	cout << "--- SEQUENTIAL EXECUTION ---" << endl;
 	srand(time(NULL));
 	timespec t0, t1;
 	// Get input from command line
@@ -35,7 +37,6 @@ void sequential_execution(int argc, char** argv) {
 
 	float* mat = printFullMatrix(COOvect);
 
-	/*
 	cout << "---- COO: ----" << endl;
 	cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
 	cout << "--- aRow: ---" << endl;
@@ -44,7 +45,6 @@ void sequential_execution(int argc, char** argv) {
 	printVector(aCol);
 	cout << "--- aVal: ---" << endl;
 	printVector(aVal);
-	*/
 
 	COOtoCSR(aRow);
 
@@ -87,18 +87,24 @@ void sequential_execution(int argc, char** argv) {
 	delete[] out;
 }
 
-int main(int argc, char** argv) {
+void MPI_1D_Partitioning(int argc, char** argv) {
+
 	MPI_Init(&argc, &argv);
 	int rank, size;
-	double start, end, total_time;
+	double start, end, time, total_time = 0;
+	double min = DBL_MAX;
+	double max = -DBL_MAX;
+	int n;		// number of nnz in a certain chunk
+	int chunk_size;
+	vector<int> aRow;
+	vector<int> aCol;
+	vector<float> aVal;
+	float* v = nullptr;
+	float* out = nullptr;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
-
-	if (rank == 0) {
-		cout << "--- SEQUENTIAL EXECUTION ---" << endl;
-		sequential_execution(argc, argv);
-		cout << endl;
-	}
+	MPI_Request requests[5];
+	MPI_Status status;
 
 	/*
 	start = MPI_Wtime();
@@ -116,40 +122,123 @@ int main(int argc, char** argv) {
 		}
 		string filename = argv[1];
 
-		vector<int> aRow;
-		vector<int> aCol;
-		vector<float> aVal;
-
 		// -------- Fetch Matrix using vector
 		vector<tuple<int, int, float>> COOvect;
 		fetch_COO(COOvect, filename, aRow, aCol, aVal);
 
-
-		//float* mat = printFullMatrix(COOvect);
-
-		/*
-		cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
-		cout << "--- aRow: ---" << endl;
-		printVector(aRow);
-		cout << "--- aCol: ---" << endl;
-		printVector(aCol);
-		cout << "--- aVal: ---" << endl;
-		printVector(aVal);
-		*/
-
-		float* v = new float[col];
-		float* out = new float[row];
+		v = new float[col];
+		out = new float[row];
 		initV(v);
 
-		cout << "--- V: ---" << endl;
-		printV(v, col);
+		// Provide each process the randomly generated vector
+		MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
-		//delete[] mat;
-		delete[] v;
-		delete[] out;
+		/*
+		// Provide each process the empty output vector
+		MPI_Bcast(out, row, MPI_FLOAT, 0, MPI_COMM_WORLD);
+		*/
+
+		// Compute chunksize and send a chunk to each process
+			// NOTE: 1D PARTITIONING
+		int spare_rows = row % size;
+		chunk_size = (row - spare_rows) / size;		// number of rows per chunk
+		int first = 0;	// first row of the chunk
+		int last;
+		int current_index = 0;
+		int tmp;
+
+		for (int i = 1; i < size; i++) {
+			if (i <= spare_rows) {
+				last = first + chunk_size + 1;
+			} else {
+				last = first + chunk_size;
+			}
+			tmp = last - first;		// Actual number of rows for the i-th process
+			MPI_Send(&tmp, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
+
+			n = count_if(aRow.begin() + current_index, aRow.end(),  [first, last] (int val) {
+				return val >= first && val < last;
+			});
+
+			MPI_Send(&n, 1, MPI_INT, i, 1, MPI_COMM_WORLD);	// Send message size
+			MPI_Send(aRow.data() + current_index, n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aRow
+			MPI_Send(aCol.data() + current_index, n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
+			MPI_Send(aVal.data() + current_index, n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
+
+			current_index += n;
+			first = last;
+		}
+	} else {
+		// Receive number of rows the process has to work on
+		MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+		out = new float[chunk_size];
+
+		MPI_Recv(&n, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
+		aRow.resize(n);
+		aCol.resize(n);
+		aVal.resize(n);
+
+		// Receive COO-chunk
+		MPI_Recv(aRow.data(), n, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive aRow
+		MPI_Recv(aCol.data(), n, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
+		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
 
-	MPI_Finalize();
+	MPI_Barrier(MPI_COMM_WORLD);
 
+	// --- CSR + SpMV Computation
+	if (rank == 0) {
+		time = 0;
+	} else {
+		COOtoCSR(aRow);
+
+		start = MPI_Wtime();
+		CSRmul(aRow, aCol, aVal, v, out);
+		end = MPI_Wtime();
+		time = end - start;
+
+	}
+
+	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		time = DBL_MAX;
+	}
+	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		time = -DBL_MAX;
+	}
+	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+
+	// Output printing
+	bool token = true;
+	if (rank == 0) {
+		printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
+		if (size > 1) {
+			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
+		}
+	} else {
+		MPI_Recv(&token, 1, MPI_C_BOOL, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+		printV(out, chunk_size);
+		fflush(stdout);
+		if (rank < size - 1) {
+			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
+		}
+	}
+
+	delete[] v;
+	delete[] out;
+
+	MPI_Finalize();
+}
+
+int main(int argc, char** argv) {
+	sequential_execution(argc, argv);
+	cout << endl << "**********************************" << endl;
+
+	MPI_1D_Partitioning(argc, argv);
+	cout << endl;
+	
 	return 0;
 }
