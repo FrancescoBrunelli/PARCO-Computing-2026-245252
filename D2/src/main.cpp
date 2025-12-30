@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
 	double t_start, t_end, time, total_time = 0;
 	double min = DBL_MAX;
 	double max = -DBL_MAX;
-	int n;		// number of nnz in a certain chunk
+	int n = 0;		// number of nnz in a certain chunk
 	int chunk_size;
 	vector<int> aRow;
 	vector<int> aCol;
