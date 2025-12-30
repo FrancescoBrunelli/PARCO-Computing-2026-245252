@@ -163,8 +163,8 @@ int main(int argc, char** argv) {
 
 		// Compute chunksize and send a chunk to each process
 			// NOTE: 1D PARTITIONING
-		int spare_rows = row % size;
-		chunk_size = (row - spare_rows) / size;		// number of rows per chunk
+		int spare_rows = row % (size - 1);
+		chunk_size = (row - spare_rows) / (size - 1);		// number of rows per chunk
 		int first = 0;	// first row of the chunk
 		int last;		// last row of the chunk
 		int current_index = 0;		// index of the first element to parse
@@ -188,7 +188,7 @@ int main(int argc, char** argv) {
 			MPI_Send(aCol.data() + current_index, n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
 			MPI_Send(aVal.data() + current_index, n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
 
-			current_index += n + 1;
+			current_index += n;
 			first = last;
 		}
 	} else {
