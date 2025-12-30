@@ -207,9 +207,8 @@ int main(int argc, char** argv) {
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
 		// DEBUG PRINT CHECK
-	for (int i = 0; i < size; i++) {
-		if (rank == i) {
-			cout << "**** RANK: " << i << " ****" << endl;
+		if (rank == 3) {
+			cout << "**** RANK: " << rank << " ****" << endl;
 			cout << "rows: " << chunk_size << endl;
 			cout << "nnz: " << n << endl;
 			cout << "---- COO: ----" << endl;
@@ -220,7 +219,6 @@ int main(int argc, char** argv) {
 			cout << "--- aVal: ---" << endl;
 			printVector(aVal);
 		}
-	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
 	if (rank == 0) {
