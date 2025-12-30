@@ -88,10 +88,8 @@ void sequential_execution(int argc, char** argv) {
 }
 
 void MPI_1D_Partitioning(int argc, char** argv) {
-
 	MPI_Init(&argc, &argv);
-	int rank, size;
-	double start, end, time, total_time = 0;
+	double t_start, t_end, time, total_time = 0;
 	double min = DBL_MAX;
 	double max = -DBL_MAX;
 	int n;		// number of nnz in a certain chunk
@@ -101,6 +99,7 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 	vector<float> aVal;
 	float* v = nullptr;
 	float* out = nullptr;
+	int rank, size;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 	MPI_Request requests[5];
@@ -143,8 +142,8 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 		int spare_rows = row % size;
 		chunk_size = (row - spare_rows) / size;		// number of rows per chunk
 		int first = 0;	// first row of the chunk
-		int last;
-		int current_index = 0;
+		int last;		// last row of the chunk
+		int current_index = 0;		// index of the first element to parse
 		int tmp;
 
 		for (int i = 1; i < size; i++) {
@@ -165,7 +164,7 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 			MPI_Send(aCol.data() + current_index, n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
 			MPI_Send(aVal.data() + current_index, n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
 
-			current_index += n;
+			current_index += n + 1;
 			first = last;
 		}
 	} else {
@@ -185,17 +184,20 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
-
+	if (rank == 0) {
+		printf("Setup finished");
+	}
+	/*
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
 	} else {
 		COOtoCSR(aRow);
 
-		start = MPI_Wtime();
+		t_start = MPI_Wtime();
 		CSRmul(aRow, aCol, aVal, v, out);
-		end = MPI_Wtime();
-		time = end - start;
+		t_end = MPI_Wtime();
+		time = t_end - t_start;
 
 	}
 
@@ -226,7 +228,7 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
 	}
-
+*/
 	delete[] v;
 	delete[] out;
 
@@ -234,8 +236,10 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 }
 
 int main(int argc, char** argv) {
-	sequential_execution(argc, argv);
-	cout << endl << "**********************************" << endl;
+	string filename = argv[1];
+	cout << "Input matrix: " << filename << endl;
+	//sequential_execution(argc, argv);
+	//cout << endl << "**********************************" << endl;
 
 	MPI_1D_Partitioning(argc, argv);
 	cout << endl;
