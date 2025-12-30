@@ -206,19 +206,6 @@ int main(int argc, char** argv) {
 		MPI_Recv(aCol.data(), n, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
-		// DEBUG PRINT CHECK
-		if (rank == 2) {
-			cout << "**** RANK: " << rank << " ****" << endl;
-			cout << "rows: " << chunk_size << endl;
-			cout << "nnz: " << n << endl;
-			cout << "---- COO: ----" << endl;
-			cout << "--- aRow: ---" << endl;
-			printVector(aRow);
-			cout << "--- aCol: ---" << endl;
-			printVector(aCol);
-			cout << "--- aVal: ---" << endl;
-			printVector(aVal);
-		}
 
 	MPI_Barrier(MPI_COMM_WORLD);
 	if (rank == 0) {
@@ -235,9 +222,21 @@ int main(int argc, char** argv) {
 		t_end = MPI_Wtime();
 		printf("rank: %d has performed SpMV successfully\n", rank);
 		time = t_end - t_start;
-
 	}
-	MPI_Barrier(MPI_COMM_WORLD);
+
+	// DEBUG PRINT CHECK
+	if (rank == 1) {
+		cout << "**** RANK: " << rank << " ****" << endl;
+		cout << "rows: " << chunk_size << endl;
+		cout << "nnz: " << n << endl;
+		cout << "---- CSR: ----" << endl;
+		cout << "--- aRow: ---" << endl;
+		printVector(aRow);
+		cout << "--- aCol: ---" << endl;
+		printVector(aCol);
+		cout << "--- aVal: ---" << endl;
+		printVector(aVal);
+	}
 
 	printf("-- %d\n", rank);
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
