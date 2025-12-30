@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
 	double t_start, t_end, time, total_time = 0;
 	double min = DBL_MAX;
 	double max = -DBL_MAX;
-	int n = 0;		// number of nnz in a certain chunk
+	int n;		// number of nnz in a certain chunk
 	int chunk_size;
 	vector<int> aRow;
 	vector<int> aCol;
@@ -166,6 +166,10 @@ int main(int argc, char** argv) {
 		int current_index = 0;		// index of the first element to parse
 		int tmp;
 
+		if (chunk_size == 0) {
+
+		}
+
 		for (int i = 1; i < size; i++) {
 			if (i <= spare_rows) {
 				last = first + chunk_size + 1;
@@ -219,7 +223,7 @@ int main(int argc, char** argv) {
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
-	} else {
+	} else if (nnz > 0) {
 		COOtoCSR(aRow);
 		printf("rank %d finished CSR conversion\n", rank);
 		t_start = MPI_Wtime();
