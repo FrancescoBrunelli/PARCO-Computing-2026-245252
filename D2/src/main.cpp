@@ -88,6 +88,10 @@ void sequential_execution(int argc, char** argv) {
 }
 
 void MPI_1D_Partitioning(int argc, char** argv) {
+
+}
+
+int main(int argc, char** argv) {
 	MPI_Init(&argc, &argv);
 	double t_start, t_end, time, total_time = 0;
 	double min = DBL_MAX;
@@ -104,6 +108,12 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 	MPI_Request requests[5];
 	MPI_Status status;
+
+	if (rank == 0) {
+		string filename = argv[1];
+		cout << "Input matrix: " << filename << endl;
+		sequential_execution(argc, argv);
+	}
 
 	/*
 	start = MPI_Wtime();
@@ -136,12 +146,12 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of nnz elements
 	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
-	
+
 	if (rank != 0) {
 		// Initialize v for all workers
 		v = new float[col];
 	}
-	
+
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
@@ -196,19 +206,32 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 		MPI_Recv(aCol.data(), n, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
+		// DEBUG PRINT CHECK
+	for (int i = 0; i < size; i++) {
+		if (rank == i) {
+			cout << "**** RANK: " << i << " ****" << endl;
+			cout << "rows: " << chunk_size << endl;
+			cout << "nnz: " << n << endl;
+			cout << "---- COO: ----" << endl;
+			cout << "--- aRow: ---" << endl;
+			printVector(aRow);
+			cout << "--- aCol: ---" << endl;
+			printVector(aCol);
+			cout << "--- aVal: ---" << endl;
+			printVector(aVal);
+		}
+	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
 	if (rank == 0) {
 		printf("Setup finished");
 	}
-	printf("**%d\n", rank);
-	
+
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
 	} else {
 		COOtoCSR(aRow);
-		if (rank == 2) {printf("rank 2 is performing SpMV\n");}
 		t_start = MPI_Wtime();
 		CSRmul(aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
@@ -249,16 +272,6 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 	delete[] out;
 
 	MPI_Finalize();
-}
 
-int main(int argc, char** argv) {
-	string filename = argv[1];
-	cout << "Input matrix: " << filename << endl;
-	//sequential_execution(argc, argv);
-	//cout << endl << "**********************************" << endl;
-
-	MPI_1D_Partitioning(argc, argv);
-	cout << endl;
-	
 	return 0;
 }
