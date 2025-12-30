@@ -207,7 +207,7 @@ int main(int argc, char** argv) {
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
 		// DEBUG PRINT CHECK
-		if (rank == 3) {
+		if (rank == 2) {
 			cout << "**** RANK: " << rank << " ****" << endl;
 			cout << "rows: " << chunk_size << endl;
 			cout << "nnz: " << n << endl;
@@ -237,6 +237,8 @@ int main(int argc, char** argv) {
 		time = t_end - t_start;
 
 	}
+	MPI_Barrier(MPI_COMM_WORLD);
+
 	printf("-- %d\n", rank);
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
