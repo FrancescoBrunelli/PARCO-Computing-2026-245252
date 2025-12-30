@@ -128,9 +128,19 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 		v = new float[col];
 		out = new float[row];
 		initV(v);
+	}
 
-		// Provide each process the randomly generated vector
-		MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
+	// Provide each process the number of rows
+	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the number of cols
+	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the number of nnz elements
+	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	// Provide each process the randomly generated vector
+	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
+
+	if (rank == 0) {
 
 		/*
 		// Provide each process the empty output vector
