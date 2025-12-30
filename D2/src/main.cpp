@@ -140,12 +140,8 @@ int main(int argc, char** argv) {
 		initV(v);
 	}
 
-	// Provide each process the number of rows
-	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
-	// Provide each process the number of nnz elements
-	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 	if (rank != 0) {
 		// Initialize v for all workers
@@ -193,6 +189,7 @@ int main(int argc, char** argv) {
 		}
 	} else {
 		// Receive number of rows the process has to work on
+		row = chunk_size;
 		MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
 		out = new float[chunk_size];
 
@@ -206,7 +203,7 @@ int main(int argc, char** argv) {
 		MPI_Recv(aCol.data(), n, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
-
+	// DEBUG PRINT
 	if (rank == 1) {
 		cout << "COO: " << endl;
 		printVector(aRow);
