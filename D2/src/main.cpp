@@ -195,6 +195,7 @@ int main(int argc, char** argv) {
 
 		MPI_Recv(&n, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
 		nnz = n;
+		printf("rank: %d has nnz = %d\n", rank, nnz);
 		aRow.resize(n);
 		aCol.resize(n);
 		aVal.resize(n);
@@ -205,7 +206,7 @@ int main(int argc, char** argv) {
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
 	// DEBUG PRINT
-	if (rank == 3) {
+	if (rank == 1) {
 		cout << "COO: " << endl;
 		printVector(aRow);
 	}
