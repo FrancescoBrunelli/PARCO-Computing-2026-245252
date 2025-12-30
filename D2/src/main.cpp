@@ -207,11 +207,16 @@ int main(int argc, char** argv) {
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
 
+	if (rank == 1) {
+		cout << "COO: " << endl;
+		printVector(aRow);
+	}
+
 	MPI_Barrier(MPI_COMM_WORLD);
 	if (rank == 0) {
 		printf("Setup finished");
 	}
-
+	
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
