@@ -194,6 +194,7 @@ int main(int argc, char** argv) {
 		out = new float[chunk_size];
 
 		MPI_Recv(&n, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
+		nnz = n;
 		aRow.resize(n);
 		aCol.resize(n);
 		aVal.resize(n);
