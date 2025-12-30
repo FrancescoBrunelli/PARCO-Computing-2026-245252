@@ -204,7 +204,7 @@ int main(int argc, char** argv) {
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
 	// DEBUG PRINT
-	if (rank == 1) {
+	if (rank == 3) {
 		cout << "COO: " << endl;
 		printVector(aRow);
 	}
@@ -219,6 +219,7 @@ int main(int argc, char** argv) {
 		time = 0;
 	} else {
 		COOtoCSR(aRow);
+		printf("rank %d finished CSR conversion\n", rank);
 		t_start = MPI_Wtime();
 		CSRmul(aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();

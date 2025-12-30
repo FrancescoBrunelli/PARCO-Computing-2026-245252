@@ -230,7 +230,7 @@ void COOtoCSR(vector<int>& aRow) {
 	vector<int> tmp;
 	int count = 0;
 	tmp.push_back(0);
-	for(int i = 0; i < row; i++) {
+	for(int i = aRow.front(); i < aRow.back(); i++) {
 		for(int j = count; j < nnz; j++) {
 			if(aRow[j] == i) {
 				count++;
