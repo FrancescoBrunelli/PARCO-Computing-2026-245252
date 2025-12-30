@@ -136,12 +136,16 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of nnz elements
 	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
-
+	
+	if (rank != 0) {
+		// Initialize v for all workers
+		v = new float[col];
+	}
+	
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-
 		/*
 		// Provide each process the empty output vector
 		MPI_Bcast(out, row, MPI_FLOAT, 0, MPI_COMM_WORLD);
@@ -197,20 +201,22 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 	if (rank == 0) {
 		printf("Setup finished");
 	}
-	/*
+	printf("**%d\n", rank);
+	
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
 	} else {
 		COOtoCSR(aRow);
-
+		if (rank == 2) {printf("rank 2 is performing SpMV\n");}
 		t_start = MPI_Wtime();
 		CSRmul(aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
+		printf("rank: %d has performed SpMV successfully\n", rank);
 		time = t_end - t_start;
 
 	}
-
+	printf("-- %d\n", rank);
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
@@ -238,7 +244,7 @@ void MPI_1D_Partitioning(int argc, char** argv) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
 	}
-*/
+
 	delete[] v;
 	delete[] out;
 
