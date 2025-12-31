@@ -87,12 +87,7 @@ void sequential_execution(int argc, char** argv) {
 	delete[] out;
 }
 
-void MPI_1D_Partitioning(int argc, char** argv) {
-
-}
-
-int main(int argc, char** argv) {
-	MPI_Init(&argc, &argv);
+int MPI_1D_Partitioning(int argc, char** argv) {
 	double t_start, t_end, time, total_time = 0;
 	double min = DBL_MAX;
 	double max = -DBL_MAX;
@@ -109,17 +104,18 @@ int main(int argc, char** argv) {
 	MPI_Request requests[5];
 	MPI_Status status;
 
-	if (rank == 0) {
-		string filename = argv[1];
-		cout << "Input matrix: " << filename << endl;
-		sequential_execution(argc, argv);
-	}
-
 	/*
 	start = MPI_Wtime();
 	end = MPI_Wtime();
 	total_time = end - start;
 	*/
+
+	if (size < 2) {
+		if (rank == 0)
+			fprintf(stderr, "Run with at least 2 processes.\n");
+		MPI_Finalize();
+		return 1;
+	}
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
@@ -127,7 +123,7 @@ int main(int argc, char** argv) {
 		// Get input from command line
 		if (argc < 2) {
 			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
-			exit(1);
+			MPI_Abort(MPI_COMM_WORLD, 1);
 		}
 		string filename = argv[1];
 
@@ -166,10 +162,6 @@ int main(int argc, char** argv) {
 		int current_index = 0;		// index of the first element to parse
 		int tmp;
 
-		if (chunk_size == 0) {
-
-		}
-
 		for (int i = 1; i < size; i++) {
 			if (i <= spare_rows) {
 				last = first + chunk_size + 1;
@@ -193,8 +185,8 @@ int main(int argc, char** argv) {
 		}
 	} else {
 		// Receive number of rows the process has to work on
-		row = chunk_size;
-		MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+		//MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+		//row = chunk_size;
 		out = new float[chunk_size];
 
 		MPI_Recv(&n, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
@@ -219,7 +211,7 @@ int main(int argc, char** argv) {
 	if (rank == 0) {
 		printf("Setup finished");
 	}
-	
+
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
@@ -278,6 +270,13 @@ int main(int argc, char** argv) {
 
 	delete[] v;
 	delete[] out;
+	return 0;
+}
+
+int main(int argc, char** argv) {
+	MPI_Init(&argc, &argv);
+
+	MPI_1D_Partitioning(argc, argv);
 
 	MPI_Finalize();
 
