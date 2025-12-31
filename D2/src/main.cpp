@@ -117,6 +117,10 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		return 1;
 	}
 
+	if (rank == 0) {
+		sequential_execution(argc, argv);
+	}
+
 	// ---- MASTER CODE ----
 	if (rank == 0) {
 		cout << "--- MPI EXECUTION ---" << endl;
@@ -185,8 +189,8 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		}
 	} else {
 		// Receive number of rows the process has to work on
-		//MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
-		//row = chunk_size;
+		MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+		row = chunk_size;
 		out = new float[chunk_size];
 
 		MPI_Recv(&n, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
