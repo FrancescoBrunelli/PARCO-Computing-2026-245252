@@ -363,6 +363,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
+	MPI_Group world_group, cart_group;
+	MPI_Comm_group(MPI_COMM_WORLD, &world_group);
+	MPI_Comm_group(cart_comm, &cart_group);
 
 	// Setup
 	if (rank == 0) {
@@ -376,9 +379,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		int last_col;		// last col of the chunk
 		int tmp;
 		int worker_world_rank;
-		MPI_Group world_group, cart_group;
-		MPI_Comm_group(MPI_COMM_WORLD, &world_group);
-		MPI_Comm_group(cart_comm, &cart_group);
 
 		for (int i = 0; i < dims[0]; i++) {		// For: number of row chunks
 			if (i < spare_rows) {
