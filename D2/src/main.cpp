@@ -522,14 +522,14 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 			}
 		}
 	}
-
-	MPI_Allreduce(out, out, total_rows, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+	float* output = new float[total_rows]{};
+	MPI_Allreduce(out, output, total_rows, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 	// MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
 		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
 		cout << "**** OUT: ****" << endl;
-		printV(out, total_rows);
+		printV(output, total_rows);
 	}
 
 	delete[] v;
