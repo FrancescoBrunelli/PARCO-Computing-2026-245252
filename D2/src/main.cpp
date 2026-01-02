@@ -371,7 +371,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// Setup
 	vector<int> cart_ranks(dims[0] * dims[1]);
-	if (cart_rank == 0) {
+	if (rank != 0 && cart_rank == 0) {
 		int tmp_coords[2];
 		int tmp_rank;
 		for (int i = 0; i < dims[0]; i++) {
