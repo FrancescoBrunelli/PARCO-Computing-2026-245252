@@ -428,7 +428,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 					int r = get<0>(val);
 					int c = get<1>(val);
 					if (r >= first_row && r < last_row && c >= first_col && c < last_col) {
-						aRowB.push_back(r - first_row);
+						aRowB.push_back(r);
 						aColB.push_back(c);
 						aValB.push_back(get<2>(val));
 					}
@@ -464,6 +464,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		MPI_Recv(aCol.data(), nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
 		MPI_Recv(aVal.data(), nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
 		printf("Rank %d: received data\n", rank);
+		if (nnz == 0) {
+			return 0;
+		}
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
