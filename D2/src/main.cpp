@@ -418,8 +418,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 				recv_rank = cart_ranks[i * dims[1] + j];
 
+				printf("first row: %d; last row: %d, first col: %d, last col: %d\n", first_row, last_row, first_col, last_col);
+
 				for_each(COOvect.begin(), COOvect.end(), [first_row, first_col, last_row, last_col, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
-					printf("first row: %d; last row: %d, first col: %d, last col: %d\n", first_row, last_row, first_col, last_col);
 					int r = get<0>(val);
 					int c = get<1>(val);
 					if (r >= first_row && r <= last_row && c >= first_col && c <= last_col) {
@@ -463,8 +464,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 				first_col = last_col;
 			}
 
-
-
+			first_col = 0;
 			first_row = last_row;
 		}
 
