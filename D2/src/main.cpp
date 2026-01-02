@@ -386,7 +386,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		MPI_Send(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
 	}
 	if (rank == 0) {
-		printf("Start master code\n");
+		printf("Dims: (%d, %d)\n", dims[0], dims[1]);
 		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
 		printf("Master receives cart_ranks\n");
 		int spare_rows = row % dims[0];
@@ -419,6 +419,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 				recv_rank = cart_ranks[i * dims[1] + j];
 
 				for_each(COOvect.begin(), COOvect.end(), [first_row, first_col, last_row, last_col, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
+					printf("first row: %d; last row: %d, first col: %d, last col: %d\n", first_row, last_row, first_col, last_col);
 					int r = get<0>(val);
 					int c = get<1>(val);
 					if (r >= first_row && r <= last_row && c >= first_col && c <= last_col) {
