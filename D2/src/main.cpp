@@ -386,7 +386,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		MPI_Send(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
 	}
 	if (rank == 0) {
+		printf("Start master code\n");
 		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
+		printf("Master receives cart_ranks\n");
 		int spare_rows = row % dims[0];
 		int spare_cols = col % dims[1];
 		row_size = (row - spare_rows) / dims[0];		// Number of rows per chunk
@@ -477,6 +479,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		MPI_Recv(aRow.data(), nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
 		MPI_Recv(aCol.data(), nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
 		MPI_Recv(aVal.data(), nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
+		printf("Rank %d: received data\n", rank);
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
