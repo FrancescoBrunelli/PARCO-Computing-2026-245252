@@ -423,7 +423,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 				for_each(COOvect.begin(), COOvect.end(), [first_row, first_col, last_row, last_col, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
 					int r = get<0>(val);
 					int c = get<1>(val);
-					if (r >= first_row && r <= last_row && c >= first_col && c <= last_col) {
+					if (r >= first_row && r < last_row && c >= first_col && c < last_col) {
 						aRowB.push_back(r);
 						aColB.push_back(c);
 						aValB.push_back(get<2>(val));
