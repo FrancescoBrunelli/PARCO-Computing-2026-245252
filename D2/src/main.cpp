@@ -365,7 +365,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	MPI_Group world_group, cart_group;
 	MPI_Comm_group(MPI_COMM_WORLD, &world_group);
-	MPI_Comm_group(cart_comm, &cart_group);
+	if (rank != 0) {
+		MPI_Comm_group(cart_comm, &cart_group);
+	}
 
 	// Setup
 	if (rank == 0) {
