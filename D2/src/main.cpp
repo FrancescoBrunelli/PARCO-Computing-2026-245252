@@ -334,7 +334,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	}
 	int coords[2];
 	int cart_rank;
-	if (rank != 0) {
+	if (cart_comm != MPI_COMM_NULL) {
 		MPI_Comm_rank(cart_comm, &cart_rank);
 		MPI_Cart_coords(cart_comm, cart_rank, 2, coords);	// Each worker process gets its coordinates
 	}
@@ -381,19 +381,21 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// Setup
 	vector<int> cart_ranks(dims[0] * dims[1]);
-	if (cart_rank == 0) {
-		int tmp_coords[2];
-		int tmp_rank;
-		for (int i = 0; i < dims[0]; i++) {
-			for (int j = 0; j < dims[1]; j++) {
-				tmp_coords[0] = i; tmp_coords[1] = j;
-				MPI_Cart_rank(cart_comm, tmp_coords, &tmp_rank);
-				int world_rank;
-				MPI_Group_translate_ranks(cart_group, 1, &tmp_rank, world_group, &world_rank);
-				cart_ranks[i * dims[1] + j] = world_rank;
+	if (rank != 0) {
+		if (cart_rank == 0) {
+			int tmp_coords[2];
+			int tmp_rank;
+			for (int i = 0; i < dims[0]; i++) {
+				for (int j = 0; j < dims[1]; j++) {
+					tmp_coords[0] = i; tmp_coords[1] = j;
+					MPI_Cart_rank(cart_comm, tmp_coords, &tmp_rank);
+					int world_rank;
+					MPI_Group_translate_ranks(cart_group, 1, &tmp_rank, world_group, &world_rank);
+					cart_ranks[i * dims[1] + j] = world_rank;
+				}
 			}
+			MPI_Send(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
 		}
-		MPI_Send(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
 	}
 	if (rank == 0) {
 		printf("Dims: (%d, %d)\n", dims[0], dims[1]);
