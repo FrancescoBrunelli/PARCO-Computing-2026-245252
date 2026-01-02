@@ -90,14 +90,14 @@ void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 	};
 }
 
-void PartialCSRmul(const vector<int>& COOaRow, const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out) {
+void PartialCSRmul(int global_aRow0, const vector<int>& COOaRow, const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out) {
 	int temp;
-	for(int i = aRow.front(); i < aRow.back() - 1; i++) {
+	for(int i = 0; i < aRow.size(); i++) {
 		temp = 0;
 		for(int j = aRow[i]; j < aRow[i+1]; j++) {
 			temp += aVal[j] * v[aCol[j]];
 		}
-		out[COOaRow.front() + i] = temp;
+		out[global_aRow0 + i] = temp;
 	};
 }
 
@@ -242,7 +242,7 @@ void COOtoCSR(vector<int>& aRow) {
 	int count = 0;
 	tmp.push_back(0);
 	for(int i = aRow.front(); i <= aRow.back(); i++) {
-		for(int j = count; j < nnz; j++) {
+		for(int j = count; j < aRow.size(); j++) {
 			if(aRow[j] == i) {
 				count++;
 			}

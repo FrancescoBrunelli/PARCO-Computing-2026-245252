@@ -37,7 +37,7 @@ void COOmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 
 void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out);
 
-void PartialCSRmul(const vector<int>& COOaRow, const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out);
+void PartialCSRmul(int global_aRow0, const vector<int>& COOaRow, const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out);
 
 void P_CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out);
 

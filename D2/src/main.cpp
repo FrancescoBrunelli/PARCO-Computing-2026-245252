@@ -279,6 +279,9 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 int MPI_2D_Partitioning(int argc, char** argv) {
 	double t_start, t_end, time, total_time = 0;
+	int local_row = 0;
+	int local_col = 0;
+	int local_nnz = 0;
 	double min = DBL_MAX;
 	double max = -DBL_MAX;
 	int n;		// number of nnz in a certain chunk
@@ -290,6 +293,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	float* v = nullptr;
 	float* out = nullptr;
 	int total_rows;
+	int global_aRow0;
 
 	int rank, size;
 	int recv_rank;
@@ -354,14 +358,16 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		initV(v);
 	}
 
-	// Provide each process the number of cols
+	// Provide each process the total number of rows
+	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the total number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
-	// Provide each process the number of rows
-	MPI_Bcast(&total_rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the total number of nnz
+	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 	if (rank != 0) {
-		// Initialize v for all workers
-		v = new float[col];
+		v = new float[col];			// Initialize v for all workers
+		out = new float[row]{};		// Create and initialize with 0s the output array
 	}
 
 	// Provide each process the randomly generated vector
@@ -375,7 +381,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// Setup
 	vector<int> cart_ranks(dims[0] * dims[1]);
-	if (rank == 1) {
+	if (cart_rank == 0) {
 		int tmp_coords[2];
 		int tmp_rank;
 		for (int i = 0; i < dims[0]; i++) {
@@ -402,7 +408,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		int first_col = 0;	// first col of the chunk
 		int last_col;		// last col of the chunk
 		int tmp;
-		int worker_world_rank;
 
 		for (int i = 0; i < dims[0]; i++) {		// For: number of row chunks
 			if (i < spare_rows) {
@@ -452,21 +457,20 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 			first_row = last_row;
 		}
 	} else {
-		out = new float[total_rows]{};		// Create and initialize with 0s the output array
-		MPI_Recv(&row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of rows of the chunk
-		MPI_Recv(&col, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);		// Receive number of cols of the chunk
-		MPI_Recv(&nnz, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive number of nnz inside the chunk
-		aRow.resize(nnz);
-		aCol.resize(nnz);
-		aVal.resize(nnz);
+		MPI_Recv(&local_row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of rows of the chunk
+		MPI_Recv(&local_col, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);		// Receive number of cols of the chunk
+		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive number of nnz inside the chunk
+		aRow.resize(local_nnz);
+		aCol.resize(local_nnz);
+		aVal.resize(local_nnz);
 
-		MPI_Recv(aRow.data(), nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
-		MPI_Recv(aCol.data(), nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
-		MPI_Recv(aVal.data(), nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
+		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
+		global_aRow0 = aRow.front();		// Memorize global index of first row of the chunk
+		for (auto& r: aRow) {r -= global_aRow0;}	// Convert aRow indexes into local indexes
+
+		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
+		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
 		printf("Rank %d: received data\n", rank);
-		if (nnz == 0) {
-			return 0;
-		}
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -497,12 +501,12 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
-	} else if (nnz > 0) {
+	} else if (local_nnz > 0) {
 		vector<int> COOaRow = aRow;
 		COOtoCSR(aRow);
 		printf("rank %d finished CSR conversion\n", rank);
 		//t_start = MPI_Wtime();
-		PartialCSRmul(COOaRow, aRow, aCol, aVal, v, out);
+		PartialCSRmul(global_aRow0, COOaRow, aRow, aCol, aVal, v, out);
 		//t_end = MPI_Wtime();
 		printf("rank: %d has performed SpMV successfully\n", rank);
 		//time = t_end - t_start;
