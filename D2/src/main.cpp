@@ -292,7 +292,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	vector<float> aVal;
 	float* v = nullptr;
 	float* out = nullptr;
-	int total_rows;
 	int global_aRow0;
 
 	int rank, size;
@@ -352,7 +351,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		// -------- Fetch Matrix using vector
 		fetch_COO(COOvect, filename, aRow, aCol, aVal);
 
-		total_rows = row;
 		v = new float[col];
 		out = new float[row]{};
 		initV(v);
@@ -524,15 +522,15 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 					cout << "--- CSR aRow: ---" << endl;
 					printVector(aRow);
 					cout << "--- OUT: ---" << endl;
-					printV(out, total_rows);
+					printV(out, row);
 					fflush(stdout);
 				}
 				MPI_Barrier(cart_comm);
 			}
 		}
 	}
-	float* output = new float[total_rows]{};
-	MPI_Allreduce(out, output, total_rows, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+	float* output = new float[row]{};
+	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
 		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
