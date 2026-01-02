@@ -370,7 +370,23 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	}
 
 	// Setup
+	vector<int> cart_ranks(dims[0] * dims[1]);
+	if (cart_rank == 0) {
+		int tmp_coords[2];
+		int tmp_rank;
+		for (int i = 0; i < dims[0]; i++) {
+			for (int j = 0; j < dims[1]; j++) {
+				tmp_coords[0] = i; tmp_coords[1] = j;
+				MPI_Cart_rank(cart_comm, tmp_coords, &tmp_rank);
+				int world_rank;
+				MPI_Group_translate_ranks(cart_group, 1, &tmp_rank, world_group, &world_rank);
+				cart_ranks[i * dims[1] + j] = world_rank;
+			}
+		}
+		MPI_Send(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
+	}
 	if (rank == 0) {
+		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
 		int spare_rows = row % dims[0];
 		int spare_cols = col % dims[1];
 		row_size = (row - spare_rows) / dims[0];		// Number of rows per chunk
@@ -398,6 +414,8 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 					last_col = first_col + col_size;
 				}
 
+				recv_rank = cart_ranks[i * dims[1] + j];
+
 				for_each(COOvect.begin(), COOvect.end(), [first_row, first_col, last_row, last_col, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
 					int r = get<0>(val);
 					int c = get<1>(val);
@@ -420,12 +438,12 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 					}
 					return false;
 				});		// Count number of nnz elements inside the chunk
-				*/
 
 				// Get rank of process at coordinate (i, j)
 				coords[0] = i; coords[1] = j;
 				MPI_Cart_rank(cart_comm, coords, &cart_rank);
 				MPI_Group_translate_ranks(cart_group, 1, &cart_rank, world_group, &recv_rank);
+				*/
 
 				// Get and send number of rows and cols the i,j process has to work on
 				tmp = last_row - first_row;
