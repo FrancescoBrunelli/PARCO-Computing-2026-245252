@@ -495,10 +495,11 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	if (rank == 0) {
 		time = 0;
 	} else if (nnz > 0) {
+		vector<int> COOaRow = aRow;
 		COOtoCSR(aRow);
 		printf("rank %d finished CSR conversion\n", rank);
 		//t_start = MPI_Wtime();
-		CSRmul(aRow, aCol, aVal, v, out);
+		PartialCSRmul(COOaRow, aRow, aCol, aVal, v, out);
 		//t_end = MPI_Wtime();
 		printf("rank: %d has performed SpMV successfully\n", rank);
 		//time = t_end - t_start;
