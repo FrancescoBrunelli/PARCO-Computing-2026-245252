@@ -289,6 +289,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	vector<float> aVal;
 	float* v = nullptr;
 	float* out = nullptr;
+	int total_rows;
 
 	int rank, size;
 	int recv_rank;
@@ -348,12 +349,14 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		fetch_COO(COOvect, filename, aRow, aCol, aVal);
 
 		v = new float[col];
-		out = new float[row];
+		out = new float[row]{};
 		initV(v);
 	}
 
 	// Provide each process the number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the number of rows
+	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 	if (rank != 0) {
 		// Initialize v for all workers
@@ -362,6 +365,8 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
+	// Provide each process the empty output vector
+	MPI_Bcast(out, row, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
 	MPI_Group world_group, cart_group;
 	MPI_Comm_group(MPI_COMM_WORLD, &world_group);
@@ -432,23 +437,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 				n = aValB.size();
 
-				/*
-				n = count_if(COOvect.begin(), COOvect.end(),  [first_row, first_col, last_row, last_col, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
-					if ((std::get<0>(val) >= first_row && std::get<0>(val) < last_row) && (std::get<1>(val) >= first_col && std::get<1>(val) < last_col)) {
-						aRowB.push_back(get<0>(val));
-						aColB.push_back(get<1>(val));
-						aValB.push_back(get<2>(val));
-						return true;
-					}
-					return false;
-				});		// Count number of nnz elements inside the chunk
-
-				// Get rank of process at coordinate (i, j)
-				coords[0] = i; coords[1] = j;
-				MPI_Cart_rank(cart_comm, coords, &cart_rank);
-				MPI_Group_translate_ranks(cart_group, 1, &cart_rank, world_group, &recv_rank);
-				*/
-
 				// Get and send number of rows and cols the i,j process has to work on
 				tmp = last_row - first_row;
 				MPI_Send(&tmp, 1, MPI_INT, recv_rank, 0, MPI_COMM_WORLD);
@@ -459,17 +447,13 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 				MPI_Send(aRowB.data(), n, MPI_INT, recv_rank, 3, MPI_COMM_WORLD);		// Send chunk aRow
 				MPI_Send(aColB.data(), n, MPI_INT, recv_rank, 4, MPI_COMM_WORLD);		// Send chunk aCol
 				MPI_Send(aValB.data(), n, MPI_FLOAT, recv_rank, 5, MPI_COMM_WORLD);		// Send chunk aVal
-
-
 				first_col = last_col;
 			}
-
 			first_col = 0;
 			first_row = last_row;
 		}
-
-
 	} else {
+		total_rows = row;
 		MPI_Recv(&row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of rows of the chunk
 		MPI_Recv(&col, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);		// Receive number of cols of the chunk
 		MPI_Recv(&nnz, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive number of nnz inside the chunk
@@ -494,7 +478,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		for (int i = 0; i < dims[0]; i++) {
 			for (int j = 0; j < dims[1]; j++) {
 				if (i == coords[0] && j == coords[1]) {
-					printf("\t--- World Rank: %d with coordinates (%d, %d)", rank, coords[0], coords[1]);
+					printf("\t--- World Rank: %d with coordinates (%d, %d)\n", rank, coords[0], coords[1]);
 					cout << "--- aRow: ---" << endl;
 					printVector(aRow);
 					cout << "--- aCol: ---" << endl;
@@ -507,6 +491,42 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 			}
 		}
 	}
+
+	// --- CSR + SpMV Computation
+	if (rank == 0) {
+		time = 0;
+	} else if (nnz > 0) {
+		COOtoCSR(aRow);
+		printf("rank %d finished CSR conversion\n", rank);
+		//t_start = MPI_Wtime();
+		CSRmul(aRow, aCol, aVal, v, out);
+		//t_end = MPI_Wtime();
+		printf("rank: %d has performed SpMV successfully\n", rank);
+		//time = t_end - t_start;
+	}
+
+	// Print Check
+	if (rank != 0) {
+		for (int i = 0; i < dims[0]; i++) {
+			for (int j = 0; j < dims[1]; j++) {
+				if (i == coords[0] && j == coords[1]) {
+					printf("\t--- World Rank: %d with coordinates (%d, %d)\n", rank, coords[0], coords[1]);
+					cout << "--- CSR aRow: ---" << endl;
+					printVector(aRow);
+					cout << "--- OUT: ---" << endl;
+					printV(out, total_rows);
+					fflush(stdout);
+				}
+				MPI_Barrier(cart_comm);
+			}
+		}
+	}
+
+
+
+
+
+
 
 	return 0;
 }
