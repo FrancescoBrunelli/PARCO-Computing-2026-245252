@@ -428,7 +428,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 					int r = get<0>(val);
 					int c = get<1>(val);
 					if (r >= first_row && r < last_row && c >= first_col && c < last_col) {
-						aRowB.push_back(r);
+						aRowB.push_back(r - first_row);
 						aColB.push_back(c);
 						aValB.push_back(get<2>(val));
 					}
@@ -523,7 +523,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	}
 	float* output = new float[total_rows]{};
 	MPI_Allreduce(out, output, total_rows, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
-	// MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
 		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
