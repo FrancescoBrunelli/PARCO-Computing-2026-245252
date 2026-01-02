@@ -467,12 +467,10 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		aVal.resize(local_nnz);
 		
 		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
-		global_aRow0 = aRow.front();		// Memorize global index of first row of the chunk
-		printf("rank: %d aRow\n", rank);
-		for (auto& r: aRow) {r -= global_aRow0;}	// Convert aRow indexes into local indexes
+		//global_aRow0 = aRow.front();		// Memorize global index of first row of the chunk
+		//for (auto& r: aRow) {r -= global_aRow0;}	// Convert aRow indexes into local indexes
 
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
-		printf("rank: %d aCol\n", rank);
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
 		printf("Rank %d: received data\n", rank);
 	}
@@ -510,7 +508,8 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		COOtoCSR(aRow);
 		printf("rank %d finished CSR conversion\n", rank);
 		//t_start = MPI_Wtime();
-		PartialCSRmul(global_aRow0, COOaRow, aRow, aCol, aVal, v, out);
+		//PartialCSRmul(global_aRow0, COOaRow, aRow, aCol, aVal, v, out);
+		PartialCSRmul(COOaRow, aRow, aCol, aVal, v, out);
 		//t_end = MPI_Wtime();
 		printf("rank: %d has performed SpMV successfully\n", rank);
 		//time = t_end - t_start;
