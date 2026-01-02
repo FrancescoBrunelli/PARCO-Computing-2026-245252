@@ -537,7 +537,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	if (rank == 0) {
 		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
 		cout << "**** OUT: ****" << endl;
-		printV(output, total_rows);
+		printV(output, row);
 	}
 
 	delete[] v;
