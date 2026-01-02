@@ -365,8 +365,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
-	// Provide each process the empty output vector
-	MPI_Bcast(out, row, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
 	MPI_Group world_group, cart_group;
 	MPI_Comm_group(MPI_COMM_WORLD, &world_group);
@@ -454,6 +452,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		}
 	} else {
 		total_rows = row;
+		out = new float[total_rows]{};		// Create and initialize with 0s the output array
 		MPI_Recv(&row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of rows of the chunk
 		MPI_Recv(&col, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);		// Receive number of cols of the chunk
 		MPI_Recv(&nnz, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive number of nnz inside the chunk
