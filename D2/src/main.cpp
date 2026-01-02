@@ -387,7 +387,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	}
 	if (rank == 0) {
 		printf("Start master code\n");
-		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
+		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
 		printf("Master receives cart_ranks\n");
 		int spare_rows = row % dims[0];
 		int spare_cols = col % dims[1];
