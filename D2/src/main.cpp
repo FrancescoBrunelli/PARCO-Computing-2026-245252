@@ -357,7 +357,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	// Provide each process the number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of rows
-	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Bcast(&total_rows, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 	if (rank != 0) {
 		// Initialize v for all workers
@@ -452,7 +452,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 			first_row = last_row;
 		}
 	} else {
-		total_rows = row;
 		out = new float[total_rows]{};		// Create and initialize with 0s the output array
 		MPI_Recv(&row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of rows of the chunk
 		MPI_Recv(&col, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);		// Receive number of cols of the chunk
@@ -510,7 +509,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	if (rank != 0) {
 		for (int i = 0; i < dims[0]; i++) {
 			for (int j = 0; j < dims[1]; j++) {
-				if (i == coords[0] && j == coords[1]) {
+				if (i == coords[0] && j == coords[1] && nnz > 0) {
 					printf("\t--- World Rank: %d with coordinates (%d, %d)\n", rank, coords[0], coords[1]);
 					cout << "--- CSR aRow: ---" << endl;
 					printVector(aRow);
