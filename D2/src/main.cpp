@@ -465,12 +465,14 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		aRow.resize(local_nnz);
 		aCol.resize(local_nnz);
 		aVal.resize(local_nnz);
-
+		
 		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
 		global_aRow0 = aRow.front();		// Memorize global index of first row of the chunk
+		printf("rank: %d aRow\n", rank);
 		for (auto& r: aRow) {r -= global_aRow0;}	// Convert aRow indexes into local indexes
 
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
+		printf("rank: %d aCol\n", rank);
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
 		printf("Rank %d: received data\n", rank);
 	}
