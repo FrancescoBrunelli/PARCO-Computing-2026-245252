@@ -321,10 +321,12 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	int dims[2] = {0, 0};
 	MPI_Dims_create(size - 1, 2, dims);	// Get number of row and col chunks
-	int periods[2] = {0, 0};
-	int reorder = 1;
 	MPI_Comm cart_comm;
-	MPI_Cart_create(workers_comm, 2, dims, periods, reorder, &cart_comm);
+	if (rank != 0) {
+		int periods[2] = {0, 0};
+		int reorder = 1;
+		MPI_Cart_create(workers_comm, 2, dims, periods, reorder, &cart_comm);
+	}
 	int coords[2];
 	int cart_rank;
 	if (rank != 0) {
