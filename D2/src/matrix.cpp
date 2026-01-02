@@ -97,7 +97,7 @@ void PartialCSRmul(const vector<int>& COOaRow, const vector<int>& aRow, const ve
 		for(int j = aRow[i]; j < aRow[i+1]; j++) {
 			temp += aVal[j] * v[aCol[j]];
 		}
-		out[aRow.front() + i] = temp;
+		out[COOaRow.front() + i] = temp;
 	};
 }
 
