@@ -198,7 +198,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 	MPI_Barrier(MPI_COMM_WORLD);
 	if (rank == 0) {
-		printf("Setup finished");
+		printf("Setup finished\n");
 	}
 
 	// --- CSR + SpMV Computation
@@ -248,7 +248,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
+		printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
@@ -475,12 +475,23 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	} else if (local_nnz > 0) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
-		//t_start = MPI_Wtime();
-		//PartialCSRmul(global_aRow0, COOaRow, aRow, aCol, aVal, v, out);
+		t_start = MPI_Wtime();
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
-		//t_end = MPI_Wtime();
-		//time = t_end - t_start;
+		t_end = MPI_Wtime();
+		time = t_end - t_start;
 	}
+
+	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		time = DBL_MAX;
+	}
+	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		time = -DBL_MAX;
+	}
+	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	/*
 	// Print Check
@@ -505,7 +516,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
+		printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
