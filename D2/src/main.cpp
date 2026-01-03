@@ -151,6 +151,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 	if (rank != 0) {
 		v = new float[col];			// Initialize v for all workers
+		out = new float[row]{};
 	}
 
 	// Provide each process the randomly generated vector
@@ -189,7 +190,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	} else {
 		// Receive number of rows the process has to work on
 		MPI_Recv(&local_row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
-		out = new float[local_row];
+		//out = new float[local_row];
 
 		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
 		aRow.resize(local_nnz);
@@ -217,8 +218,8 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
 		t_start = MPI_Wtime();
-		CSRmul(aRow, aCol, aVal, v, out);
-		//PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
+		//CSRmul(aRow, aCol, aVal, v, out);
+		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
 		time = t_end - t_start;
 	}
@@ -235,6 +236,15 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	}
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
+	float* output = new float[row]{};
+	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
+		cout << "**** OUT: ****" << endl;
+		printV(output, row);
+	}
+	/*
 	// Output printing
 	bool token = true;
 	if (rank == 0) {
@@ -250,6 +260,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
 	}
+	*/
 
 	/*
 	float* output = new float[row]{};
