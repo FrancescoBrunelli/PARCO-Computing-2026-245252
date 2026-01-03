@@ -38,8 +38,8 @@ void sequential_execution(int argc, char** argv) {
 		vector<tuple<int, int, float>> COOvect;
 		fetch_COO(COOvect, filename, aRow, aCol, aVal);
 
-		/*
-		float* mat = printFullMatrix(COOvect);
+
+		//float* mat = printFullMatrix(COOvect);
 
 		cout << "---- COO: ----" << endl;
 		cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
@@ -49,7 +49,7 @@ void sequential_execution(int argc, char** argv) {
 		printVector(aCol);
 		cout << "--- aVal: ---" << endl;
 		printVector(aVal);
-		*/
+
 
 		COOtoCSR(aRow);
 
@@ -226,6 +226,21 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		printf("Setup finished\n");
 	}
 	*/
+
+	// DEBUG PRINT
+		for (int i = 1; i < size; i++) {
+			if (rank == i) {
+				printf("\t--- World Rank: %d\n", rank);
+				cout << "--- aRow: ---" << endl;
+				printVector(aRow);
+				cout << "--- aCol: ---" << endl;
+				printVector(aCol);
+				cout << "--- aVal: ---" << endl;
+				printVector(aVal);
+				fflush(stdout);
+			}
+			MPI_Barrier(MPI_COMM_WORLD);
+		}
 
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
