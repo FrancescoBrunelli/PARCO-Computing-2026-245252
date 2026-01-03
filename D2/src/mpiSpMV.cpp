@@ -17,7 +17,7 @@ int sequential_execution(int argc, char** argv) {
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	if (rank == 0) {
-		cout << endl << "--- SEQUENTIAL EXECUTION ---" << endl;
+		cout << "--- SEQUENTIAL EXECUTION ---" << endl;
 		srand(time(NULL));
 		timespec t0, t1;
 		// Get input from command line
