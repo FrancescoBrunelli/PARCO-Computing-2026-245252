@@ -229,7 +229,9 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		COOtoCSR(aRow);
 	}
 
-	MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
+	if (rank != 0) {
+		MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
+	}
 
 	if (rank == 0 || local_nnz == 0) {
 		time = 0;
@@ -506,7 +508,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		COOtoCSR(aRow);
 	}
 
-	MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
+	if (rank != 0) {
+		MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
+	}
 
 	if (rank == 0 || local_nnz == 0) {
 		time = 0;
