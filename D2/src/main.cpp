@@ -17,74 +17,78 @@ double toMilliseconds(const timespec& t) {
 }
 
 void sequential_execution(int argc, char** argv) {
-	cout << "--- SEQUENTIAL EXECUTION ---" << endl;
-	srand(time(NULL));
-	timespec t0, t1;
-	// Get input from command line
-	if (argc < 2) {
-		fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
-		exit(1);
+	int rank, size;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	if (rank == 0) {
+		cout << endl << "--- SEQUENTIAL EXECUTION ---" << endl;
+		srand(time(NULL));
+		timespec t0, t1;
+		// Get input from command line
+		if (argc < 2) {
+			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
+			exit(1);
+		}
+		string filename = argv[1];
+
+		vector<int> aRow;
+		vector<int> aCol;
+		vector<float> aVal;
+
+		// -------- Fetch Matrix using vector
+		vector<tuple<int, int, float>> COOvect;
+		fetch_COO(COOvect, filename, aRow, aCol, aVal);
+
+		float* mat = printFullMatrix(COOvect);
+
+		cout << "---- COO: ----" << endl;
+		cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
+		cout << "--- aRow: ---" << endl;
+		printVector(aRow);
+		cout << "--- aCol: ---" << endl;
+		printVector(aCol);
+		cout << "--- aVal: ---" << endl;
+		printVector(aVal);
+
+		COOtoCSR(aRow);
+
+		cout << "---- CSR: ----" << endl;
+		cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
+		cout << "--- aRow: ---" << endl;
+		printVector(aRow);
+		cout << "--- aCol: ---" << endl;
+		printVector(aCol);
+		cout << "--- aVal: ---" << endl;
+		printVector(aVal);
+
+		/*
+		double start = toMilliseconds(t0);
+		double end = toMilliseconds(t1);
+		cout << "CSR elapsed time: " << end - start << " ms" << endl;
+		*/
+
+		float* v = new float[col];
+		float* out = new float[row];
+		initV(v);
+		cout << "--- V: ---" << endl;
+		printV(v, col);
+
+		clock_gettime(CLOCK_MONOTONIC, &t0);		// Get start time
+		CSRmul(aRow, aCol, aVal, v, out);
+		//P_CSRmul(aRow, aCol, aVal, v, out);
+		clock_gettime(CLOCK_MONOTONIC, &t1);		// Get end time
+
+		cout << "--- OUT: ---" << endl;
+		printV(out, row);
+
+		double start = toMilliseconds(t0);
+		double end = toMilliseconds(t1);
+		//cout << end - start << endl;
+		cout << "Mul elapsed time: " << end - start << " ms" << endl;
+
+		delete[] mat;
+		delete[] v;
+		delete[] out;
 	}
-	string filename = argv[1];
-
-	vector<int> aRow;
-	vector<int> aCol;
-	vector<float> aVal;
-
-	// -------- Fetch Matrix using vector
-	vector<tuple<int, int, float>> COOvect;
-	fetch_COO(COOvect, filename, aRow, aCol, aVal);
-
-	float* mat = printFullMatrix(COOvect);
-
-	cout << "---- COO: ----" << endl;
-	cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
-	cout << "--- aRow: ---" << endl;
-	printVector(aRow);
-	cout << "--- aCol: ---" << endl;
-	printVector(aCol);
-	cout << "--- aVal: ---" << endl;
-	printVector(aVal);
-
-	COOtoCSR(aRow);
-
-	cout << "---- CSR: ----" << endl;
-	cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
-	cout << "--- aRow: ---" << endl;
-	printVector(aRow);
-	cout << "--- aCol: ---" << endl;
-	printVector(aCol);
-	cout << "--- aVal: ---" << endl;
-	printVector(aVal);
-
-	/*
-	double start = toMilliseconds(t0);
-	double end = toMilliseconds(t1);
-	cout << "CSR elapsed time: " << end - start << " ms" << endl;
-	*/
-
-	float* v = new float[col];
-	float* out = new float[row];
-	initV(v);
-	cout << "--- V: ---" << endl;
-	printV(v, col);
-
-	clock_gettime(CLOCK_MONOTONIC, &t0);		// Get start time
-	CSRmul(aRow, aCol, aVal, v, out);
-	//P_CSRmul(aRow, aCol, aVal, v, out);
-	clock_gettime(CLOCK_MONOTONIC, &t1);		// Get end time
-
-	cout << "--- OUT: ---" << endl;
-	printV(out, row);
-
-	double start = toMilliseconds(t0);
-	double end = toMilliseconds(t1);
-	//cout << end - start << endl;
-	cout << "Mul elapsed time: " << end - start << " ms" << endl;
-
-	delete[] mat;
-	delete[] v;
-	delete[] out;
 }
 
 int MPI_1D_Partitioning(int argc, char** argv) {
@@ -101,14 +105,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	int rank, size;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
-	MPI_Request requests[5];
 	MPI_Status status;
-
-	/*
-	start = MPI_Wtime();
-	end = MPI_Wtime();
-	total_time = end - start;
-	*/
 
 	if (size < 2) {
 		if (rank == 0)
@@ -117,13 +114,9 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		return 1;
 	}
 
-	if (rank == 0) {
-		sequential_execution(argc, argv);
-	}
-
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		cout << "--- MPI EXECUTION ---" << endl;
+		cout << endl << "--- MPI EXECUTION [1D] ---" << endl;
 		// Get input from command line
 		if (argc < 2) {
 			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
@@ -152,13 +145,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		/*
-		// Provide each process the empty output vector
-		MPI_Bcast(out, row, MPI_FLOAT, 0, MPI_COMM_WORLD);
-		*/
-
 		// Compute chunksize and send a chunk to each process
-			// NOTE: 1D PARTITIONING
 		int spare_rows = row % (size - 1);
 		chunk_size = (row - spare_rows) / (size - 1);		// number of rows per chunk
 		int first = 0;	// first row of the chunk
@@ -195,7 +182,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 		MPI_Recv(&n, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
 		nnz = n;
-		printf("rank: %d has nnz = %d\n", rank, nnz);
 		aRow.resize(n);
 		aCol.resize(n);
 		aVal.resize(n);
@@ -204,11 +190,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		MPI_Recv(aRow.data(), n, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive aRow
 		MPI_Recv(aCol.data(), n, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
 		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
-	}
-	// DEBUG PRINT
-	if (rank == 1) {
-		cout << "COO: " << endl;
-		printVector(aRow);
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -221,26 +202,10 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		time = 0;
 	} else if (nnz > 0) {
 		COOtoCSR(aRow);
-		printf("rank %d finished CSR conversion\n", rank);
 		t_start = MPI_Wtime();
 		CSRmul(aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
-		printf("rank: %d has performed SpMV successfully\n", rank);
 		time = t_end - t_start;
-	}
-
-	// DEBUG PRINT CHECK
-	if (rank == 1) {
-		cout << "**** RANK: " << rank << " ****" << endl;
-		cout << "rows: " << chunk_size << endl;
-		cout << "nnz: " << n << endl;
-		cout << "---- CSR: ----" << endl;
-		cout << "--- aRow: ---" << endl;
-		printVector(aRow);
-		cout << "--- aCol: ---" << endl;
-		printVector(aCol);
-		cout << "--- aVal: ---" << endl;
-		printVector(aVal);
 	}
 
 	printf("-- %d\n", rank);
@@ -292,13 +257,11 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	vector<float> aVal;
 	float* v = nullptr;
 	float* out = nullptr;
-	int global_aRow0;
 
 	int rank, size;
 	int recv_rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
-	MPI_Request requests[5];
 	MPI_Status status;
 	MPI_Comm workers_comm;
 	int color;
@@ -319,10 +282,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	MPI_Comm_split(MPI_COMM_WORLD, color, rank, &workers_comm);
 
-	if (rank == 0) {
-		sequential_execution(argc, argv);
-	}
-
 	int dims[2] = {0, 0};
 	MPI_Dims_create(size - 1, 2, dims);	// Get number of row and col chunks
 	MPI_Comm cart_comm = MPI_COMM_NULL;
@@ -340,7 +299,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		cout << "--- MPI EXECUTION ---" << endl;
+		cout << endl << "--- MPI EXECUTION [2D] ---" << endl;
 		// Get input from command line
 		if (argc < 2) {
 			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
@@ -398,7 +357,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	if (rank == 0) {
 		printf("Dims: (%d, %d)\n", dims[0], dims[1]);
 		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
-		printf("Master receives cart_ranks\n");
 		int spare_rows = row % dims[0];
 		int spare_cols = col % dims[1];
 		row_size = (row - spare_rows) / dims[0];		// Number of rows per chunk
@@ -426,8 +384,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 				}
 
 				recv_rank = cart_ranks[i * dims[1] + j];
-
-				printf("first row: %d; last row: %d, first col: %d, last col: %d\n", first_row, last_row, first_col, last_col);
 
 				for_each(COOvect.begin(), COOvect.end(), [first_row, first_col, last_row, last_col, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
 					int r = get<0>(val);
@@ -470,7 +426,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
-		printf("Rank %d: received data\n", rank);
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -479,6 +434,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		printf("Setup Finished\n");
 	}
 
+	/*
 	// DEBUG PRINT
 	if (rank != 0) {
 		for (int i = 0; i < dims[0]; i++) {
@@ -497,6 +453,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 			}
 		}
 	}
+	*/
 
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
@@ -504,15 +461,14 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	} else if (local_nnz > 0) {
 		vector<int> COOaRow = aRow;
 		COOtoCSR(aRow);
-		printf("rank %d finished CSR conversion\n", rank);
 		//t_start = MPI_Wtime();
 		//PartialCSRmul(global_aRow0, COOaRow, aRow, aCol, aVal, v, out);
 		PartialCSRmul(COOaRow, aRow, aCol, aVal, v, out);
 		//t_end = MPI_Wtime();
-		printf("rank: %d has performed SpMV successfully\n", rank);
 		//time = t_end - t_start;
 	}
 
+	/*
 	// Print Check
 	if (rank != 0) {
 		for (int i = 0; i < dims[0]; i++) {
@@ -529,6 +485,8 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 			}
 		}
 	}
+	*/
+
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
@@ -541,18 +499,14 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	delete[] v;
 	delete[] out;
 	return 0;
-
-
-
-
-
-	return 0;
 }
 
 int main(int argc, char** argv) {
 	MPI_Init(&argc, &argv);
 
-	//MPI_1D_Partitioning(argc, argv);
+	sequential_execution(argc, argv);
+
+	MPI_1D_Partitioning(argc, argv);
 
 	MPI_2D_Partitioning(argc, argv);
 
