@@ -256,13 +256,13 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		}
 	} else {
 		MPI_Recv(&token, 1, MPI_C_BOOL, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-		printV(out, local_row);
+		printV(out, row);
 		fflush(stdout);
 		if (rank < size - 1) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
 	}
-	
+
 
 	/*
 	float* output = new float[row]{};
