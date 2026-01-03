@@ -239,12 +239,14 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
+	/*
 	if (rank == 0) {
 		printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
-	/*
+	*/
+
 	// Output printing
 	bool token = true;
 	if (rank == 0) {
@@ -260,7 +262,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
 	}
-	*/
+	
 
 	/*
 	float* output = new float[row]{};
