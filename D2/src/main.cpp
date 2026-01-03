@@ -163,7 +163,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		chunk_size = (row - spare_rows) / (size - 1);		// number of rows per chunk
 		int first_row = 0;	// first row of the chunk
 		int last_row;		// last row of the chunk
-		int current_index = 0;		// index of the first element to parse
+		//int current_index = 0;		// index of the first element to parse
 		int tmp;
 
 		for (int i = 1; i < size; i++) {
@@ -198,9 +198,9 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 			n = aValB.size();
 
 			MPI_Send(&n, 1, MPI_INT, i, 1, MPI_COMM_WORLD);	// Send message size
-			MPI_Send(aRowB.data() + current_index, n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aRow
-			MPI_Send(aColB.data() + current_index, n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
-			MPI_Send(aValB.data() + current_index, n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
+			MPI_Send(aRowB.data(), n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aRow
+			MPI_Send(aColB.data(), n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
+			MPI_Send(aValB.data(), n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
 
 			//current_index += n;
 			first_row = last_row;
@@ -208,7 +208,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	} else {
 		// Receive number of rows the process has to work on
 		MPI_Recv(&local_row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
-
 		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
 		aRow.resize(local_nnz);
 		aCol.resize(local_nnz);
@@ -462,9 +461,8 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		aRow.resize(local_nnz);
 		aCol.resize(local_nnz);
 		aVal.resize(local_nnz);
-		
-		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
 
+		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
 	}
