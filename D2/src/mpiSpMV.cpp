@@ -80,10 +80,8 @@ int sequential_execution(int argc, char** argv) {
 		//P_CSRmul(aRow, aCol, aVal, v, out);
 		clock_gettime(CLOCK_MONOTONIC, &t1);		// Get end time
 
-
 		cout << "--- OUT: ---" << endl;
 		printV(out, row);
-
 
 		double start = toMilliseconds(t0);
 		double end = toMilliseconds(t1);
@@ -255,24 +253,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	}
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
-	/*
-	// Output printing
-	bool token = true;
-	if (rank == 0) {
-		printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
-		if (size > 1) {
-			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
-		}
-	} else {
-		MPI_Recv(&token, 1, MPI_C_BOOL, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-		printV(out, row);
-		fflush(stdout);
-		if (rank < size - 1) {
-			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
-		}
-	}
-	*/
-
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
@@ -280,10 +260,10 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		printf("AVG: %f\n", (total_time / (size - 1)) * 1000);
 		printf("MAX: %f\n", max * 1000);
 		printf("MIN: %f\n", min * 1000);
-
+		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
-
+		*/
 	}
 
 	delete[] v;
@@ -561,10 +541,10 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		printf("AVG: %f\n", (total_time / (size - 1)) * 1000);
 		printf("MAX: %f\n", max * 1000);
 		printf("MIN: %f\n", min * 1000);
-
+		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
-
+		*/
 	}
 
 	delete[] v;
