@@ -6,6 +6,7 @@
 #include <map>
 #include <array>
 #include <float.h>
+#include <algorithm>
 #include <mpi.h>
 #include "matrix.h"
 #include "mpiSpMV.h"
