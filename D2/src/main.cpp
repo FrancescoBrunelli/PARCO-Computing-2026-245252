@@ -225,7 +225,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
 		time = 0;
-	} else if (nnz > 0) {
+	} else if (local_nnz > 0) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
 		MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
@@ -235,7 +235,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		t_end = MPI_Wtime();
 		time = t_end - t_start;
 	}
-
+	
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
