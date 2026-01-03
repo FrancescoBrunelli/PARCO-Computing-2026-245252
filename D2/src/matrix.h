@@ -1,15 +1,7 @@
 #ifndef __MATRIX_H__
 #define __MATRIX_H__
-#include <iostream>
-#include <ctime>
-#include <immintrin.h>
 #include <vector>
 #include <string>
-#include <fstream>
-#include <map>
-#include <array>
-#include <sstream>
-#include <algorithm>
 #include <tuple>
 
 using namespace std;
@@ -24,6 +16,8 @@ int randomNumber(const int& min, const int& max);
 void initM(float* mat);
 
 void initV(float* v);
+
+double toMilliseconds(const timespec& t);
 
 void COO(const float* mat, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal);
 

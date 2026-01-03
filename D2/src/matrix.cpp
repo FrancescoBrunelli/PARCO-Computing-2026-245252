@@ -1,10 +1,20 @@
+#include <vector>
+#include <string>
+#include <fstream>
+#include <map>
+#include <array>
+#include <sstream>
+#include <algorithm>
+#include <tuple>
+#include <iostream>
 #include "matrix.h"
+
+using namespace std;
 
 int row;	// Number of rows
 int col;	// Number of columns
 int nnz;	// Number of non-zero elements
 string object, format, datatype, storage;		// Banner elements in the matrix file
-
 
 int randomNumber(const int& min, const int& max) {
 	return rand() % (max - min + 1) + min;
@@ -26,6 +36,10 @@ void initV(float* v) {
 	for(int i = 0; i < col; i++) {
 		v[i] = randomNumber(2, 2);
 	}
+}
+
+double toMilliseconds(const timespec& t) {
+	return (double) t.tv_sec * 1000 + (double) t.tv_nsec / 1e6;
 }
 
 void COO(const float* mat, vector<int>& aRow, vector<int>& aCol, vector<float>& aVal) {

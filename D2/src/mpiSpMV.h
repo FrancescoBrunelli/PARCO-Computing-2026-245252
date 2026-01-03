@@ -1,0 +1,10 @@
+#ifndef D2_MPISPMV_H
+#define D2_MPISPMV_H
+
+int sequential_execution(int argc, char** argv);
+
+int MPI_1D_Partitioning(int argc, char** argv);
+
+int MPI_2D_Partitioning(int argc, char** argv);
+
+#endif //D2_MPISPMV_H
