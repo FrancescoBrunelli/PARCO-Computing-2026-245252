@@ -7,7 +7,7 @@ using namespace std;
 int main(int argc, char** argv) {
 	MPI_Init(&argc, &argv);
 
-	sequential_execution(argc, argv);
+	//sequential_execution(argc, argv);
 
 	MPI_1D_Partitioning(argc, argv);
 
