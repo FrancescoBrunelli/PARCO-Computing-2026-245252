@@ -80,7 +80,7 @@ void COOmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 }
 
 void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out) {
-	int temp;
+	float temp;
 	for(int i = 0; i < aRow.size() - 1; i++) {
 		temp = 0;
 		for(int j = aRow[i]; j < aRow[i+1]; j++) {
@@ -91,8 +91,8 @@ void CSRmul(const vector<int>& aRow, const vector<int>& aCol, const vector<float
 }
 
 void PartialCSRmul(const vector<int>& COOaRow, const vector<int>& aRow, const vector<int>& aCol, const vector<float>& aVal, const float* v, float* out) {
-	int temp;
-	for(int i = aRow.front(); i < aRow.back() - 1; i++) {
+	float temp;
+	for(int i = aRow.front(); i < aRow.back(); i++) {
 		temp = 0;
 		for(int j = aRow[i]; j < aRow[i+1]; j++) {
 			temp += aVal[j] * v[aCol[j]];
