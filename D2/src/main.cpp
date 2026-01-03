@@ -151,7 +151,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 	if (rank != 0) {
 		v = new float[col];			// Initialize v for all workers
-		out = new float[row]{};		// Create and initialize with 0s the output array
 	}
 
 	// Provide each process the randomly generated vector
@@ -190,6 +189,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	} else {
 		// Receive number of rows the process has to work on
 		MPI_Recv(&local_row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+		out = new float[local_row];
 
 		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
 		aRow.resize(local_nnz);
