@@ -183,9 +183,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		}
 	} else {
 		// Receive number of rows the process has to work on
-		MPI_Recv(&chunk_size, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
-		row = chunk_size;
-		out = new float[chunk_size];
+		MPI_Recv(&local_row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
 
 		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
 		aRow.resize(local_nnz);
