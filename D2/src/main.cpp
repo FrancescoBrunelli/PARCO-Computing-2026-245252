@@ -138,7 +138,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		fetch_COO(COOvect, filename, aRow, aCol, aVal);
 
 		v = new float[col];
-		out = new float[row];
+		out = new float[row]{};
 		initV(v);
 	}
 
