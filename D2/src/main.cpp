@@ -217,8 +217,8 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
 		t_start = MPI_Wtime();
-		//CSRmul(aRow, aCol, aVal, v, out);
-		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
+		CSRmul(aRow, aCol, aVal, v, out);
+		//PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
 		time = t_end - t_start;
 	}
@@ -235,7 +235,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	}
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
-	/*
 	// Output printing
 	bool token = true;
 	if (rank == 0) {
@@ -245,14 +244,14 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		}
 	} else {
 		MPI_Recv(&token, 1, MPI_C_BOOL, rank - 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-		printV(out, chunk_size);
+		printV(out, local_nnz);
 		fflush(stdout);
 		if (rank < size - 1) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
 	}
-	*/
 
+	/*
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
@@ -261,6 +260,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
+	*/
 
 	delete[] v;
 	delete[] out;
