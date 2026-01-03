@@ -208,7 +208,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		time = t_end - t_start;
 	}
 
-	printf("-- %d\n", rank);
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
@@ -459,11 +458,11 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	if (rank == 0) {
 		time = 0;
 	} else if (local_nnz > 0) {
-		vector<int> COOaRow = aRow;
+		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
 		//t_start = MPI_Wtime();
 		//PartialCSRmul(global_aRow0, COOaRow, aRow, aCol, aVal, v, out);
-		PartialCSRmul(COOaRow, aRow, aCol, aVal, v, out);
+		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
 		//t_end = MPI_Wtime();
 		//time = t_end - t_start;
 	}
