@@ -117,6 +117,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Status status;
 	MPI_Comm workers_comm;
 	int color;
+	int COOaRow0 = MPI_UNDEFINED;
 
 	if (size < 2) {
 		if (rank == 0)
@@ -223,12 +224,16 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	*/
 
 	// --- CSR + SpMV Computation
-	if (rank == 0) {
-		time = 0;
-	} else if (local_nnz > 0) {
-		int COOaRow0 = aRow.front();
+	if (rank != 0 && local_nnz > 0) {
+		COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
-		MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
+	}
+
+	MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
+
+	if (rank == 0 || local_nnz == 0) {
+		time = 0;
+	} else {
 		t_start = MPI_Wtime();
 		//CSRmul(aRow, aCol, aVal, v, out);
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
@@ -238,12 +243,12 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
-	if (rank == 0) {
+	if (rank == 0 || local_nnz == 0) {
 		time = DBL_MAX;
 	}
 	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
 
-	if (rank == 0) {
+	if (rank == 0 || local_nnz == 0) {
 		time = -DBL_MAX;
 	}
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
@@ -305,6 +310,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	MPI_Status status;
 	MPI_Comm workers_comm;
 	int color;
+	int COOaRow0 = MPI_UNDEFINED;
 
 	if (size < 2) {
 		if (rank == 0)
@@ -495,12 +501,16 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	*/
 
 	// --- CSR + SpMV Computation
-	if (rank == 0) {
+	if (rank != 0 && local_nnz > 0) {
+		COOaRow0 = aRow.front();
+		COOtoCSR(aRow);
+	}
+
+	MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
+
+	if (rank == 0 || local_nnz == 0) {
 		time = 0;
 	} else if (local_nnz > 0) {
-		int COOaRow0 = aRow.front();
-		COOtoCSR(aRow);
-		MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
 		t_start = MPI_Wtime();
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
@@ -509,12 +519,12 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
-	if (rank == 0) {
+	if (rank == 0 || local_nnz == 0) {
 		time = DBL_MAX;
 	}
 	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
 
-	if (rank == 0) {
+	if (rank == 0 || local_nnz == 0) {
 		time = -DBL_MAX;
 	}
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
