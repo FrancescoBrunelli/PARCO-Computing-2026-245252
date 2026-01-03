@@ -38,6 +38,7 @@ void sequential_execution(int argc, char** argv) {
 		vector<tuple<int, int, float>> COOvect;
 		fetch_COO(COOvect, filename, aRow, aCol, aVal);
 
+		/*
 		float* mat = printFullMatrix(COOvect);
 
 		cout << "---- COO: ----" << endl;
@@ -48,9 +49,11 @@ void sequential_execution(int argc, char** argv) {
 		printVector(aCol);
 		cout << "--- aVal: ---" << endl;
 		printVector(aVal);
+		*/
 
 		COOtoCSR(aRow);
 
+		/*
 		cout << "---- CSR: ----" << endl;
 		cout << "Rows: " << row << ", Cols: " << col << ", nnz: " << nnz << endl;
 		cout << "--- aRow: ---" << endl;
@@ -59,6 +62,7 @@ void sequential_execution(int argc, char** argv) {
 		printVector(aCol);
 		cout << "--- aVal: ---" << endl;
 		printVector(aVal);
+		*/
 
 		/*
 		double start = toMilliseconds(t0);
@@ -69,8 +73,10 @@ void sequential_execution(int argc, char** argv) {
 		float* v = new float[col];
 		float* out = new float[row];
 		initV(v);
+		/*
 		cout << "--- V: ---" << endl;
 		printV(v, col);
+		*/
 
 		clock_gettime(CLOCK_MONOTONIC, &t0);		// Get start time
 		CSRmul(aRow, aCol, aVal, v, out);
@@ -85,7 +91,7 @@ void sequential_execution(int argc, char** argv) {
 		//cout << end - start << endl;
 		cout << "Mul elapsed time: " << end - start << " ms" << endl;
 
-		delete[] mat;
+		//delete[] mat;
 		delete[] v;
 		delete[] out;
 	}
@@ -197,9 +203,12 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
+
+	/*
 	if (rank == 0) {
 		printf("Setup finished\n");
 	}
+	*/
 
 	// --- CSR + SpMV Computation
 	if (rank == 0) {
@@ -444,10 +453,11 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	MPI_Barrier(MPI_COMM_WORLD);
 
+	/*
 	if (rank == 0) {
 		printf("Setup Finished\n");
 	}
-
+	*/
 	/*
 	// DEBUG PRINT
 	if (rank != 0) {
