@@ -115,6 +115,8 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 	MPI_Status status;
+	MPI_Comm workers_comm;
+	int color;
 
 	if (size < 2) {
 		if (rank == 0)
@@ -122,6 +124,15 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		MPI_Finalize();
 		return 1;
 	}
+
+	if (rank == 0) {
+		color = MPI_UNDEFINED;
+	}
+	else {
+		color = 1;
+	}
+
+	MPI_Comm_split(MPI_COMM_WORLD, color, rank, &workers_comm);
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
@@ -217,7 +228,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	} else if (nnz > 0) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
-		MPI_Barrier(MPI_COMM_WORLD);		// Wait all workers are ready for SpMV
+		MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
 		t_start = MPI_Wtime();
 		//CSRmul(aRow, aCol, aVal, v, out);
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
@@ -237,6 +248,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	}
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
+	/*
 	// Output printing
 	bool token = true;
 	if (rank == 0) {
@@ -252,12 +264,15 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
 	}
+	*/
 
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
+		printf("AVG: %f\n", total_time / (size - 1));
+		printf("MAX: %f\n", max);
+		printf("MIN: %f\n", min);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
@@ -485,7 +500,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	} else if (local_nnz > 0) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
-		MPI_Barrier(MPI_COMM_WORLD);		// Wait all workers are ready for SpMV
+		MPI_Barrier(workers_comm);		// Wait all workers are ready for SpMV
 		t_start = MPI_Wtime();
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
@@ -527,7 +542,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
+		printf("AVG: %f\n", total_time / (size - 1));
+		printf("MAX: %f\n", max);
+		printf("MIN: %f\n", min);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
