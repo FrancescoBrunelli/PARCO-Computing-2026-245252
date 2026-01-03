@@ -97,6 +97,9 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	double max = -DBL_MAX;
 	int n;		// number of nnz in a certain chunk
 	int chunk_size;
+	int local_row = 0;
+	int local_col = 0;
+	int local_nnz = 0;
 	vector<int> aRow;
 	vector<int> aCol;
 	vector<float> aVal;
@@ -133,12 +136,16 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		initV(v);
 	}
 
+	// Provide each process the number of rows
+	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the number of nnz
+	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
 
 	if (rank != 0) {
-		// Initialize v for all workers
-		v = new float[col];
+		v = new float[col];			// Initialize v for all workers
+		out = new float[row]{};		// Create and initialize with 0s the output array
 	}
 
 	// Provide each process the randomly generated vector
@@ -180,16 +187,15 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		row = chunk_size;
 		out = new float[chunk_size];
 
-		MPI_Recv(&n, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
-		nnz = n;
-		aRow.resize(n);
-		aCol.resize(n);
-		aVal.resize(n);
+		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
+		aRow.resize(local_nnz);
+		aCol.resize(local_nnz);
+		aVal.resize(local_nnz);
 
 		// Receive COO-chunk
-		MPI_Recv(aRow.data(), n, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive aRow
-		MPI_Recv(aCol.data(), n, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
-		MPI_Recv(aVal.data(), n, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
+		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive aRow
+		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
+		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -201,9 +207,11 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	if (rank == 0) {
 		time = 0;
 	} else if (nnz > 0) {
+		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
 		t_start = MPI_Wtime();
-		CSRmul(aRow, aCol, aVal, v, out);
+		//CSRmul(aRow, aCol, aVal, v, out);
+		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
 		time = t_end - t_start;
 	}
@@ -220,6 +228,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	}
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
+	/*
 	// Output printing
 	bool token = true;
 	if (rank == 0) {
@@ -234,6 +243,16 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		if (rank < size - 1) {
 			MPI_Send(&token, 1, MPI_C_BOOL, rank + 1, 0, MPI_COMM_WORLD);
 		}
+	}
+	*/
+
+	float* output = new float[row]{};
+	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		//printf("Average time: %f\nMax execution time: %f\nMin execution time: %f\n", total_time / (size - 1), max, min);
+		cout << "**** OUT: ****" << endl;
+		printV(output, row);
 	}
 
 	delete[] v;
@@ -420,8 +439,6 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		aVal.resize(local_nnz);
 		
 		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
-		//global_aRow0 = aRow.front();		// Memorize global index of first row of the chunk
-		//for (auto& r: aRow) {r -= global_aRow0;}	// Convert aRow indexes into local indexes
 
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
