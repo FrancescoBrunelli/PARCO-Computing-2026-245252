@@ -106,6 +106,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	int local_row = 0;
 	int local_col = 0;
 	int local_nnz = 0;
+	vector<tuple<int, int, float>> COOvect;
 	vector<int> aRow;
 	vector<int> aCol;
 	vector<float> aVal;
@@ -134,7 +135,6 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		string filename = argv[1];
 
 		// -------- Fetch Matrix using vector
-		vector<tuple<int, int, float>> COOvect;
 		fetch_COO(COOvect, filename, aRow, aCol, aVal);
 
 		v = new float[col];
@@ -161,31 +161,49 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		// Compute chunksize and send a chunk to each process
 		int spare_rows = row % (size - 1);
 		chunk_size = (row - spare_rows) / (size - 1);		// number of rows per chunk
-		int first = 0;	// first row of the chunk
-		int last;		// last row of the chunk
+		int first_row = 0;	// first row of the chunk
+		int last_row;		// last row of the chunk
 		int current_index = 0;		// index of the first element to parse
 		int tmp;
 
 		for (int i = 1; i < size; i++) {
 			if (i <= spare_rows) {
-				last = first + chunk_size + 1;
+				last_row = first_row + chunk_size + 1;
 			} else {
-				last = first + chunk_size;
+				last_row = first_row + chunk_size;
 			}
-			tmp = last - first;		// Actual number of rows for the i-th process
+			tmp = last_row - first_row;		// Actual number of rows for the i-th process
 			MPI_Send(&tmp, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
 
+			/*
 			n = count_if(aRow.begin() + current_index, aRow.end(),  [first, last] (const int& val) {
 				return val >= first && val < last;
 			});
+			*/
+
+			vector<int> aRowB;
+			vector<int> aColB;
+			vector<float> aValB;
+
+			for_each(COOvect.begin(), COOvect.end(), [first_row, last_row, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
+					int r = get<0>(val);
+					int c = get<1>(val);
+					if (r >= first_row && r < last_row) {
+						aRowB.push_back(r);
+						aColB.push_back(c);
+						aValB.push_back(get<2>(val));
+					}
+				});
+
+			n = aValB.size();
 
 			MPI_Send(&n, 1, MPI_INT, i, 1, MPI_COMM_WORLD);	// Send message size
-			MPI_Send(aRow.data() + current_index, n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aRow
-			MPI_Send(aCol.data() + current_index, n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
-			MPI_Send(aVal.data() + current_index, n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
+			MPI_Send(aRowB.data() + current_index, n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aRow
+			MPI_Send(aColB.data() + current_index, n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
+			MPI_Send(aValB.data() + current_index, n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
 
-			current_index += n;
-			first = last;
+			//current_index += n;
+			first_row = last_row;
 		}
 	} else {
 		// Receive number of rows the process has to work on
