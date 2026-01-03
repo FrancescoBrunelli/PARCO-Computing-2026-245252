@@ -217,6 +217,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	} else if (nnz > 0) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
+		MPI_Barrier(MPI_COMM_WORLD);		// Wait all workers are ready for SpMV
 		t_start = MPI_Wtime();
 		//CSRmul(aRow, aCol, aVal, v, out);
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
@@ -484,6 +485,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	} else if (local_nnz > 0) {
 		int COOaRow0 = aRow.front();
 		COOtoCSR(aRow);
+		MPI_Barrier(MPI_COMM_WORLD);		// Wait all workers are ready for SpMV
 		t_start = MPI_Wtime();
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
 		t_end = MPI_Wtime();
