@@ -135,7 +135,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		cout << endl << "--- MPI EXECUTION [1D] ---" << endl;
+		//cout << endl << "--- MPI EXECUTION [1D] ---" << endl;
 		// Get input from command line
 		if (argc < 2) {
 			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
@@ -329,7 +329,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		cout << endl << "--- MPI EXECUTION [2D] ---" << endl;
+		//cout << endl << "--- MPI EXECUTION [2D] ---" << endl;
 		// Get input from command line
 		if (argc < 2) {
 			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
@@ -385,7 +385,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		}
 	}
 	if (rank == 0) {
-		printf("Dims: (%d, %d)\n", dims[0], dims[1]);
+		//printf("Dims: (%d, %d)\n", dims[0], dims[1]);
 		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
 		int spare_rows = row % dims[0];
 		int spare_cols = col % dims[1];
