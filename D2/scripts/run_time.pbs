@@ -1,0 +1,48 @@
+#!/bin/bash
+# Job name:
+#PBS -N MPI_SpMV
+# Output files:
+#PBS -o mpiSpMV_runtime.out
+# Error files
+#PBS -e mpiSpMV_runtime.err
+# Queue name
+#PBS -q short_cpuQ
+# Set the maximum wall time
+#PBS -l walltime=06:00:00
+# Set the memory cpus and resources
+#PBS -l select=2:ncpus=64:mpiprocs=64:mem=64gb
+# For MPI procs: max -np = select * mpiprocs
+
+# Load modules
+module load gcc91
+module load mpich-3.2.1--gcc-9.1.0
+# Select the working directory
+cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
+MODE_TYPE="Unkown"
+MATRIX_NAME="${INPUT%.mtx}"
+if [ "$MODE" -eq 0 ]; then
+  mkdir -p "results/${MATRIX_NAME}/1D_Blocks"
+  BASE="results/${MATRIX_NAME}/1D_Blocks/${MATRIX_NAME}"
+  MODE_TYPE"1D PARTITIONING"
+elif [ "$MODE" -eq 1 ]; then
+  mkdir -p "results/${MATRIX_NAME}/1D_Cyclic"
+  BASE="results/${MATRIX_NAME}/1D_Cyclic/${MATRIX_NAME}"
+  MODE_TYPE="1D CYCLIC PARTITIONING"
+elif [ "$MODE" -eq 2 ]; then
+  mkdir -p "results/${MATRIX_NAME}/2D_Blocks"
+  BASE="results/${MATRIX_NAME}/2D_Blocks/${MATRIX_NAME}"
+  MODE_TYPE="#2D PARTITIONING"
+else
+  echo "#Unkown mode"
+  exit 1
+fi
+
+FILENAME="${BASE}_NP${NPROCS}.txt"
+
+# Starting comment for result-file
+echo "# Execution with input file: $INPUT, NPROCS: $NPROCS, SELECTED MODE: " >> "${FILENAME}"
+
+for (( i = 0; i < 10; i++ )); do
+  mpirun -np "$NPROCS" ./src/main.out "$INPUT" "$MODE" >> "${FILENAME}" 2>&1
+done
+echo "End of Execution"
