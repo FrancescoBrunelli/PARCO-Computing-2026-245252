@@ -264,16 +264,20 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
+	/*
 	if (rank == 0) {
 		printf("Execution time: %f\n", max * 1000);
 		printf("AVG: %d\n", (nnz / (size - 1)));
 		printf("MAX: %d\n", maxNNZ);
 		printf("MIN: %d\n", minNNZ);
-		printf("GFLOPS: %f\n", (2 * nnz / max) / pow(10, 9));
-		/*
+		printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
-		*/
+	}
+	*/
+
+	if (rank == 0) {
+		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
 	}
 
 	delete[] v;
@@ -424,16 +428,20 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
+	/*
 	if (rank == 0) {
 		printf("Execution time: %f\n", max * 1000);
 		printf("AVG: %d\n", (nnz / size));
 		printf("MAX: %d\n", maxNNZ);
 		printf("MIN: %d\n", minNNZ);
-		printf("GFLOPS: %f\n", (2 * nnz / max) / pow(10, 9));
-		/*
+		printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
-		*/
+	}
+	*/
+
+	if (rank == 0) {
+		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / size), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
 	}
 
 	delete[] v;
@@ -714,16 +722,20 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
+	/*
 	if (rank == 0) {
 		printf("Execution time: %f\n", max * 1000);
 		printf("AVG: %d\n", (nnz / (size - 1)));
 		printf("MAX: %d\n", maxNNZ);
 		printf("MIN: %d\n", minNNZ);
-		printf("GFLOPS: %f\n", (2 * nnz / max) / pow(10, 9));
-		/*
+		printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
-		*/
+	}
+	*/
+
+	if (rank == 0) {
+		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
 	}
 
 	delete[] v;
