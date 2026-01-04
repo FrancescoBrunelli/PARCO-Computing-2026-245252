@@ -268,7 +268,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		printf("AVG: %d\n", (nnz / (size - 1)));
 		printf("MAX: %d\n", maxNNZ);
 		printf("MIN: %d\n", minNNZ);
-		printf("FLOPS: %f", 2 * nnz / max);
+		printf("GFLOPS: %f\n", (2 * nnz / max) / pow(10, 9));
 		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
@@ -428,7 +428,7 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		printf("AVG: %d\n", (nnz / size));
 		printf("MAX: %d\n", maxNNZ);
 		printf("MIN: %d\n", minNNZ);
-		printf("FLOPS: %f", 2 * nnz / max);
+		printf("GFLOPS: %f\n", (2 * nnz / max) / pow(10, 9));
 		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
@@ -718,7 +718,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		printf("AVG: %d\n", (nnz / (size - 1)));
 		printf("MAX: %d\n", maxNNZ);
 		printf("MIN: %d\n", minNNZ);
-		printf("FLOPS: %f", 2 * nnz / max);
+		printf("GFLOPS: %f\n", (2 * nnz / max) / pow(10, 9));
 		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
