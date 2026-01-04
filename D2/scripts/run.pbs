@@ -8,9 +8,9 @@
 # Queue name
 #PBS -q short_cpuQ
 # Set the maximum wall time
-#PBS -l walltime=0:03:00
+#PBS -l walltime=06:00:00
 # Set the memory cpus and resources
-#PBS -l select=1:ncpus=64:mpiprocs=64:mem=64gb
+#PBS -l select=2:ncpus=64:mpiprocs=64:mem=64gb
 # For MPI procs: max -np = select * mpiprocs
 
 # Load modules
@@ -20,5 +20,5 @@ module load mpich-3.2.1--gcc-9.1.0
 cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
 #gcc -std=c99 codename.c -o codename.out # C code
 #mpicc -std=c99 main.c -o main.out
-mpicxx -std=c++11 src/main.cpp src/matrix.cpp src/mpiSpMV.cpp -o src/main.out # C++ code
-mpirun -np 32 ./src/main.out "$INPUT"
+mpicxx -std=c++11 -O3 src/main.cpp src/matrix.cpp src/mpiSpMV.cpp -o src/main.out # C++ code
+mpirun -np 128 ./src/main.out "$INPUT" "$MODE"
