@@ -276,9 +276,6 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 	double min = DBL_MAX;
 	double max = -DBL_MAX;
 	int n;		// number of nnz in a certain chunk
-	int chunk_size;
-	int local_row = 0;
-	int local_col = 0;
 	int local_nnz = 0;
 	vector<tuple<int, int, float>> COOvect;
 	vector<int> aRow;
@@ -336,16 +333,6 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 
 	if (rank == 0) {
 		// Compute chunksize and send a chunk to each process
-		int spare_rows = row % (size - 1);
-		chunk_size = (row - spare_rows) / (size - 1);		// number of rows per chunk
-		int first = 0;	// first row of the chunk
-		int last;		// last row of the chunk
-		int current_index = 0;		// index of the first element to parse
-		int tmp;
-		int worker_rank;
-
-		tmp = chunk_size + 1;
-
 		vector<int> aRowB[size];
 		vector<int> aColB[size];
 		vector<float> aValB[size];
