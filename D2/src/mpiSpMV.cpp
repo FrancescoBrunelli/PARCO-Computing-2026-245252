@@ -137,7 +137,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		cout << "--- MPI EXECUTION [1D] ---" << endl;
+		//cout << "--- MPI EXECUTION [1D] ---" << endl;
 		// Get input from command line
 		string filename = argv[1];
 
@@ -308,7 +308,7 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		cout << "--- MPI EXECUTION [1D-Cyclic] ---" << endl;
+		//cout << "--- MPI EXECUTION [1D-Cyclic] ---" << endl;
 		// Get input from command line
 		string filename = argv[1];
 
@@ -499,7 +499,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		cout << "--- MPI EXECUTION [2D] ---" << endl;
+		//cout << "--- MPI EXECUTION [2D] ---" << endl;
 		// Get input from command line
 		string filename = argv[1];
 
@@ -723,6 +723,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	*/
 
 	if (rank == 0) {
+		printf("NPROCS = ", size);
 		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
 	}
 
