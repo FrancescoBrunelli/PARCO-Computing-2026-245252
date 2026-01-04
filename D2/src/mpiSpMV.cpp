@@ -7,6 +7,7 @@
 #include <array>
 #include <float.h>
 #include <algorithm>
+#include <climits>
 #include <mpi.h>
 #include "matrix.h"
 #include "mpiSpMV.h"
