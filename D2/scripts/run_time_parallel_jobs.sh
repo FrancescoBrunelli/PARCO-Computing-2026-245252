@@ -2,7 +2,7 @@
 
 MAX_PROCS=128
 INPUT="$1"    # Input from terminal
-MODE="$1"    # Input from terminal
+MODE="$2"    # Input from terminal
 
 mpicxx -std=c++11 -O3 src/main.cpp src/matrix.cpp src/mpiSpMV.cpp -o src/main.out # C++ code
 
