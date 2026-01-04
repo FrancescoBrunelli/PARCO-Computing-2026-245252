@@ -8,6 +8,7 @@
 #include <float.h>
 #include <algorithm>
 #include <climits>
+#include <cmath>
 #include <mpi.h>
 #include "matrix.h"
 #include "mpiSpMV.h"
