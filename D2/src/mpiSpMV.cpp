@@ -97,8 +97,8 @@ int sequential_execution(int argc, char** argv) {
 
 int MPI_1D_Partitioning(int argc, char** argv) {
 	double t_start, t_end, time, total_time = 0;
-	double min = DBL_MAX;
-	double max = -DBL_MAX;
+	int minNNZ, maxNNZ;
+	double max;
 	int n;		// number of nnz in a certain chunk
 	int chunk_size;
 	int local_row = 0;
@@ -232,7 +232,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	}
 
 	if (rank == 0 || local_nnz == 0) {
-		time = 0;
+		time = -DBL_MAX;
 	} else {
 		t_start = MPI_Wtime();
 		//CSRmul(aRow, aCol, aVal, v, out);
@@ -241,25 +241,33 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		time = t_end - t_start;
 	}
 
+	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+
+	/*
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0 || local_nnz == 0) {
 		time = DBL_MAX;
 	}
 	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+	*/
 
-	if (rank == 0 || local_nnz == 0) {
-		time = -DBL_MAX;
+	MPI_Allreduce(&local_nnz, &maxNNZ, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD);		// Compute max nnz among processes
+
+	if (local_nnz <= 0) {
+		local_nnz = INT_MAX;
 	}
-	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+	MPI_Allreduce(&local_nnz, &minNNZ, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);		// Compute min nnz among processes
 
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("AVG: %f\n", (total_time / (size - 1)) * 1000);
-		printf("MAX: %f\n", max * 1000);
-		printf("MIN: %f\n", min * 1000);
+		printf("Execution time: %f\n", max * 1000);
+		printf("AVG: %d\n", (nnz / (size - 1)));
+		printf("MAX: %d\n", maxNNZ);
+		printf("MIN: %d\n", minNNZ);
+		printf("FLOPS: %f", 2 * nnz / max);
 		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
@@ -273,7 +281,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 	double t_start, t_end, time, total_time = 0;
-	double min = DBL_MAX;
+	int minNNZ, maxNNZ;
 	double max = -DBL_MAX;
 	int n;		// number of nnz in a certain chunk
 	int local_nnz = 0;
@@ -287,8 +295,6 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &size);
 	MPI_Status status;
-	MPI_Comm workers_comm;
-	int color;
 	int COOaRow0 = MPI_UNDEFINED;
 
 	if (size < 2) {
@@ -387,7 +393,7 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 	MPI_Barrier(MPI_COMM_WORLD);		// Wait all processes are ready for SpMV
 
 	if (local_nnz == 0) {
-		time = 0;
+		time = -DBL_MAX;
 	} else {
 		t_start = MPI_Wtime();
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
@@ -395,25 +401,33 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		time = t_end - t_start;
 	}
 
-	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
+	//MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+	/*
 	if (local_nnz == 0) {
 		time = DBL_MAX;
 	}
 	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+	*/
 
-	if (local_nnz == 0) {
-		time = -DBL_MAX;
+	MPI_Allreduce(&local_nnz, &maxNNZ, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD);		// Compute max nnz among processes
+
+	if (local_nnz <= 0) {
+		local_nnz = INT_MAX;
 	}
-	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+	MPI_Allreduce(&local_nnz, &minNNZ, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);		// Compute min nnz among processes
+
 
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("AVG: %f\n", (total_time / size) * 1000);
-		printf("MAX: %f\n", max * 1000);
-		printf("MIN: %f\n", min * 1000);
+		printf("Execution time: %f\n", max * 1000);
+		printf("AVG: %d\n", (nnz / size));
+		printf("MAX: %d\n", maxNNZ);
+		printf("MIN: %d\n", minNNZ);
+		printf("FLOPS: %f", 2 * nnz / max);
 		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
@@ -430,8 +444,8 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	int local_row = 0;
 	int local_col = 0;
 	int local_nnz = 0;
-	double min = DBL_MAX;
-	double max = -DBL_MAX;
+	int minNNZ, maxNNZ;
+	double max;
 	int n;		// number of nnz in a certain chunk
 	int row_size, col_size;
 	vector<tuple<int, int, float>> COOvect;
@@ -649,7 +663,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	}
 
 	if (rank == 0 || local_nnz == 0) {
-		time = 0;
+		time = -DBL_MAX;
 	} else if (local_nnz > 0) {
 		t_start = MPI_Wtime();
 		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
@@ -657,17 +671,17 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		time = t_end - t_start;
 	}
 
+	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+
+	/*
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0 || local_nnz == 0) {
 		time = DBL_MAX;
 	}
 	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+	*/
 
-	if (rank == 0 || local_nnz == 0) {
-		time = -DBL_MAX;
-	}
-	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	/*
 	// Print Check
@@ -688,13 +702,22 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	}
 	*/
 
+	MPI_Allreduce(&local_nnz, &maxNNZ, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD);		// Compute max nnz among processes
+
+	if (local_nnz <= 0) {
+		local_nnz = INT_MAX;
+	}
+	MPI_Allreduce(&local_nnz, &minNNZ, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);		// Compute min nnz among processes
+
 	float* output = new float[row]{};
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("AVG: %f\n", (total_time / (size - 1)) * 1000);
-		printf("MAX: %f\n", max * 1000);
-		printf("MIN: %f\n", min * 1000);
+		printf("Execution time: %f\n", max * 1000);
+		printf("AVG: %d\n", (nnz / (size - 1)));
+		printf("MAX: %d\n", maxNNZ);
+		printf("MIN: %d\n", minNNZ);
+		printf("FLOPS: %f", 2 * nnz / max);
 		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
