@@ -271,6 +271,173 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	return 0;
 }
 
+int MPI_1D_CyclingPartitioning(int argc, char** argv) {
+	double t_start, t_end, time, total_time = 0;
+	double min = DBL_MAX;
+	double max = -DBL_MAX;
+	int n;		// number of nnz in a certain chunk
+	int chunk_size;
+	int local_row = 0;
+	int local_col = 0;
+	int local_nnz = 0;
+	vector<tuple<int, int, float>> COOvect;
+	vector<int> aRow;
+	vector<int> aCol;
+	vector<float> aVal;
+	float* v = nullptr;
+	float* out = nullptr;
+	int rank, size;
+	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+	MPI_Comm_size(MPI_COMM_WORLD, &size);
+	MPI_Status status;
+	MPI_Comm workers_comm;
+	int color;
+	int COOaRow0 = MPI_UNDEFINED;
+
+	if (size < 2) {
+		if (rank == 0)
+			fprintf(stderr, "Run with at least 2 processes.\n");
+		MPI_Finalize();
+		return 1;
+	}
+
+	// ---- MASTER CODE ----
+	if (rank == 0) {
+		//cout << endl << "--- MPI EXECUTION [1D-Cyclic] ---" << endl;
+		// Get input from command line
+		if (argc < 2) {
+			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
+			MPI_Abort(MPI_COMM_WORLD, 1);
+		}
+		string filename = argv[1];
+
+		// -------- Fetch Matrix using vector
+		fetch_COO(COOvect, filename, aRow, aCol, aVal);
+
+		v = new float[col];
+		initV(v);
+	}
+
+	// Provide each process the number of rows
+	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the number of cols
+	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	// Provide each process the number of nnz
+	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	if (rank != 0) {
+		v = new float[col];			// Initialize v for all workers
+	}
+
+	out = new float[row]{};
+
+	// Provide each process the randomly generated vector
+	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		// Compute chunksize and send a chunk to each process
+		int spare_rows = row % (size - 1);
+		chunk_size = (row - spare_rows) / (size - 1);		// number of rows per chunk
+		int first = 0;	// first row of the chunk
+		int last;		// last row of the chunk
+		int current_index = 0;		// index of the first element to parse
+		int tmp;
+		int worker_rank;
+
+		tmp = chunk_size + 1;
+
+		vector<int> aRowB[size];
+		vector<int> aColB[size];
+		vector<float> aValB[size];
+		for_each(COOvect.begin(), COOvect.end(), [size, &aRowB, &aColB, &aValB] (const tuple<int, int, float>& val) {
+			int r = get<0>(val);
+			int c = get<1>(val);
+			int worker_rank = r % size;
+			aRowB[worker_rank].push_back(r);
+			aColB[worker_rank].push_back(c);
+			aValB[worker_rank].push_back(get<2>(val));
+		});
+
+		for (int i = 1; i < size; i++) {
+			n = aRowB[i].size();
+
+			MPI_Send(&n, 1, MPI_INT, i, 0, MPI_COMM_WORLD);	// Send worker number of nnz to receive
+			MPI_Send(aRowB[i].data(), n, MPI_INT, i, 1, MPI_COMM_WORLD);		// Send aRow
+			MPI_Send(aColB[i].data(), n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aCol
+			MPI_Send(aValB[i].data(), n, MPI_FLOAT, i, 3, MPI_COMM_WORLD);		// Send aVal
+		}
+
+		local_nnz = aRowB[rank].size();
+		aRow = aRowB[rank];
+		aCol = aColB[rank];
+		aVal = aValB[rank];
+
+	} else {
+		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of nnz inside the chunk
+		aRow.resize(local_nnz);
+		aCol.resize(local_nnz);
+		aVal.resize(local_nnz);
+
+		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive chunk aRow
+
+		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);	// Receive chunk aCol
+		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aVal
+
+	}
+
+	/*
+	if (rank == 0) {
+		printf("Setup finished\n");
+	}
+	*/
+
+	// --- CSR + SpMV Computation
+	if (local_nnz > 0) {
+		COOaRow0 = aRow.front();
+		COOtoCSR(aRow);
+	}
+
+	MPI_Barrier(MPI_COMM_WORLD);		// Wait all processes are ready for SpMV
+
+	if (local_nnz == 0) {
+		time = 0;
+	} else {
+		t_start = MPI_Wtime();
+		PartialCSRmul(COOaRow0, aRow, aCol, aVal, v, out);
+		t_end = MPI_Wtime();
+		time = t_end - t_start;
+	}
+
+	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+
+	if (local_nnz == 0) {
+		time = DBL_MAX;
+	}
+	MPI_Allreduce(&time, &min, 1, MPI_DOUBLE, MPI_MIN, MPI_COMM_WORLD);
+
+	if (local_nnz == 0) {
+		time = -DBL_MAX;
+	}
+	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+
+	float* output = new float[row]{};
+	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+
+	if (rank == 0) {
+		printf("AVG: %f\n", (total_time / size) * 1000);
+		printf("MAX: %f\n", max * 1000);
+		printf("MIN: %f\n", min * 1000);
+
+		cout << "**** OUT: ****" << endl;
+		printV(output, row);
+
+	}
+
+	delete[] v;
+	delete[] out;
+	return 0;
+}
+
 int MPI_2D_Partitioning(int argc, char** argv) {
 	double t_start, t_end, time, total_time = 0;
 	int local_row = 0;
