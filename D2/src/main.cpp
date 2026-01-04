@@ -9,11 +9,11 @@ int main(int argc, char** argv) {
 
 	sequential_execution(argc, argv);
 
-	//MPI_1D_Partitioning(argc, argv);
+	MPI_1D_Partitioning(argc, argv);
 
 	MPI_1D_CyclingPartitioning(argc, argv);
 
-	//MPI_2D_Partitioning(argc, argv);
+	MPI_2D_Partitioning(argc, argv);
 
 	MPI_Finalize();
 

@@ -414,10 +414,10 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		printf("AVG: %f\n", (total_time / size) * 1000);
 		printf("MAX: %f\n", max * 1000);
 		printf("MIN: %f\n", min * 1000);
-
+		/*
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
-
+		*/
 	}
 
 	delete[] v;
