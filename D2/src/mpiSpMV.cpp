@@ -137,12 +137,8 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		//cout << endl << "--- MPI EXECUTION [1D] ---" << endl;
+		cout << "--- MPI EXECUTION [1D] ---" << endl;
 		// Get input from command line
-		if (argc < 2) {
-			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
-			MPI_Abort(MPI_COMM_WORLD, 1);
-		}
 		string filename = argv[1];
 
 		// -------- Fetch Matrix using vector
@@ -312,12 +308,8 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		//cout << endl << "--- MPI EXECUTION [1D-Cyclic] ---" << endl;
+		cout << "--- MPI EXECUTION [1D-Cyclic] ---" << endl;
 		// Get input from command line
-		if (argc < 2) {
-			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
-			MPI_Abort(MPI_COMM_WORLD, 1);
-		}
 		string filename = argv[1];
 
 		// -------- Fetch Matrix using vector
@@ -507,12 +499,8 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	// ---- MASTER CODE ----
 	if (rank == 0) {
-		//cout << endl << "--- MPI EXECUTION [2D] ---" << endl;
+		cout << "--- MPI EXECUTION [2D] ---" << endl;
 		// Get input from command line
-		if (argc < 2) {
-			fprintf(stderr, "Usage: %s [martix-market-filename]\n", argv[0]);
-			MPI_Abort(MPI_COMM_WORLD, 1);
-		}
 		string filename = argv[1];
 
 		// -------- Fetch Matrix using vector
