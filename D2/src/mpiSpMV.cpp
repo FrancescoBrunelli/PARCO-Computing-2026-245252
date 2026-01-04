@@ -724,7 +724,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	if (rank == 0) {
 		printf("NPROCS = ", size);
-		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9); 
+		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
 	}
 
 	delete[] v;
