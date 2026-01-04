@@ -10,5 +10,5 @@ mpicxx -std=c++11 -O3 src/main.cpp src/matrix.cpp src/mpiSpMV.cpp -o src/main.ou
 for NPROCS in 2 4
 do
   echo "Submitting job for NPROCS=$NPROCS"
-  qsub -v INPUT="$INPUT",NPROCS="$NPROCS",MODE="$MODE" scripts/run.pbs
+  qsub -v INPUT="$INPUT",NPROCS="$NPROCS",MODE="$MODE" scripts/run_time.pbs
 done
