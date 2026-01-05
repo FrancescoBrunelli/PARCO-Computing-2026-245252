@@ -98,7 +98,7 @@ int sequential_execution(int argc, char** argv) {
 }
 
 int MPI_1D_Partitioning(int argc, char** argv) {
-	double t_start, t_end, time, total_time = 0;
+	double t_start, t_end, time, comm_time = 0, total_time;
 	int minNNZ, maxNNZ;
 	double max;
 	int n;		// number of nnz in a certain chunk
@@ -150,20 +150,24 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		initV(v);
 	}
 
+	t_start = MPI_Wtime();
 	// Provide each process the number of rows
 	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of nnz
 	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	if (rank != 0) {
 		v = new float[col];			// Initialize v for all workers
 		out = new float[row]{};
 	}
 
+	t_start = MPI_Wtime();
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	if (rank == 0) {
 		// Compute chunksize and send a chunk to each process
@@ -181,34 +185,44 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 				last = first + chunk_size;
 			}
 			tmp = last - first;		// Actual number of rows for the i-th process
+			t_start = MPI_Wtime();
 			MPI_Send(&tmp, 1, MPI_INT, i, 0, MPI_COMM_WORLD);
+			comm_time += MPI_Wtime() - t_start;
 
 			n = count_if(aRow.begin() + current_index, aRow.end(),  [first, last] (const int& val) {
 				return val >= first && val < last;
 			});
 
+			t_start = MPI_Wtime();
 			MPI_Send(&n, 1, MPI_INT, i, 1, MPI_COMM_WORLD);	// Send message size
 			MPI_Send(aRow.data() + current_index, n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aRow
 			MPI_Send(aCol.data() + current_index, n, MPI_INT, i, 3, MPI_COMM_WORLD);		// Send aCol
 			MPI_Send(aVal.data() + current_index, n, MPI_FLOAT, i, 4, MPI_COMM_WORLD);	// Send aVal
+			comm_time += MPI_Wtime() - t_start;
 
 			current_index += n;
 			first = last;
 		}
 	} else {
+		t_start = MPI_Wtime();
 		// Receive number of rows the process has to work on
 		MPI_Recv(&local_row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);
+		comm_time += MPI_Wtime() - t_start;
 		//out = new float[local_row];
 
+		t_start = MPI_Wtime();
 		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive message size
+		comm_time += MPI_Wtime() - t_start;
 		aRow.resize(local_nnz);
 		aCol.resize(local_nnz);
 		aVal.resize(local_nnz);
 
+		t_start = MPI_Wtime();
 		// Receive COO-chunk
 		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive aRow
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);		// Receive aCol
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 4, MPI_COMM_WORLD, &status);	// Receive aVal
+		comm_time += MPI_Wtime() - t_start;
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -239,7 +253,9 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		time = t_end - t_start;
 	}
 
+	t_start = MPI_Wtime();
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	/*
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
@@ -258,22 +274,26 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(&local_nnz, &minNNZ, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);		// Compute min nnz among processes
 
 	float* output = new float[row]{};
+	t_start = MPI_Wtime();
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
-	/*
+
 	if (rank == 0) {
-		printf("Execution time: %f\n", max * 1000);
-		printf("AVG: %d\n", (nnz / (size - 1)));
-		printf("MAX: %d\n", maxNNZ);
-		printf("MIN: %d\n", minNNZ);
-		printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
+		// printf("Execution time: %f\n", max * 1000);
+		// printf("AVG: %d\n", (nnz / (size - 1)));
+		// printf("MAX: %d\n", maxNNZ);
+		// printf("MIN: %d\n", minNNZ);
+		// printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
-	*/
+
+
+	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
+		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time);
 	}
 
 	delete[] v;
@@ -282,7 +302,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 }
 
 int MPI_1D_CyclingPartitioning(int argc, char** argv) {
-	double t_start, t_end, time, total_time = 0;
+	double t_start, t_end, time, comm_time = 0, total_time;
 	int minNNZ, maxNNZ;
 	double max = -DBL_MAX;
 	int n;		// number of nnz in a certain chunk
@@ -319,12 +339,14 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		initV(v);
 	}
 
+	t_start = MPI_Wtime();
 	// Provide each process the number of rows
 	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the number of nnz
 	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	if (rank != 0) {
 		v = new float[col];			// Initialize v for all workers
@@ -332,8 +354,10 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 
 	out = new float[row]{};
 
+	t_start = MPI_Wtime();
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	if (rank == 0) {
 		// Compute chunksize and send a chunk to each process
@@ -352,10 +376,12 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		for (int i = 1; i < size; i++) {
 			n = aRowB[i].size();
 
+			t_start = MPI_Wtime();
 			MPI_Send(&n, 1, MPI_INT, i, 0, MPI_COMM_WORLD);	// Send worker number of nnz to receive
 			MPI_Send(aRowB[i].data(), n, MPI_INT, i, 1, MPI_COMM_WORLD);		// Send aRow
 			MPI_Send(aColB[i].data(), n, MPI_INT, i, 2, MPI_COMM_WORLD);		// Send aCol
 			MPI_Send(aValB[i].data(), n, MPI_FLOAT, i, 3, MPI_COMM_WORLD);		// Send aVal
+			comm_time += MPI_Wtime() - t_start;
 		}
 
 		local_nnz = aRowB[rank].size();
@@ -364,16 +390,19 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		aVal = aValB[rank];
 
 	} else {
+		t_start = MPI_Wtime();
 		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of nnz inside the chunk
+		comm_time += MPI_Wtime() - t_start;
 		aRow.resize(local_nnz);
 		aCol.resize(local_nnz);
 		aVal.resize(local_nnz);
 
+		t_start = MPI_Wtime();
 		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);	// Receive chunk aRow
 
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);	// Receive chunk aCol
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aVal
-
+		comm_time += MPI_Wtime() - t_start;
 	}
 
 	/*
@@ -399,7 +428,9 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		time = t_end - t_start;
 	}
 
+	t_start = MPI_Wtime();
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	//MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
 	/*
@@ -418,22 +449,26 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 
 
 	float* output = new float[row]{};
+	t_start = MPI_Wtime();
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
-	/*
+
 	if (rank == 0) {
-		printf("Execution time: %f\n", max * 1000);
-		printf("AVG: %d\n", (nnz / size));
-		printf("MAX: %d\n", maxNNZ);
-		printf("MIN: %d\n", minNNZ);
-		printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
+		// printf("Execution time: %f\n", max * 1000);
+		// printf("AVG: %d\n", (nnz / size));
+		// printf("MAX: %d\n", maxNNZ);
+		// printf("MIN: %d\n", minNNZ);
+		// printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
-	*/
+
+
+	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / size), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
+		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / size), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time);
 	}
 
 	delete[] v;
@@ -442,7 +477,7 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 }
 
 int MPI_2D_Partitioning(int argc, char** argv) {
-	double t_start, t_end, time, total_time = 0;
+	double t_start, t_end, time, comm_time = 0, total_time;
 	int local_row = 0;
 	int local_col = 0;
 	int local_nnz = 0;
@@ -511,20 +546,24 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		initV(v);
 	}
 
+	t_start = MPI_Wtime();
 	// Provide each process the total number of rows
 	MPI_Bcast(&row, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the total number of cols
 	MPI_Bcast(&col, 1, MPI_INT, 0, MPI_COMM_WORLD);
 	// Provide each process the total number of nnz
 	MPI_Bcast(&nnz, 1, MPI_INT, 0, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	if (rank != 0) {
 		v = new float[col];			// Initialize v for all workers
 		out = new float[row]{};		// Create and initialize with 0s the output array
 	}
 
+	t_start = MPI_Wtime();
 	// Provide each process the randomly generated vector
 	MPI_Bcast(v, col, MPI_FLOAT, 0, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	MPI_Group world_group, cart_group;
 	MPI_Comm_group(MPI_COMM_WORLD, &world_group);
@@ -547,12 +586,16 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 					cart_ranks[i * dims[1] + j] = world_rank;
 				}
 			}
+			t_start = MPI_Wtime();
 			MPI_Send(cart_ranks.data(), size - 1, MPI_INT, 0, 0, MPI_COMM_WORLD);
+			comm_time += MPI_Wtime() - t_start;
 		}
 	}
 	if (rank == 0) {
 		//printf("Dims: (%d, %d)\n", dims[0], dims[1]);
+		t_start = MPI_Wtime();
 		MPI_Recv(cart_ranks.data(), size - 1, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);		// Receive cart_comm -> world_comm ranks mapping
+		comm_time += MPI_Wtime() - t_start;
 		int spare_rows = row % dims[0];
 		int spare_cols = col % dims[1];
 		row_size = (row - spare_rows) / dims[0];		// Number of rows per chunk
@@ -595,31 +638,39 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 				// Get and send number of rows and cols the i,j process has to work on
 				tmp = last_row - first_row;
+				t_start = MPI_Wtime();
 				MPI_Send(&tmp, 1, MPI_INT, recv_rank, 0, MPI_COMM_WORLD);
+				comm_time += MPI_Wtime() - t_start;
 				tmp = last_col - first_col;
+				t_start = MPI_Wtime();
 				MPI_Send(&tmp, 1, MPI_INT, recv_rank, 1, MPI_COMM_WORLD);
 
 				MPI_Send(&n, 1, MPI_INT, recv_rank, 2, MPI_COMM_WORLD);		// Send number of nnz elements inside the chunk
 				MPI_Send(aRowB.data(), n, MPI_INT, recv_rank, 3, MPI_COMM_WORLD);		// Send chunk aRow
 				MPI_Send(aColB.data(), n, MPI_INT, recv_rank, 4, MPI_COMM_WORLD);		// Send chunk aCol
 				MPI_Send(aValB.data(), n, MPI_FLOAT, recv_rank, 5, MPI_COMM_WORLD);		// Send chunk aVal
+				comm_time += MPI_Wtime() - t_start;
 				first_col = last_col;
 			}
 			first_col = 0;
 			first_row = last_row;
 		}
 	} else {
+		t_start = MPI_Wtime();
 		MPI_Recv(&local_row, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, &status);		// Receive number of rows of the chunk
 		MPI_Recv(&local_col, 1, MPI_INT, 0, 1, MPI_COMM_WORLD, &status);		// Receive number of cols of the chunk
 		MPI_Recv(&local_nnz, 1, MPI_INT, 0, 2, MPI_COMM_WORLD, &status);		// Receive number of nnz inside the chunk
+		comm_time += MPI_Wtime() - t_start;
 		aRow.resize(local_nnz);
 		aCol.resize(local_nnz);
 		aVal.resize(local_nnz);
 
+		t_start = MPI_Wtime();
 		MPI_Recv(aRow.data(), local_nnz, MPI_INT, 0, 3, MPI_COMM_WORLD, &status);	// Receive chunk aRow
 
 		MPI_Recv(aCol.data(), local_nnz, MPI_INT, 0, 4, MPI_COMM_WORLD, &status);	// Receive chunk aCol
 		MPI_Recv(aVal.data(), local_nnz, MPI_FLOAT, 0, 5, MPI_COMM_WORLD, &status);	// Receive chunk aVal
+		comm_time += MPI_Wtime() - t_start;
 	}
 
 	MPI_Barrier(MPI_COMM_WORLD);
@@ -669,7 +720,9 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		time = t_end - t_start;
 	}
 
+	t_start = MPI_Wtime();
 	MPI_Allreduce(&time, &max, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
 	/*
 	MPI_Allreduce(&time, &total_time, 1, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
@@ -708,23 +761,27 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(&local_nnz, &minNNZ, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);		// Compute min nnz among processes
 
 	float* output = new float[row]{};
+	t_start = MPI_Wtime();
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+	comm_time += MPI_Wtime() - t_start;
 
-	/*
 	if (rank == 0) {
-		printf("Execution time: %f\n", max * 1000);
-		printf("AVG: %d\n", (nnz / (size - 1)));
-		printf("MAX: %d\n", maxNNZ);
-		printf("MIN: %d\n", minNNZ);
-		printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
+		// printf("Execution time: %f\n", max * 1000);
+		// printf("AVG: %d\n", (nnz / (size - 1)));
+		// printf("MAX: %d\n", maxNNZ);
+		// printf("MIN: %d\n", minNNZ);
+		// printf("GFLOPS: %f\n", (2.0 * nnz / max) / 1e9);
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
-	*/
+
+
+	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("NPROCS = ", size);
-		printf("%f,%d,%d,%d,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9);
+		printf("NPROCS = %d", size);
+		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time);
+		printf("Communication time: %f", total_time);
 	}
 
 	delete[] v;
