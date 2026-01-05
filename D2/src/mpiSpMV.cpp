@@ -293,7 +293,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time);
+		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000);
 	}
 
 	delete[] v;
@@ -468,7 +468,7 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / size), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time);
+		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / size), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000);
 	}
 
 	delete[] v;
@@ -781,7 +781,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	if (rank == 0) {
 		//printf("NPROCS = %d", size);
-		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time);
+		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000);
 	}
 
 	delete[] v;
