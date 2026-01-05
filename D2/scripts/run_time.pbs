@@ -46,4 +46,4 @@ echo "# Execution_time, avgNNZ, maxNNZ, minNNZ, GFLOPS, Comm_time" >> "${FILENAM
 for (( i = 0; i < 100; i++ )); do
   mpirun -np "$NPROCS" ./src/main.out "$INPUT" "$MODE" >> "${FILENAME}" 2>&1
 done
-echo >> "# End of Execution" "${FILENAME}"
+echo "# End of Execution" >> "${FILENAME}"
