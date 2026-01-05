@@ -37,7 +37,7 @@ else
   exit 1
 fi
 
-FILENAME="${BASE}_NP${NPROCS}.txt"
+FILENAME="${BASE}_NP${NPROCS}.csv"
 
 # Starting comment for result-file
 echo "# Execution with input file: $INPUT, NPROCS: $NPROCS, SELECTED MODE: $MODE_TYPE" > "${FILENAME}"
