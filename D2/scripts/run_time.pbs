@@ -41,7 +41,7 @@ FILENAME="${BASE}_NP${NPROCS}.txt"
 
 # Starting comment for result-file
 echo "# Execution with input file: $INPUT, NPROCS: $NPROCS, SELECTED MODE: $MODE_TYPE" >> "${FILENAME}"
-echo "# Execution_time, avgNNZ, maxNNZ, minNNZ, GFLOPS" >> "${FILENAME}"
+echo "# Execution_time, avgNNZ, maxNNZ, minNNZ, GFLOPS, Comm_time" >> "${FILENAME}"
 
 for (( i = 0; i < 10; i++ )); do
   mpirun -np "$NPROCS" ./src/main.out "$INPUT" "$MODE" >> "${FILENAME}" 2>&1

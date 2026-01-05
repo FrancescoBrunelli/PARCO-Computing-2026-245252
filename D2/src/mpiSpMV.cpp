@@ -278,7 +278,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 	comm_time += MPI_Wtime() - t_start;
 
-
+	/*
 	if (rank == 0) {
 		// printf("Execution time: %f\n", max * 1000);
 		// printf("AVG: %d\n", (nnz / (size - 1)));
@@ -288,7 +288,7 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
-
+	*/
 
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
@@ -453,7 +453,7 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 	comm_time += MPI_Wtime() - t_start;
 
-
+	/*
 	if (rank == 0) {
 		// printf("Execution time: %f\n", max * 1000);
 		// printf("AVG: %d\n", (nnz / size));
@@ -463,7 +463,7 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
-
+	*/
 
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
@@ -765,6 +765,7 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 	MPI_Allreduce(out, output, row, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
 	comm_time += MPI_Wtime() - t_start;
 
+	/*
 	if (rank == 0) {
 		// printf("Execution time: %f\n", max * 1000);
 		// printf("AVG: %d\n", (nnz / (size - 1)));
@@ -774,14 +775,13 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 		cout << "**** OUT: ****" << endl;
 		printV(output, row);
 	}
-
+	*/
 
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
 	if (rank == 0) {
-		printf("NPROCS = %d", size);
+		//printf("NPROCS = %d", size);
 		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time);
-		printf("Communication time: %f", total_time);
 	}
 
 	delete[] v;
