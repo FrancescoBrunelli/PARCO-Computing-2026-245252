@@ -18,3 +18,8 @@ do
     qsub -v INPUT="$INPUT",NPROCS="$NPROCS",MODE="$MODE" scripts/run_time.pbs
   done
 done
+
+NPROCS=1
+MODE=3
+echo "Submitting job for NPROCS=$NPROCS MODE=$MODE"
+qsub -v INPUT="$INPUT",NPROCS="$NPROCS",MODE="$MODE" scripts/run_time.pbs

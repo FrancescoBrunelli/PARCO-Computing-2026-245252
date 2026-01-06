@@ -26,7 +26,7 @@ int sequential_execution(int argc, char** argv) {
 	int rank;
 	MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 	if (rank == 0) {
-		cout << "--- SEQUENTIAL EXECUTION ---" << endl;
+		//cout << "--- SEQUENTIAL EXECUTION ---" << endl;
 		srand(time(NULL));
 		timespec t0, t1;
 		// Get input from command line
@@ -89,13 +89,19 @@ int sequential_execution(int argc, char** argv) {
 		//P_CSRmul(aRow, aCol, aVal, v, out);
 		clock_gettime(CLOCK_MONOTONIC, &t1);		// Get end time
 
+		/*
 		cout << "--- OUT: ---" << endl;
 		printV(out, row);
+		*/
 
 		double start = toMilliseconds(t0);
 		double end = toMilliseconds(t1);
 		//cout << end - start << endl;
-		cout << "Mul elapsed time: " << end - start << " ms" << endl;
+		//cout << "Mul elapsed time: " << end - start << " ms" << endl;
+
+		long max_rss = get_rss_kb();
+
+		printf("%f,%d,%d,%d,%f,%d,%.2f\n", end - start, nnz, nnz, nnz, (2.0 * nnz) / 1e9, 0, max_rss / 1024.0);
 
 		//delete[] mat;
 		delete[] v;

@@ -32,6 +32,10 @@ elif [ "$MODE" -eq 2 ]; then
   mkdir -p "results/${MATRIX_NAME}/2D_Block"
   BASE="results/${MATRIX_NAME}/2D_Block/${MATRIX_NAME}"
   MODE_TYPE="2D BLOCK PARTITIONING"
+elif [ "$MODE" -eq 3 ]; then
+  mkdir -p "results/${MATRIX_NAME}"
+  BASE="results/${MATRIX_NAME}/${MATRIX_NAME}"
+  MODE_TYPE="SEQUENTIAL EXECUTION"
 else
   echo "#Unkown mode"
   exit 1

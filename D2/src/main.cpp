@@ -7,8 +7,6 @@ using namespace std;
 int main(int argc, char** argv) {
 	MPI_Init(&argc, &argv);
 
-	//sequential_execution(argc, argv);
-
 	if (argc < 3) {
 		fprintf(stderr, "Usage: %s [martix-market-filename] [mode: 0 for 1D-partitioning, 1 for 1D-cyclic partitioning, or 2 for 2D partitioning]\n", argv[0]);
 		MPI_Abort(MPI_COMM_WORLD, 1);
@@ -26,6 +24,10 @@ int main(int argc, char** argv) {
 		}
 		case 2: {
 			MPI_2D_Partitioning(argc, argv);
+			break;
+		}
+		case 3: {
+			sequential_execution(argc, argv);
 			break;
 		}
 	}
