@@ -1,0 +1,3 @@
+# Execution with input file: hugetric-00000.mtx, NPROCS: 2, SELECTED MODE: 1D CYCLIC PARTITIONING
+# Execution_time, avgNNZ, maxNNZ, minNNZ, GFLOPS, Comm_time
+43.631554,8733523,8733549,8733497,0.800661,3023.667097
