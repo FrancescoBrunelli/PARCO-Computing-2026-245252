@@ -9,11 +9,18 @@
 #include <algorithm>
 #include <climits>
 #include <cmath>
+#include <sys/resource.h>	// For memory footprint measurement
 #include <mpi.h>
 #include "matrix.h"
 #include "mpiSpMV.h"
 
 using namespace std;
+
+long get_rss_kb() {
+	struct rusage r;
+	getrusage(RUSAGE_SELF, &r);
+	return r.ru_maxrss;  // Get max memory usage [expressed in KB]
+}
 
 int sequential_execution(int argc, char** argv) {
 	int rank;
@@ -292,8 +299,13 @@ int MPI_1D_Partitioning(int argc, char** argv) {
 
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
+	long local_rss = get_rss_kb();
+	long max_rss;
+
+	MPI_Allreduce(&local_rss, &max_rss,1, MPI_LONG_LONG, MPI_MAX, MPI_COMM_WORLD);		// Get max memory usage among processes
+
 	if (rank == 0) {
-		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000);
+		printf("%f,%d,%d,%d,%f,%f,%.2f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000, max_rss / 1024.0);
 	}
 
 	delete[] v;
@@ -467,8 +479,13 @@ int MPI_1D_CyclingPartitioning(int argc, char** argv) {
 
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
+	long local_rss = get_rss_kb();
+	long max_rss;
+
+	MPI_Allreduce(&local_rss, &max_rss,1, MPI_LONG_LONG, MPI_MAX, MPI_COMM_WORLD);		// Get max memory usage among processes
+
 	if (rank == 0) {
-		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / size), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000);
+		printf("%f,%d,%d,%d,%f,%f,%.2f\n", max * 1000, (nnz / size), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000, max_rss / 1024.0);
 	}
 
 	delete[] v;
@@ -779,9 +796,14 @@ int MPI_2D_Partitioning(int argc, char** argv) {
 
 	MPI_Allreduce(&comm_time, &total_time, 1, MPI_DOUBLE, MPI_MAX, MPI_COMM_WORLD);
 
+	long local_rss = get_rss_kb();
+	long max_rss;
+
+	MPI_Allreduce(&local_rss, &max_rss,1, MPI_LONG_LONG, MPI_MAX, MPI_COMM_WORLD);		// Get max memory usage among processes
+
 	if (rank == 0) {
 		//printf("NPROCS = %d", size);
-		printf("%f,%d,%d,%d,%f,%f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000);
+		printf("%f,%d,%d,%d,%f,%f,%.2f\n", max * 1000, (nnz / (size - 1)), maxNNZ, minNNZ, (2.0 * nnz / max) / 1e9, total_time * 1000, max_rss / 1024.0);
 	}
 
 	delete[] v;
