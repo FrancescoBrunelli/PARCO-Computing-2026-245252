@@ -17,6 +17,6 @@ do
   do
     MATRIX="weak_scaling_NP${NPROCS}.mtx"
     echo "Submitting job for NPROCS=$NPROCS MODE=$MODE MATRIX=$MATRIX"
-    qsub -v MATRIX="$MATRIX",NPROCS="$NPROCS",MODE="$MODE" scripts/run_time.pbs
+    qsub -v MATRIX="$MATRIX",NPROCS="$NPROCS",MODE="$MODE" scripts/run_weak_scaling.pbs
   done
 done
