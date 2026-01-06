@@ -1,0 +1,49 @@
+#!/bin/bash
+# Job name:
+#PBS -N MPI_SpMV
+# Output files:
+#PBS -o mpiSpMV_weak_scaling.out
+# Error files
+#PBS -e mpiSpMV_weak_scaling.err
+# Queue name
+#PBS -q short_cpuQ
+# Set the maximum wall time
+#PBS -l walltime=06:00:00
+# Set the memory cpus and resources
+#PBS -l select=2:ncpus=64:mpiprocs=64:mem=64gb
+# For MPI procs: max -np = select * mpiprocs
+
+# Load modules
+module load gcc91
+module load mpich-3.2.1--gcc-9.1.0
+# Select the working directory
+cd "$PBS_O_WORKDIR" # go to the directory where qsub was run # Compile and run
+MODE_TYPE="Unkown"
+MATRIX_NAME="${INPUT%.mtx}"
+if [ "$MODE" -eq 0 ]; then
+  mkdir -p "results/weak_scaling/1D_Block"
+  BASE="results/weak_scaling/1D_Block/${MATRIX_NAME}"
+  MODE_TYPE="1D BLOCK PARTITIONING"
+elif [ "$MODE" -eq 1 ]; then
+  mkdir -p "results/weak_scaling/1D_Cyclic"
+  BASE="results/weak_scaling/1D_Cyclic/${MATRIX_NAME}"
+  MODE_TYPE="1D CYCLIC PARTITIONING"
+elif [ "$MODE" -eq 2 ]; then
+  mkdir -p "results/weak_scaling/2D_Block"
+  BASE="results/weak_scaling/2D_Block/${MATRIX_NAME}"
+  MODE_TYPE="2D BLOCK PARTITIONING"
+else
+  echo "#Unkown mode"
+  exit 1
+fi
+
+FILENAME="${BASE}.csv"
+
+# Starting comment for result-file
+echo "# Execution with input file: $INPUT, NPROCS: $NPROCS, SELECTED MODE: $MODE_TYPE" > "${FILENAME}"
+echo "# Execution_time[ms], avgNNZ, maxNNZ, minNNZ, GFLOPS, Comm_time[ms], Peak_memory_footprint[MB]" >> "${FILENAME}"
+
+for (( i = 0; i < 100; i++ )); do
+  mpirun -np "$NPROCS" ./src/main.out "$INPUT" "$MODE" >> "${FILENAME}" 2>&1
+done
+echo "# End of Execution" >> "${FILENAME}"
