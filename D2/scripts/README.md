@@ -92,17 +92,21 @@ Generates a pseudo-random sparse matrix proportional to the number of processes 
   Usage: `python3 scripts/matrix_generator.py <nprocs>`
 
 ### Plot Scripts
-- `run_plot.py`: For each matrix in /results and for each decomposition strategy adopted, reads all the `.csv` files, extracts for each file the 90th percentile of the computation time and creates a linear plot for each decomposition strategy
+- `run_plot.py`: For each matrix in /results and for each decomposition strategy adopted, reads all the `.csv` files, extracts for each file the 90th percentile of: computation time, communication time, GFLOPS, memory footprint and for each one creates a linear plot for each decomposition strategy
   
-  Usage: `python3 scripts/sun_plot.py
+  Usage: `python3 scripts/run_plot.py
   
-- `plot_speedup.py`: For each matrix in /results and for each decomposition strategy adopted, reads all the `.csv` files, extracts for each file the 90th percentile of the computation time, calculates the speedup factor using as baseline se sequential results stored in results/matrix_name/`<matrix_name>_NP1.csv` and creates an histogram plot for each decomposition strategy
+- `speedup_plot.py`: For each matrix in /results and for each decomposition strategy adopted, reads all the `.csv` files, extracts for each file the 90th percentile of the computation time, calculates the speedup factor using as baseline se sequential results stored in results/matrix_name/`<matrix_name>_NP1.csv` and creates an histogram plot for each decomposition strategy
 
-  Usage: `python3 scripts/plot_speedup.py`
+  Usage: `python3 scripts/speedup_plot.py`
   
-- `plot_weak_scaling.py`: Similarly to `run_plot.py` generates linear plots from weak_scaling results
+- `weak_scaling_plot.py`: Similarly to `run_plot.py` generates linear plots from weak_scaling results
 
-  Usage: `python3 scripts/plot_weak_scaling.py`
+  Usage: `python3 scripts/weak_scaling_plot.py`
+  
+- `efficiency_plot.py`: For each matrix in /results and for each decomposition strategy adopted generates the corresponding efficiency linear plot
+
+  Usage: `python3 scripts/efficiency_plot.py`
 
 ## Matrices used
 - **fd12:** 7.500x7.500 28.462nnz (129KB)
