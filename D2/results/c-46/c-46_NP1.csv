@@ -3,10 +3,10 @@
 0.160719,130397,130397,130397,0.000261,0,12.37
 0.188862,130397,130397,130397,0.000261,0,12.37
 0.197123,130397,130397,130397,0.000261,0,12.37
-[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
-[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
-[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
-[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
+#[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
+#[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
+#[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
+#[proxy:0:0@hpc-c12-node28.unitn.it] HYDU_create_process (/apps/devel/mpich-3.2.1/src/pm/hydra/utils/launch/launch.c:74): execvp error on file ./src/main.out (Permission denied)
 0.159159,130397,130397,130397,0.000261,0,12.37
 0.193077,130397,130397,130397,0.000261,0,12.37
 0.157381,130397,130397,130397,0.000261,0,12.36
