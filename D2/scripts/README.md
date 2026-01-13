@@ -70,7 +70,7 @@ chmod +x ./scripts/run_time_parallel_jobs.sh
 Generates 7 pseudo-random sparse matrices (one for each amount of MPI processes from 2 to 128 in powers of two) by calling a dedicated python script: `matrix_generator.py`
 Once each matrix is generated, this script will submit a total of 21 `run_weak_scaling.pbs` jobs (one for each combination of matrix and modes).
 
-==**Note:** the generation of the 7 matrices will be 20+ minutes long. Before running this script it is recommended to open an interactive session.==
+**Note:** the generation of the 7 matrices will be 20+ minutes long. Before running this script it is recommended to open an interactive session.
 
 **Usage:**
 ``` sh
@@ -94,7 +94,7 @@ Generates a pseudo-random sparse matrix proportional to the number of processes 
 ### Plot Scripts
 - `run_plot.py`: For each matrix in /results and for each decomposition strategy adopted, reads all the `.csv` files, extracts for each file the 90th percentile of: computation time, communication time, GFLOPS, memory footprint and for each one creates a linear plot for each decomposition strategy
   
-  Usage: `python3 scripts/run_plot.py
+  Usage: `python3 scripts/run_plot.py`
   
 - `speedup_plot.py`: For each matrix in /results and for each decomposition strategy adopted, reads all the `.csv` files, extracts for each file the 90th percentile of the computation time, calculates the speedup factor using as baseline se sequential results stored in results/matrix_name/`<matrix_name>_NP1.csv` and creates an histogram plot for each decomposition strategy
 

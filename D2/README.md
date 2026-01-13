@@ -95,7 +95,7 @@ mpirun -np 2 ./src/main.out matrix.mtx 1
 
 #### Output
 The output produced by the program is a `.csv` file containing:
-- Time elapsed (expressed in milliseconds) during the multiplication between the CSR format of the matrix and a randomly generated vector
+- Computation time (expressed in milliseconds)
 - Average number of nonzero (NNZ) elements among MPI-processes
 - Maximum number of nonzero (NNZ) elements among MPI-processes
 - Minimum number of nonzero (NNZ) elements among MPI-processes
@@ -105,7 +105,7 @@ The output produced by the program is a `.csv` file containing:
 
 ## Change Parameters and Default values
 ### Default values
-- By default, without modifying the source files, the program will submit 21 jobs: on for each combination of number of MPI processes (from 2 to 128 in powers of two) and modes (from 0 to 2).
+- By default, without modifying the source files, the program will submit 21 jobs: one for each combination of number of MPI processes (from 2 to 128 in powers of two) and modes (from 0 to 2).
 - By default, the `.pbs` scripts will submit jobs to the `short_cpuQ` with: 128 CPUs, 128GB of RAM, 128 MPI processes and a walltime of 6 hours
 
 #### Change decomposition function

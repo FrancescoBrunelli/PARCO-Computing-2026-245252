@@ -1,6 +1,6 @@
 # Results
 This directory contains all the performance metrics collected from the experiments. Each `.csv` file contains:
-- Time elapsed (expressed in milliseconds) during the multiplication between the CSR format of the matrix and a randomly generated vector
+- Computation time (expressed in milliseconds)
 - Average number of nonzero (NNZ) elements among MPI-processes
 - Maximum number of nonzero (NNZ) elements among MPI-processes
 - Minimum number of nonzero (NNZ) elements among MPI-processes

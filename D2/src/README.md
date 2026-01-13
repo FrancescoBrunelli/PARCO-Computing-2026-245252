@@ -13,10 +13,7 @@
 ---
 
 ## Introduction
-This directory contains the source files for the **Sparse Matrix-Vector Multiplication (SpMV)** project.
-
-The implementation supports both **sequential** and **parallel (OpenMP)** execution, allowing performance comparisons across different scheduling policies.
-
+This directory contains the source files for the **Distributed Sparse Matrix-Vector Multiplication (SpMV)** project.
 ## Directory Structure
 ``` text
 src
@@ -45,9 +42,10 @@ Implement the three decomposition strategies:
 - 1D Block
 - 1D Cyclic
 - 2D Cartesian Block
+
 And a sequential MPI version of the SpMV computation
 ## Compilation
-The code can be compiled using g++ with OpenMP and the following flags
+The code can be compiled using mpicxx with the following flags
 
 ``` sh
 mpicxx -std=c++11 -O3 src/main.cpp src/matrix.cpp src/mpiSpMV.cpp -o src/main.out
@@ -80,7 +78,7 @@ The program needs a .mtx matrix as an input.
 - The input matrix must be in the **Matrix Market (.mtx)** format
 - It is recommended to run the program from the main folder
 - **Outputs:** 
-	- Time elapsed (expressed in milliseconds) during the multiplication between the CSR format of the matrix and a randomly generated vector
+	- Computation time (expressed in milliseconds)
 	- Average number of nonzero (NNZ) elements among MPI-processes
 	- Maximum number of nonzero (NNZ) elements among MPI-processes
 	- Minimum number of nonzero (NNZ) elements among MPI-processes
