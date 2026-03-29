@@ -1,4 +1,7 @@
 # PARCO-Computing-2026-245252
+This deliverable evaluates distributed-memory SpMV using MPI across three decomposition strategies (1D block, 1D cyclic, 2D Cartesian block) on a 72-core Intel Xeon cluster. Strong scaling experiments on 5 real SuiteSparse matrices and weak scaling experiments on synthetic matrices show that 1D cyclic outperforms block strategies on irregular matrices due to better load balance, while block decompositions achieve better performance on regular matrices. 1D block decomposition achieves >50x speedup on human_gene2 (strong scaling, 32 processes); 2D block peaks at ~18 GFLOPS (weak scaling, 64 processes), including superlinear speedup attributed to improved cache utilization in parallel execution. Communication time exhibits latency-dominated behaviour at high process counts.
+
+(See the [technical report](Brunelli_245252_D2.pdf) for full results)
 
 ## Table of Contents
 
