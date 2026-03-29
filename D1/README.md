@@ -1,5 +1,6 @@
 # PARCO-Computing-2026-245252
 This deliverable evaluates shared-memory SpMV performance using OpenMP across three scheduling strategies (static, dynamic, guided) on a 72-core Intel Xeon cluster. Experiments on 5 real SuiteSparse matrices show that static scheduling (chunksize = 100) consistently outperforms dynamic and guided policies due to lower synchronization overhead, despite their better load balancing. Cache profiling via perf and cachegrind reveals that dynamic scheduling incurs the highest LLC-miss rate while guided achieves the lowest. NUMA-induced memory bandwidth limitations and scheduling overhead are identified as the main performance bottlenecks.
+
 (See the [technical report](Brunelli-245252-D1.pdf) for full results)
 
 ## Table of Contents
