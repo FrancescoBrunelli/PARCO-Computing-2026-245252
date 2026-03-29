@@ -1,4 +1,4 @@
-# PARCO Computing a.y. 2025/2026
+# PARCO-Computing-2026-245252
 
 This project evaluates the performance of Sparse Matrix-Vector Multiplication (SpMV) on a 72-core Intel Xeon cluster across two parallelization paradigms:
 
